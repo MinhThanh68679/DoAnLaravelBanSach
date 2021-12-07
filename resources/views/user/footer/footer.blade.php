@@ -65,7 +65,7 @@
 			</div>
 			<div class="copyright-w3layouts mt-4">
 				<p class="copy-right text-center ">&copy; 2021. Thiết kế bởi
-					<a href="#"> Y&P Designs</a>
+					<a href="#"> N&T Designs</a>
 				</p>
 			</div>
 		</div>

@@ -20,7 +20,7 @@
 					</div>
 					<div class="carousel-item item2" style="background-image: url(user/images/banner-4.jpg);">
 						<div class="carousel-caption text-center">
-							<h3>Với Y&P
+							<h3>Với N&T
 								<span>Kiến Thức Là Vô Tận</span>
 							</h3>
 							<a href="{{ route('user.shop')}}" class="btn btn-sm animated-button gibson-three mt-4">Đến Cửa Hàng</a>
@@ -29,7 +29,7 @@
 					</div>
 					<div class="carousel-item item3" style="background-image: url(user/images/banner-5.jpg);">
 						<div class="carousel-caption text-center">
-							<h3>Đến Với Y&P
+							<h3>Đến Với N&T
 								<span>Chúng Tôi Sẽ Cho Bạn Dịch Vụ Tốt Nhất</span>
 							</h3>
 							<a href="{{ route('user.shop')}}" class="btn btn-sm animated-button gibson-three mt-4">Đến Cửa Hàng</a>
@@ -38,7 +38,7 @@
 					</div>
 					<div class="carousel-item item4" style="background-image: url(user/images/banner-9.jpg);">
 						<div class="carousel-caption text-center">
-							<h3>Đồng Hành Cùng Y&P
+							<h3>Đồng Hành Cùng N&T
 								<span>Trở Lại Trường Sau Mùa Hè</span>
 							</h3>
 							<a href="{{ route('user.shop')}}" class="btn btn-sm animated-button gibson-three mt-4">Đến Cửa Hàng</a>

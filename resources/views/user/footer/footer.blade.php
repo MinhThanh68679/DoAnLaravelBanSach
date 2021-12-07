@@ -6,7 +6,7 @@
 						<h3>Về chúng tôi</h3>
 					</div>
 					<div class="footer-text">
-						<p>Y&P được thành lập vào năm 2018 nhằm đem đến cho bạn nguồn tri thức vô tận từ những quyển sách được viết từ những tác giả nổi tiếng. Được phục vụ cho bạn đó là niềm vinh hạnh của chúng tôi.</p>
+						<p>N&T được thành lập vào năm 2018 nhằm đem đến cho bạn nguồn tri thức vô tận từ những quyển sách được viết từ những tác giả nổi tiếng. Được phục vụ cho bạn đó là niềm vinh hạnh của chúng tôi.</p>
 						<ul class="footer-social text-left mt-lg-4 mt-3">
 
 							<li class="mx-2">
@@ -38,7 +38,7 @@
 							<h4>Liên hệ :</h4>
 							<p>Điện thoại : (+84) 933809731</p>
 							<p>Email :
-								<a href="mailto:y&pbookstore@gmail.com">y&pbookstore@gmail.com</a>
+								<a href="mailto:n&tbookstore@gmail.com">n&tbookstore@gmail.com</a>
 							</p>
 						</div>
 					</div>

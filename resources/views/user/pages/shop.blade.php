@@ -368,7 +368,7 @@
 														<div class="grid_meta">
 															<div class="product_price">
 																<h4>
-																	<a href="{{ route('user.single')}}">Phương pháp VPA - Kỹ thuật nhận diện Dòng Tiền Thông Minh bằng Hành Động Giá kết hợp Khối Lượng Giao Dịch</a>
+																	<a href="{{ route('user.single')}}">Phương pháp VPA - Kỹ thuật nhận diện Dòng Tiền Thông Minh</a>
 																</h4>
 																<div class="grid-price mt-2">
 																	<span class="money ">357.000 ₫</span>
@@ -511,7 +511,7 @@
 															<div class="grid_meta">
 																<div class="product_price">
 																	<h4>
-																		<a href="{{ route('user.single')}}">Storytelling With Data - Kể Chuyện Thông Qua Dữ Liệu (Cuốn Cẩm Nang Hướng Dẫn Trực Quan Hóa Dữ Liệu) </a>
+																		<a href="{{ route('user.single')}}">Storytelling With Data - Kể Chuyện Thông Qua Dữ Liệu</a>
 																	</h4>
 																	<div class="grid-price mt-2">
 																		<span class="money ">270.900 ₫</span>
@@ -863,7 +863,7 @@
 																<div class="grid_meta">
 																	<div class="product_price">
 																		<h4>
-																			<a href="{{ route('user.single')}}">Phương pháp VPA - Kỹ thuật nhận diện Dòng Tiền Thông Minh bằng Hành Động Giá kết hợp Khối Lượng Giao Dịch</a>
+																			<a href="{{ route('user.single')}}">Phương pháp VPA - Kỹ thuật nhận diện Dòng Tiền Thông Minh</a>
 																		</h4>
 																		<div class="grid-price mt-2">
 																			<span class="money ">357.000 ₫</span>
@@ -1235,7 +1235,7 @@
 															<div class="grid_meta">
 																<div class="product_price">
 																	<h4>
-																		<a href="{{ route('user.single')}}">Storytelling With Data - Kể Chuyện Thông Qua Dữ Liệu (Cuốn Cẩm Nang Hướng Dẫn Trực Quan Hóa Dữ Liệu) </a>
+																		<a href="{{ route('user.single')}}">Storytelling With Data - Kể Chuyện Thông Qua Dữ Liệu</a>
 																	</h4>
 																	<div class="grid-price mt-2">
 																		<span class="money ">$425.00</span>

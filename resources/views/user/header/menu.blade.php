@@ -92,11 +92,11 @@
 						</li>
 						<!-- Tin tức -->
 						<li class="nav-item">
-							<a class="nav-link" href="about.html">Tin Tức</a>
+							<a class="nav-link" href="{{ route('user.new')}}">Tin Tức</a>
 						</li>
 						<!-- Thông tin & liên hệ -->
 						<li class="nav-item">
-							<a class="nav-link" href="{{ route('user.about')}}">Giới Thiệu</a>
+							<a class="nav-link" href="{{ route('user.about')}}">Liên Hệ</a>
 						</li>
 						<!-- Thanh tìm kiếm -->
 						<li style="padding: 5px 0 0 15px;">

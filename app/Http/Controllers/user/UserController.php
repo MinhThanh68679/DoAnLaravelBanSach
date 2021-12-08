@@ -35,4 +35,7 @@ class UserController extends Controller
     public function Payment(){
         return view($this->user."payment");
     }
+    public function New(){
+        return view($this->user."news");
+    }
 }

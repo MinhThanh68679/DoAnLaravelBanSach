@@ -32,4 +32,7 @@ class UserController extends Controller
     public function Cart(){
         return view($this->user."cart");
     }
+    public function Payment(){
+        return view($this->user."payment");
+    }
 }

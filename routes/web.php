@@ -32,6 +32,7 @@ Route::group(['prefix' => '', 'namespace' => 'user'], function() {
     Route::get("single","UserController@Single")->name("user.single");
     Route::get("about","UserController@About")->name("user.about");
     Route::get("cart","UserController@Cart")->name("user.cart");
+    Route::get("payment","UserController@Payment")->name("user.cart");
 
 });
 Route::resource('admin/dashboard',admin\DashboardController::class);

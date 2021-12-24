@@ -1708,7 +1708,7 @@ ul.links li a:hover {
     text-decoration: none;
     position: fixed;
     bottom: 55px;
-    right: 2%;
+    right: -1%;
     overflow: hidden;
     z-index: 999;
     width: 32px;

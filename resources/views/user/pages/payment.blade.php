@@ -68,38 +68,94 @@ td, th {
 				<div class="col-md-7 address_form">
 					<div class="container-fluid" style="border:1px solid;">
 					<h4>Đơn hàng</h4>
-					<table style="margin-bottom: 15px">
-					<tr style="background-color:yellow">
-					<th>Ảnh Bìa</th>
-					<th>Tên Sách</th>
-					<th>Số lượng</th>
-					<th>Giá Sách</th>
-					<th>Tổng tiền</th>
-					</tr>
-					
-					<input type="hidden" value="" id="Id_Sach" />
-					<input type="hidden" value="" id="So_Luong" />
-					<tr>
-					<td>
-						 <img src="{!! asset('user\images\Book\SACH_VAN_HOC\Trâm (Trọn Bộ 4 Cuốn) (Tái Bản 2020)\DD.png')!!}" style="width:80px; height:80px"/>
-					 <img src="{!! asset('user/images/Book/SACH_KINH_TE/Storytelling With Data - Kể Chuyện Thông Qua Dữ Liệu (Cuốn Cẩm Nang Hướng Dẫn Trực Quan Hóa Dữ Liệu)/HinhDD.png')!!}" style="width:80px; height:80px"/>
-					
-					</td>
-					<td style="text-overflow:clip; overflow:hidden; max-width:180px">
-					<div>Trâm </div>
-					<div>Kể Chuyện Thông Qua Dữ Liệu</div>
-					</td>
-					<td><div>1</div>
-					<div>2</div></td>
-					 <td class="total" title=""><div>105.000 VNĐ</div><div>70.000 VNĐ</div></td>
-					<td class="total" title="">175.000 VNĐ</td>
-						
-				<!-- <td class="total" title=""></td>
-				 <td class="total" title=""> </td> -->
-					
-					
-					</tr>
-					
+					<table class="timetable_sub">
+						<thead>
+							<tr>
+								<th>STT</th>
+								<th>Ảnh Bìa</th>
+								<th>Số lượng</th>
+								<th>Tên sản phẩm</th>
+								<th>Giá Bán</th>
+								<th>Tổng Tiền</th>
+								
+							</tr>
+						</thead>
+						<tbody>
+							<tr class="rem1"> 
+								<td class="invert ">1</td>
+								<td class="invert-image">
+									<a href="{{ route('user.single')}}">
+										<img src="user\images\Book\SACH_KINH_TE\Đừng Bao Giờ Đi Ăn Một Mình (Tái Bản)\DD.png" alt=" " class="img-responsive">
+									</a>
+								</td>
+								<td class="invert">
+									<div class="quantity">
+										<div class="quantity-select">
+											
+											<div class="entry value">
+												<span>1</span>
+											</div>
+											
+										</div>
+									</div>
+								</td>
+								<td class="invert">Đừng Bao Giờ Đi Ăn Một Mình </td>
+
+								<td class="invert">73.700 VNĐ</td>
+								<td class="invert">73.700 VNĐ</td>
+
+							</tr>
+							<tr class="rem2">
+								<td class="invert">2</td>
+								<td class="invert-image">
+									<a href="{{ route('user.single')}}">
+										<img src="user\images\Book\SACH_KINH_TE\How Money Works - Hiểu Hết Về Tiền\DD.png" alt=" " class="img-responsive">
+									</a>
+								</td>
+								<td class="invert">
+									<div class="quantity">
+										<div class="quantity-select">
+										
+											<div class="entry value">
+												<span>1</span>
+											</div>
+
+										</div>
+									</div>
+								</td>
+								<td class="invert">Hiểu Hết Về Tiền </td>
+
+								<td class="invert">223.700 VNĐ</td>
+								<td class="invert">223.700 VNĐ</td>
+
+								
+							</tr>
+							<tr class="rem3">
+								<td class="invert">3</td>
+								<td class="invert-image">
+									<a href="{{ route('user.single')}}">
+										<img src="user\images\Book\SACH_KINH_TE\Phân Tích Chứng Khoán\DD.png" alt=" " class="img-responsive">
+									</a>
+								</td>
+								<td class="invert">
+									<div class="quantity">
+										<div class="quantity-select">
+											
+											<div class="entry value">
+												<span>1</span>
+											</div>
+										</div>
+									</div>
+								</td>
+								<td class="invert">Phân Tích Chứng Khoán</td>
+
+								<td class="invert">334.200 VNĐ</td>
+								<td class="invert">334.200 VNĐ</td>
+
+								
+							</tr>
+
+						</tbody>
 					</table>
 					</div>	
 					<div style="text-align:right; margin-top: 15px; font-size:90%; font-weight:bold; color: #888"> Tổng đơn hàng: 175.000<input style="width:110px; border:none; font-size:110%; text-align:right" id="order-total" readonly/></div>		
@@ -138,4 +194,5 @@ td, th {
 
 	</div>
 </section>
+
 @stop

@@ -166,7 +166,7 @@
 									</div>
 									<div class="col-xs-8 img-deal1">
 										<h3>Đừng Để Mất Bò - 7 Bước Quản Lý Cửa Hàng Hiệu Quả Và Chống Thất Thoát</h3>
-										<a href="{{ route('user.single')}}">149.000 ₫</a>
+										<a href="{{ route('user.single')}}">149.000 VNĐ</a>
 									</div>
 									<div class="clearfix"></div>
 								</div>
@@ -176,7 +176,7 @@
 										</div>
 										<div class="col-xs-8 img-deal1">
 											<h3>How Money Works - Hiểu Hết Về Tiền</h3>
-											<a href="{{ route('user.single')}}">223.700 ₫</a>
+											<a href="{{ route('user.single')}}">223.700 VNĐ</a>
 										</div>
 										<div class="clearfix"></div>
 									</div>
@@ -186,7 +186,7 @@
 											</div>
 											<div class="col-xs-8 img-deal1">
 												<h3>Nghệ Thuật đầu tư Dhandho - The Dhandho</h3>
-												<a href="{{ route('user.single')}}">238.000 ₫</a>
+												<a href="{{ route('user.single')}}">238.000 VNĐ</a>
 											</div>
 											<div class="clearfix"></div>
 										</div>
@@ -230,7 +230,7 @@
 																	<a href="{{ route('user.single')}}">Nhà Đầu Tư Thông Minh (Tái Bản 2020)</a>
 																</h4>
 																<div class="grid-price mt-2">
-																	<span class="money ">149.200 ₫</span>
+																	<span class="money ">149.200 VNĐ</span>
 																</div>
 															</div>
 															<ul class="stars">
@@ -300,7 +300,7 @@
 																	<a href="{{ route('user.single')}}">Phân Tích Chứng Khoán</a>
 																</h4>
 																<div class="grid-price mt-2">
-																	<span class="money ">334.200 ₫</span>
+																	<span class="money ">334.200 VNĐ</span>
 																</div>
 															</div>
 															<ul class="stars">
@@ -371,7 +371,7 @@
 																	<a href="{{ route('user.single')}}">Phương pháp VPA - Kỹ thuật nhận diện Dòng Tiền Thông Minh</a>
 																</h4>
 																<div class="grid-price mt-2">
-																	<span class="money ">357.000 ₫</span>
+																	<span class="money ">357.000 VNĐ</span>
 																</div>
 															</div>
 															<ul class="stars">
@@ -441,7 +441,7 @@
 																	<a href="{{ route('user.single')}}">Siêu Cò – How To Be A Power Connector </a>
 																</h4>
 																<div class="grid-price mt-2">
-																	<span class="money ">249.000 ₫</span>
+																	<span class="money ">249.000 VNĐ</span>
 																</div>
 															</div>
 															<ul class="stars">
@@ -514,7 +514,7 @@
 																		<a href="{{ route('user.single')}}">Storytelling With Data - Kể Chuyện Thông Qua Dữ Liệu</a>
 																	</h4>
 																	<div class="grid-price mt-2">
-																		<span class="money ">270.900 ₫</span>
+																		<span class="money ">270.900 VNĐ</span>
 																	</div>
 																</div>
 																<ul class="stars">
@@ -584,7 +584,7 @@
 																		<a href="{{ route('user.single')}}">Sứ Mệnh Khởi Nghiệp </a>
 																	</h4>
 																	<div class="grid-price mt-2">
-																		<span class="money ">399.000 ₫</span>
+																		<span class="money ">399.000 VNĐ</span>
 																	</div>
 																</div>
 																<ul class="stars">
@@ -653,7 +653,7 @@
 																		<a href="{{ route('user.single')}}">Tư Duy Nhanh Và Chậm (Tái Bản 2019)</a>
 																	</h4>
 																	<div class="grid-price mt-2">
-																		<span class="money ">239.000 ₫</span>
+																		<span class="money ">239.000 VNĐ</span>
 																	</div>
 																</div>
 																<ul class="stars">
@@ -723,7 +723,7 @@
 																		<a href="{{ route('user.single')}}">Sứ Mệnh Khởi Nghiệp </a>
 																	</h4>
 																	<div class="grid-price mt-2">
-																		<span class="money ">$825.00</span>
+																		<span class="money ">825.00 VNĐ</span>
 																	</div>
 																</div>
 																<ul class="stars">
@@ -796,7 +796,7 @@
 																			<a href="{{ route('user.single')}}">Nhà Đầu Tư Thông Minh (Tái Bản 2020)</a>
 																		</h4>
 																		<div class="grid-price mt-2">
-																			<span class="money ">$575.00</span>
+																			<span class="money ">575.00 VNĐ</span>
 																		</div>
 																	</div>
 																	<ul class="stars">
@@ -866,7 +866,7 @@
 																			<a href="{{ route('user.single')}}">Phương pháp VPA - Kỹ thuật nhận diện Dòng Tiền Thông Minh</a>
 																		</h4>
 																		<div class="grid-price mt-2">
-																			<span class="money ">357.000 ₫</span>
+																			<span class="money ">357.000 VNĐ</span>
 																		</div>
 																	</div>
 																	<ul class="stars">
@@ -936,7 +936,7 @@
 																			<a href="{{ route('user.single')}}">Tư Duy Nhanh Và Chậm (Tái Bản 2019)</a>
 																		</h4>
 																		<div class="grid-price mt-2">
-																			<span class="money ">$575.00</span>
+																			<span class="money ">575.00 VNĐ</span>
 																		</div>
 																	</div>
 																	<ul class="stars">
@@ -1006,7 +1006,7 @@
 																			<a href="{{ route('user.single')}}">Nghệ Thuật đầu tư Dhandho - The Dhandho</a>
 																		</h4>
 																		<div class="grid-price mt-2">
-																			<span class="money ">$325.00</span>
+																			<span class="money ">325.00 VNĐ</span>
 																		</div>
 																	</div>
 																	<ul class="stars">
@@ -1089,7 +1089,7 @@
 																		<a href="{{ route('user.single')}}">Tư Duy Nhanh Và Chậm (Tái Bản 2019) </a>
 																	</h4>
 																	<div class="grid-price mt-2">
-																		<span class="money ">$325.00</span>
+																		<span class="money ">325.00 VNĐ</span>
 																	</div>
 																</div>
 																<ul class="stars">
@@ -1164,7 +1164,7 @@
 																		<a href="{{ route('user.single')}}">Sứ Mệnh Khởi Nghiệp </a>
 																	</h4>
 																	<div class="grid-price mt-2">
-																		<span class="money ">$425.00</span>
+																		<span class="money ">425.00 VNĐ </span>
 																	</div>
 																</div>
 																<ul class="stars">
@@ -1238,7 +1238,7 @@
 																		<a href="{{ route('user.single')}}">Storytelling With Data - Kể Chuyện Thông Qua Dữ Liệu</a>
 																	</h4>
 																	<div class="grid-price mt-2">
-																		<span class="money ">$425.00</span>
+																		<span class="money ">425.00 VNĐ</span>
 																	</div>
 																</div>
 																<ul class="stars">
@@ -1312,7 +1312,7 @@
 																		<a href="{{ route('user.single')}}">Siêu Cò – How To Be A Power Connector </a>
 																	</h4>
 																	<div class="grid-price mt-2">
-																		<span class="money ">$281.00</span>
+																		<span class="money ">281.00 VNĐ</span>
 																	</div>
 																</div>
 																<ul class="stars">
@@ -1386,7 +1386,7 @@
 																		<a href="{{ route('user.single')}}">Đừng Bao Giờ Đi Ăn Một Mình (Tái Bản) </a>
 																	</h4>
 																	<div class="grid-price mt-2">
-																		<span class="money ">$525.00</span>
+																		<span class="money ">525.00 VNĐ</span>
 																	</div>
 																</div>
 																<ul class="stars">
@@ -1460,7 +1460,7 @@
 																		<a href="{{ route('user.single')}}">Đừng Để Mất Bò - 7 Bước Quản Lý Cửa Hàng </a>
 																	</h4>
 																	<div class="grid-price mt-2">
-																		<span class="money ">$325.00</span>
+																		<span class="money ">325.00 VNĐ</span>
 																	</div>
 																</div>
 																<ul class="stars">

@@ -156,7 +156,7 @@
 									</div>
 									<div class="img-deal1">
 										<h3>Đừng Bao Giờ Đi Ăn Một Mình (Tái Bản)</h3>
-										<a href="{{ route('user.single')}}">73.700 ₫</a>
+										<a href="{{ route('user.single')}}">73.700 VNĐ</a>
 									</div>
 									<div class="clearfix"></div>
 								</div>

@@ -267,6 +267,8 @@
   chatbox.setAttribute("page_id", "110867918123999");
   chatbox.setAttribute("attribution", "biz_inbox");
 </script>
+<div style ="">
+
 
 <!-- Your SDK code -->
 <script>

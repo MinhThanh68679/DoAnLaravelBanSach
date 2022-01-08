@@ -85,7 +85,7 @@ td.invert-image a img {
 .value-plus {
 	height: 40px;
 	line-height: 24px;
-	width: 40px;
+	width: 20px;
 	margin-right: 3px;
 	display: inline-block;
 	cursor: pointer;
@@ -126,7 +126,7 @@ td.invert-image a img {
 
 .value {
 	cursor: default;
-	width: 40px;
+	width: 35px;
 	height: 40px;
 	padding: 8px 0px;
 	color: #A9A9A9;

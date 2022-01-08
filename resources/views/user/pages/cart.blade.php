@@ -37,7 +37,8 @@
 								<th>Hình</th>
 								<th>Số lượng</th>
 								<th>Tên sản phẩm</th>
-								<th>Giá</th>
+								<th>Đơn Giá</th>
+								<th>Tổng Tiền</th>
 								<th>Xóa</th>
 							</tr>
 						</thead>
@@ -62,6 +63,7 @@
 								</td>
 								<td class="invert">Đừng Bao Giờ Đi Ăn Một Mình </td>
 
+								<td class="invert">73.700 ₫</td>
 								<td class="invert">73.700 ₫</td>
 								<td class="invert">
 									<div class="rem">
@@ -91,6 +93,7 @@
 								<td class="invert">Hiểu Hết Về Tiền </td>
 
 								<td class="invert">223.700 ₫</td>
+								<td class="invert">223.700 ₫</td>
 								<td class="invert">
 									<div class="rem">
 										<div class="close2"> </div>
@@ -118,6 +121,7 @@
 								</td>
 								<td class="invert">Phân Tích Chứng Khoán</td>
 
+								<td class="invert">334.200 ₫</td>
 								<td class="invert">334.200 ₫</td>
 								<td class="invert">
 									<div class="rem">

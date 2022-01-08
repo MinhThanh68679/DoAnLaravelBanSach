@@ -7,15 +7,39 @@
             </a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="/admin/quan-ly-sach">
+            <a class="nav-link" href="/admin/sach">
               <i class="icon-book menu-icon"></i>
               <span class="menu-title">Quản lý sách</span>
             </a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="/admin/quan-ly-tai-khoan">
+            <a class="nav-link" href="/admin/theloai">
+              <i class="icon-book menu-icon"></i>
+              <span class="menu-title">Quản lý thể loại</span>
+            </a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="/admin/theloaisach">
+              <i class="icon-book menu-icon"></i>
+              <span class="menu-title">Quản lý thể loại sách</span>
+            </a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="/admin/nhacungcap">
+              <i class="icon-book menu-icon"></i>
+              <span class="menu-title">Quản lý nhà cung cấp</span>
+            </a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="/admin/taikhoan">
               <i class="icon-head menu-icon"></i>
               <span class="menu-title">Quản lý tài khoản</span>
+            </a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="/admin/slideshow">
+              <i class="icon-head menu-icon"></i>
+              <span class="menu-title">Quản lý slideshow</span>
             </a>
           </li>
           <li class="nav-item">
@@ -50,3 +74,4 @@
           </li>
         </ul>
       </nav>
+      

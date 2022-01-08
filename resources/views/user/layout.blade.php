@@ -8,6 +8,8 @@
 	@include('user.header.menu')
 	<!-- //header -->
 	@yield('content')
+	<!--zalo chat-->
+	@include('user.pages.zalochat')
 	<!--footer -->
 	@include('user.footer.footer')
 	<!-- //footer -->

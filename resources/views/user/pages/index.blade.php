@@ -10,7 +10,8 @@
 					<li data-target="#carouselExampleIndicators" data-slide-to="3"></li>
 				</ol>
 				<div class="carousel-inner" role="listbox">
-					<div class="carousel-item active" style="background-image: url(user/images/banner.jpg);">
+@foreach($slideshow as $slideshows)
+					<div class="carousel-item active"><img src="{!! asset('image/'.$slideshows->HinhAnh)!!}" class="img-fluid" alt="">
 						<div class="carousel-caption text-center">
 							<h3>Ưu Đãi Lớn
 								<span>Giảm Giá 50% Tất Cả Các Loại Sách</span>
@@ -18,7 +19,9 @@
 							<a href="{{ route('user.shop')}}" class="btn btn-sm animated-button gibson-three mt-4">Đến Cửa Hàng</a>
 						</div>
 					</div>
-					<div class="carousel-item item2" style="background-image: url(user/images/banner-4.jpg);">
+					@endforeach
+					@foreach($slideshow2 as $slideshows)
+					<div class="carousel-item item2"><img src="{!! asset('image/'.$slideshows->HinhAnh)!!}" class="img-fluid" alt="">">
 						<div class="carousel-caption text-center">
 							<h3>Với N&T
 								<span>Kiến Thức Là Vô Tận</span>
@@ -27,7 +30,9 @@
 
 						</div>
 					</div>
-					<div class="carousel-item item3" style="background-image: url(user/images/banner-5.jpg);">
+					@endforeach
+					@foreach($slideshow3 as $slideshows)
+					<div class="carousel-item item3"><img src="{!! asset('image/'.$slideshows->HinhAnh)!!}">
 						<div class="carousel-caption text-center">
 							<h3>Đến Với N&T
 								<span>Chúng Tôi Sẽ Cho Bạn Dịch Vụ Tốt Nhất</span>
@@ -36,7 +41,9 @@
 
 						</div>
 					</div>
-					<div class="carousel-item item4" style="background-image: url(user/images/banner-9.jpg);">
+					@endforeach
+					@foreach($slideshow4 as $slideshows)
+					<div class="carousel-item item4"><img src="{!! asset('image/'.$slideshows->HinhAnh)!!}"
 						<div class="carousel-caption text-center">
 							<h3>Đồng Hành Cùng N&T
 								<span>Trở Lại Trường Sau Mùa Hè</span>
@@ -44,6 +51,17 @@
 							<a href="{{ route('user.shop')}}" class="btn btn-sm animated-button gibson-three mt-4">Đến Cửa Hàng</a>
 						</div>
 					</div>
+					@endforeach
+					@foreach($slideshow5 as $slideshows)
+					<div class="carousel-item item4"><img src="{!! asset('image/'.$slideshows->HinhAnh)!!}"
+						<div class="carousel-caption text-center">
+							<h3>Đồng Hành Cùng N&T
+								<span>Trở Lại Trường Sau Mùa Hè</span>
+							</h3>
+							<a href="{{ route('user.shop')}}" class="btn btn-sm animated-button gibson-three mt-4">Đến Cửa Hàng</a>
+						</div>
+					</div>
+					@endforeach
 				</div>
 				<a class="carousel-control-prev" href="#carouselExampleIndicators" role="button" data-slide="prev">
 					<span class="carousel-control-prev-icon" aria-hidden="true"></span>

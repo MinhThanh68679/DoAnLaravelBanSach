@@ -6,6 +6,7 @@
   <div class="container-scroller">
     <!-- partial:partials/_navbar.html -->
       @include('admin.header.header')
+      
       <!-- partial:partials/_sidebar.html -->
       @include('admin.header.sidebar')
       @yield('content')

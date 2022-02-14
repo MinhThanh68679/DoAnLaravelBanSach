@@ -9,6 +9,14 @@
                 <div class="col-12 col-xl-8 mb-4 mb-xl-0">
                   <h3 class="font-weight-bold">QUẢN LÝ SÁCH</h3>
                 </div>
+                @if(Session::has('message'))
+                <div class="alert alert-success alert-dismissible fade show notify" role="alert">
+                      <strong>Thông báo! </strong>{{Session::get('message')}}.
+                      <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                      </button>
+                    </div>
+                        @endif
                 <div class="col-12 col-xl-8 mb-4 mb-xl-0" style="padding-top:50px">
                   <a class="btn btn-primary" href="{{ route('sach.create')}}"  style="padding: 0.5rem 1.5rem; border-radius: 10px; margin-left:40px"><i class='fas fa-plus' style='font-size:15px'></i></a>
                   <!-- /.card-header -->
@@ -20,6 +28,7 @@
                     <th>Ảnh bìa</th>
                     <th>Tên sách</th>
                     <th>Nhà Xuất Bản</th>
+                    <th>Tác Giả</th>
                     <th>Giá tiền</th>
                     <th>Trạng thái</th>
                     <th>Tùy Chỉnh</th>
@@ -29,8 +38,9 @@
                   @foreach($sach ?? '' as $sachs)
                   <tr>
                     <td><img src="{{asset('image/'.$sachs->AnhSach)}}" style="width:50px; height:50px; border-radius:0%"></td>
-                    <td>{{$sachs->TenSach}}</td>
+                    <td style="max-width: 180px; text-overflow: ellipsis; overflow: hidden">{{$sachs->TenSach}}</td>
                     <td>{{$sachs->NhaXuatBan}}</td>
+                    <td>{{$sachs->DichGia}}</td>
                     <td>{{$sachs->GiaTien}}</td>
                     <td>@if($sachs->TrangThai == 1) {{"Tạm hết hàng"}}
                     @elseif (($sachs->TrangThai == 0)) {{"Ngừng bán"}}
@@ -72,4 +82,6 @@ tr:hover{
 .table{
 border: 1px solid #CED4DA;  
 border-collapse: collapse; }
+    
+    
       </style>

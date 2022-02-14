@@ -13,9 +13,17 @@ class BinhLuan extends Model
         'id',
         'IdSach',
         'IdKH',
+        'HoTen',
         'NoiDung',
         'Ngay',
+        'Duyet',
         'TrangThai',
-
     ];
+    public function Sach(){
+        return $this->belongsTo('App\Models\Sach', 'IdSach', 'id');
+    }
+    public function TaiKhoan()
+    {
+        return $this->belongsTo('App\Models\User','IdKH','id');
+    }
 }

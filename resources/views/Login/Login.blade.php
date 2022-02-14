@@ -2,19 +2,26 @@
 <html lang="zxx">
 @include('Login.LoginCss')
 <body>
+@if (session('status'))
+                    <ul>
+                        <li class="text-success"> {{ session('status') }}</li>
+                    </ul>
+                @endif
 <div class="login-wrap" style="background-image: url(user/images/background-login.jpg);">
 	<div class="login-html">
 		<input id="tab-1" type="radio" name="tab" class="sign-in" checked><label for="tab-1" class="tab">Đăng Nhập</label>
 		<input id="tab-2" type="radio" name="tab" class="sign-up"><label for="tab-2" class="tab">Đăng Kí</label>
 		<div class="login-form">
 			<div class="sign-in-htm" style="padding-top:30px">
+		<form class="sign-in-htm" action="{{ route('getLogin') }}" method="post">
+			{{ csrf_field() }}
 				<div class="group">
-					<label for="user" class="label">Tên tài khoản</label>
-					<input id="user" type="text" class="input">
+					<label for="user" class="label">Email</label>
+					<input id="Email" type="text" class="input" name="txtEmail">
 				</div>
 				<div class="group">
 					<label for="pass" class="label">Mật khẩu</label>
-					<input id="pass" type="password" class="input" data-type="password">
+					<input id="pass" type="password" class="input" data-type="password" name="txtMatKhau">
 				</div>
 				<div class="group">
 					<input id="check" type="checkbox" class="check" checked>
@@ -27,19 +34,26 @@
 				<div class="foot-lnk">
 					<a href="#forgot">Quên mật khẩu?</a>
 				</div>
+		</form>
 			</div>
+		<form class="sign-up-htm" action="{{ route('getregister') }}" method="post">
+			{{ csrf_field() }}
 			<div class="sign-up-htm" style="padding-top:30px">
 				<div class="group">
-					<label for="user" class="label">Tên tài khoản</label>
-					<input id="user" type="text" class="input">
+					<label for="user" class="label">Họ Tên</label>
+					<input id="user" type="text" class="input" name="HoTen">
+				</div>
+				<div class="group">
+					<label for="user" class="label">Email</label>
+					<input id="user" type="text" class="input" name="Email">
 				</div>
 				<div class="group">
 					<label for="pass" class="label">Mật khẩu</label>
-					<input id="pass" type="password" class="input" data-type="password">
+					<input id="pass" type="password" class="input" data-type="password" name="password">
 				</div>
 				<div class="group">
 					<label for="pass" class="label">Xác thực mật khẩu</label>
-					<input id="pass" type="password" class="input" data-type="password">
+					<input id="pass" type="password" class="input" data-type="password" name="repassword">
 				</div>
 				<div class="group">
 					<input type="submit" class="button" value="Đăng Kí">
@@ -49,6 +63,7 @@
 					<label for="tab-1">Bạn đã có tài khoản? Đăng nhập.</a>
 				</div>
 			</div>
+		</form>
 		</div>
 	</div>
 </div>

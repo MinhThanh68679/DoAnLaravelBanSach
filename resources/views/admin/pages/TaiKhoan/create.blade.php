@@ -32,7 +32,7 @@
                   </div>
                   <div class="col-lg-6">
                     <label for="exampleInputTitle">Mật Khẩu</label>
-                    <input class="form-control" type="text" name="MatKhau" id="MatKhau" placeholder="Mật Khẩu">
+                    <input class="form-control" type="text" name="password" id="password" placeholder="Mật Khẩu">
                   </div>
                 </div>
                 <div class="row">

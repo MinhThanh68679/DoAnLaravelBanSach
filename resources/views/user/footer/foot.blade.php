@@ -10,10 +10,20 @@
 	<!--search jQuery-->
 	<script src="{{ asset('user/js/modernizr-2.6.2.min.js') }}"></script>
 	<script src="{{ asset('user/js/classie-search.js') }}"></script>
-	<script src="{{ asset('user/js/demo1-search.js') }}"></script>
+	<!--<script src="{{ asset('user/js/demo1-search.js') }}"></script> -->
 	<!--//search jQuery-->
 	<!-- cart-js -->
 	<script src="{{ asset('user/js/minicart.js') }}"></script>
+	<script src="//cdn.jsdelivr.net/npm/alertifyjs@1.13.1/build/alertify.min.js"></script>
+
+<!-- CSS -->
+<link rel="stylesheet" href="//cdn.jsdelivr.net/npm/alertifyjs@1.13.1/build/css/alertify.min.css"/>
+<!-- Default theme -->
+<link rel="stylesheet" href="//cdn.jsdelivr.net/npm/alertifyjs@1.13.1/build/css/themes/default.min.css"/>
+<!-- Semantic UI theme -->
+<link rel="stylesheet" href="//cdn.jsdelivr.net/npm/alertifyjs@1.13.1/build/css/themes/semantic.min.css"/>
+<!-- Bootstrap theme -->
+<link rel="stylesheet" href="//cdn.jsdelivr.net/npm/alertifyjs@1.13.1/build/css/themes/bootstrap.min.css"/>
 	<script>
 		googles.render();
 
@@ -287,3 +297,56 @@
 	fjs.parentNode.insertBefore(js, fjs);
   }(document, 'script', 'facebook-jssdk'));
 </script>
+<script>
+			function saveSearch(){
+				$('#form-search').submit();				
+			}
+</script>
+<script type="text/javascript">
+    $('#keywords').keyup(function(){
+        var query = $(this).val();
+     // alert(query);
+          if(query != '')
+            {
+             var _token = $('input[name="_token"]').val();
+
+             $.ajax({
+              url:"{{route('user.autocomplete_ajax')}}",
+              method:"POST",
+              data:{query:query, _token:_token},
+              success:function(data){
+               $('#search_ajax').fadeIn();  
+                $('#search_ajax').html(data);
+              }
+             });
+
+            }else{
+                $('#search_ajax').fadeOut();  
+            }
+    });
+
+    $(document).on('click', '.li_search_ajax', function(){  
+        $('#keywords').val($(this).text());  
+        $('#search_ajax').fadeOut();  
+    }); 
+</script>
+<script>
+        $("#submitBinhLuan").click(function(){
+            $.ajax({
+                url: "{{route('postComment')}}",
+                type: 'POST',
+                data:{
+                    "_token":'{{csrf_token()}}',
+                    "idKH": $("#inputid_user").val(),
+                    "HoTen":$("#inputname").val(),
+                    "idSach":$("#inputid_sanpham").val(),
+                    "NoiDung":$("#inputcontent").val(),
+                    "TrangThai":$("#inputtrangthai").val(),
+                    },
+             }).done(function(reponse){	
+				$("#inputcontent").val('');
+				document.getElementById('duyetbinhluan').hidden = false;
+                alertify.success(reponse);
+             });
+        });
+    </script>

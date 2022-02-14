@@ -1,5 +1,8 @@
 @extends('user.layout')
 @section('content')
+@if(session()->has('status'))
+                <div class="alert alert-success">{{session()->get('status')}}</div>
+            @endif
 		<!-- Slider Banner trang web -->
 		<div class="banner">
 			<div id="carouselExampleIndicators" class="carousel slide" data-ride="carousel">

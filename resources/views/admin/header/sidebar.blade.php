@@ -49,7 +49,7 @@
             </a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" data-toggle="collapse" href="#tables" aria-expanded="false" aria-controls="tables">
+            <a class="nav-link" href="/admin/binhluan" aria-expanded="false" aria-controls="tables">
               <i class="fas fa-comments menu-icon"></i>
               <span class="menu-title">Quản lý bình luận</span>
             </a>

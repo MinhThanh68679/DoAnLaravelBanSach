@@ -106,10 +106,10 @@ class NhaCungCapController extends Controller
         
         if($nhacungcap->update($data))
         { 
-            Session::flash('message', 'successfully!');
+            Session::flash('message', 'cập nhật thành công!');
         }
         else
-            Session::flash('message', 'Failure!');
+            Session::flash('message', 'cập nhật thất bại!');
             
         return redirect()->route('nhacungcap.index');
 

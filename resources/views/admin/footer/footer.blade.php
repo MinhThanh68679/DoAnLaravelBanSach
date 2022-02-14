@@ -19,3 +19,35 @@
   <script src="{!! asset('admin/js/dashboard.js ')!!}"></script>
   <script src="{!! asset('admin/js/Chart.roundedBarCharts.js ')!!}"></script>
   <!-- End custom js for this page-->
+  <script type="text/javascript">
+    $('.comment_duyet_btn').click(function(){
+      
+        var comment_status = $(this).data('comment_status');
+
+        var comment_id = $(this).data('comment_id');
+        var comment_product_id = $(this).attr('id');
+        if(comment_status==1){
+         
+            var alert = 'Thay đổi thành duyệt thành công';
+        }else{
+            var alert = 'Thay đổi thành không duyệt thành công';
+        }
+          $.ajax({
+                url:"{{route('allow_comment')}}",
+                method:"POST",
+
+                headers:{
+                    'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+                },
+                data:{comment_status:comment_status,comment_id:comment_id,comment_product_id:comment_product_id},
+                success:function(data){
+                    location.reload();
+                   $('#notify_comment').html('<span class="text text-alert">'+alert+'</span>');
+
+                }
+            });
+
+
+    });
+   
+</script>

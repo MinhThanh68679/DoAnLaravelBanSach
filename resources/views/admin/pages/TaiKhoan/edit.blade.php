@@ -41,7 +41,7 @@
                 <div class="col-lg-6">
                     <label for="exampleInputTopic">Ảnh Đại Diện</label>
                     <div class="custom-file">
-                        <input accept="*.png|*.jpg|*.jpeg" type="file" class="form-control" name="AnhDaiDien" value="{{$taikhoan->AnhDaiDien}}" id="AnhDaiDien" placeholder="Chọn ảnh" name="AnhDaiDien" />
+                        <input accept="*.png|*.jpg|*.jpeg" type="file" class="form-control" name="AnhDaiDien" value="{{$taikhoan->AnhDaiDien}}" id="AnhDaiDien" placeholder="Chọn ảnh" />
                     </div>
                   </div>
 

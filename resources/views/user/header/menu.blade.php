@@ -104,13 +104,24 @@
 						</li>
 						<!-- Thanh tìm kiếm -->
 						<li style="padding: 5px 0 0 15px;">
-							<input type="text" class="input-search">
-							<button style="border-radius: 0.25rem; padding: 0.25rem 0.5rem; background-color: rgb(104, 101, 92); color: cornsilk;" type="button">
+						<form id="form-search" action="{{route('Search')}}"> 
+						@csrf
+							<input type="text" class="input-search" name="keyword" id="keywords">
+							
+							<button style="border-radius: 0.25rem; padding: 0.25rem 0.5rem; background-color: rgb(104, 101, 92); color: cornsilk;" type="button" onclick="saveSearch()">
 								<i class="fas fa-search"></i>
 							</button>	
+						</form>
 						</li>
 					</ul>
-
+					<div id="search_ajax"></div>
 				</div>
 			</nav>
 		</header>
+		<style>
+	.time-dialog{
+		width:60px;
+		height:30px
+	}
+</style>
+		

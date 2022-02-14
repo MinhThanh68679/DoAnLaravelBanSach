@@ -58,7 +58,7 @@ class AccountController extends Controller
         $taikhoan = new User();
         $this->validate($request, [
             'HoTen' => 'required',
-            'MatKhau'=> 'required',
+            'password'=> 'required',
             'Email'=> 'required',
             'DiaChi'=> 'required',
             'SDT'=> 'required',
@@ -68,7 +68,7 @@ class AccountController extends Controller
         ]);
         // $request->image = $this->imageUpload($request);
         $taikhoan->HoTen=$request->HoTen;
-        $taikhoan->MatKhau=Hash::make($request->MatKhau);
+        $taikhoan->password=Hash::make($request->password);
         $taikhoan->Email=$request->Email;
         $taikhoan->DiaChi=$request->DiaChi;
         $taikhoan->SDT=$request->SDT;
@@ -128,7 +128,7 @@ class AccountController extends Controller
             'TrangThai'=> 'required',
            
         ]);  
-        if ($request->AnhDaiDien == null) $imageName = $sach->AnhDaiDien;
+        if ($request->AnhDaiDien == null) $imageName = $taikhoan->AnhDaiDien;
         else 
         $data['AnhDaiDien']=$this->imageUpload($request);
         

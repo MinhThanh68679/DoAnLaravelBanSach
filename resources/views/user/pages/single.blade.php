@@ -203,36 +203,47 @@
 					
 												<div class="single_page">
 													<div class="bootstrap-tab-text-grids">
+													<div id="binhluan">
+													@foreach($binhluan as $preview)
 														<div class="bootstrap-tab-text-grid">
 															<div class="bootstrap-tab-text-grid-left">
-																<img src="{!! asset('user/images/bl.jpg')!!}" alt=" " class="img-fluid">
+																<img src="{!! asset('user/images/bl.jpg')!!}" alt=" " width="50%" hight="50%" class="img-fluid">
 															</div>
 															<div class="bootstrap-tab-text-grid-right">
 																<ul>
-																	<li><a href="#">Admin</a></li>
+																	<li><a href="#">{{$preview->HoTen}}</a></li>
 																	<li><a href="#"><i class="fa fa-reply-all" aria-hidden="true"></i> Trả lời</a></li>
 																</ul>
-																<p>Lâu lắm mới có 1 cuốn sách của tác giả Việt Nam mà mình thấy hay như vậy. Trong cuốn
-																	 này tác giả Trần Thanh Phong đã nêu ra rất nhiều vấn đề thực tế trong ngành bán lẻ 
-																	 và cách giải quyết chúng một cách hiệu quả. Bằng ngôn ngữ bình dị, nhẹ nhàng, anh 
-																	 Phong chia sẻ kinh nghiệm trong kinh doanh như một người anh đi trước cho đàn em. 
-																	 Một điểm cộng khác nữa là anh Phong cực kì thân thiện, sẽ kết nối và hỏi thăm bạn 
-																	 ngay khi bạn quét QR để lấy tài liệu. Ngay khi đọc được 50% mình đã gợi ý mua cho 
-																	 hội bạn cũng đang kinh doanh nhỏ như mình</p>
+																<p>{{$preview->NoiDung}}</p>
+																<p>{{$preview->Ngay}}</p>
 															</div>
+															@endforeach
 															<div class="clearfix"> </div>
 														</div>
 														<div class="add-review">
 															<h4>Thêm nhận xét</h4>
-															<form action="#" method="post">
-																	<input class="form-control" type="text" name="Name" placeholder="Bạn hãy nhập tên..." required="">
-																<input class="form-control" type="email" name="Email" placeholder="Bạn hãy nhập email..." required="">
-																<textarea name="Message" placeholder="Nhập nội dung" required=""></textarea>
-																<input type="submit" value="Gửi">
-															</form>
+															@if(session()->has('infoUser'))
+                        								<?php $infoUser =session()->get('infoUser') ?>
+
+																	<input class="form-control" type="text" name="HoTen" placeholder="Bạn hãy nhập tên..." id="inputname"
+                                       								 value="{{$infoUser['HoTen']}}" required="">
+																<textarea name="Message" name="NoiDung" id="inputcontent" placeholder="Nhập nội dung" required=""></textarea>
+																<input type="text" name="idKH" hidden class="form-control" id="inputid_user"
+                                								value="{{$infoUser['id']}}">
+														<input type="text" name="idSach" hidden class="form-control" id="inputid_sanpham"
+															value="{{$books->id}}">
+														<input type="text" name="TrangThai" hidden class="form-control" id="inputtrangthai"
+															value="1">
+													
+																<input type="submit" value="Gửi" id="submitBinhLuan">
+														<div id="duyetbinhluan" hidden>
+															Vui lòng chờ duyệt bình luận </div>
 														</div>
+														@else
+															<a href="{{route('getLogin')}}" class="btn hvr-hover">Vui lòng đăng nhập để bình luận</a>
+														@endif		
 													</div>
-					
+											</div>
 												</div>
 											</div>
 								

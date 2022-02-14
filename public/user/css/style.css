@@ -2429,3 +2429,13 @@ ul.links li a:hover {
 }
 
 /*-- //responsive media queries --*/
+
+
+div#navbarSupportedContent {
+    flex-wrap: wrap;
+    justify-content: flex-end;
+}
+div#search_ajax {
+    position: absolute;
+    top: 56px;
+}

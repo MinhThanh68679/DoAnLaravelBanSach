@@ -15,6 +15,7 @@ a{color:inherit;text-decoration:none}
 
 .login-wrap{
 	width:100%;
+	bottom: 50px;
 	margin:auto;
 	max-width:525px;
 	min-height:670px;

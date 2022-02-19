@@ -37,6 +37,8 @@ Route::group(['prefix' => '', 'namespace' => 'user'], function() {
     //Đăng Nhập
     Route::get('login','LoginController@getLogin')->name('getLogin');
     Route::post('login','LoginController@postLogin')->name('postLogin');
+    //Đăng Xuất
+    Route::get('logout','LoginController@getLogout')->name('getLogout');
     //Tìm Kiếm Sách
     Route::get('search','UserController@Search')->name('Search');
     Route::post('autocomplete_ajax',"UserController@autocomplete_ajax")->name("user.autocomplete_ajax");
@@ -45,6 +47,8 @@ Route::group(['prefix' => '', 'namespace' => 'user'], function() {
     Route::post('register','LoginController@postRegister')->name('postRegister');
     //Bình Luận
     Route::post('comment','UserController@postComment')->name('postComment');
+    //
+    Route::post('/them-gio-hang',"CartController@addcart")->name("account.addcart");
 });
 
 Route::group(["prefix" => "admin", "namespace" => "admin"], function() {
@@ -52,6 +56,7 @@ Route::group(["prefix" => "admin", "namespace" => "admin"], function() {
     //Đường dẫn đến trang sách
     Route::resource('sach',BookController::class);
     Route::get('sach/{id}/delete','BookController@delete')->name('sach.delete');
+    Route::post('search','BookController@search')->name('sach.search');
     //Đường dẫn đến trang thể loại
     Route::resource('theloai',TheLoaiController::class);
     //Đường dẫn đến trang thể loại sách
@@ -59,9 +64,11 @@ Route::group(["prefix" => "admin", "namespace" => "admin"], function() {
     //Đường dẫn đến trang nhà cung cấp
     Route::resource('nhacungcap',NhaCungCapController::class);
     Route::get('nhacungcap/{id}/delete','NhaCungCapController@delete')->name('nhacungcap.delete');
+    Route::post('search2','NhaCungCapController@search')->name('nhacungcap.search');
     //Đường dẫn đến trang tài khoản
     Route::resource('taikhoan',AccountController::class);
     Route::get('taikhoan/{id}/delete','AccountController@delete')->name('taikhoan.delete');
+    Route::post('search1','AccountController@search')->name('taikhoan.search');
     //Đường dẫn đến trang slideshow
     Route::resource('slideshow',SlideshowController::class);
     Route::get('slideshow/{id}/delete','SlideshowController@delete')->name('slideshow.delete');
@@ -70,4 +77,6 @@ Route::group(["prefix" => "admin", "namespace" => "admin"], function() {
     Route::get('binhluan/{id}/delete','BinhLuanController@delete')->name('binhluan.delete');
     Route::get('binhluan/{id}/duyet','BinhLuanController@duyet')->name('binhluan.duyet');
     Route::post('allow_comment','BinhLuanController@allow_comment')->name('allow_comment');
+    //Đường dẫn đến trang kho
+    Route::resource('kho',KhoController::class);
 });

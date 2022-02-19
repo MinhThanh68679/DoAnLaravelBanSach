@@ -8,6 +8,7 @@ use App\Models\Sach;
 use App\Models\SlideShow;
 use Carbon\Carbon;
 use App\Models\BinhLuan;
+use DB;
 class UserController extends Controller
 {
     //
@@ -37,7 +38,8 @@ class UserController extends Controller
       
         $binhluan = BinhLuan::where('idSach',$id)->where('Duyet', 1)->where('TrangThai',1)->where('Xoa',0)->get();
         $sach = Sach::where('id',$id)->where('TrangThai',2)->where('Xoa',0)->get();
-        return view($this->user."single", compact('sach','binhluan'));
+        $kho=DB::table('kho')->Where('IdSach','=',$id)->get();
+        return view($this->user."single", compact('sach','binhluan','kho'));
     }
     public function About(){
         return view($this->user."about");

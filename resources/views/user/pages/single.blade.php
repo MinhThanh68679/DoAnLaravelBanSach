@@ -108,30 +108,40 @@
     									</div>
   										</div>
 									<br>
+								
 									
-									<label class="control-label">Số Lượng: </label>
-                            <div class="form-group quantity-box ">
-                                
-                                <input class="form-control col-sm-3" value="0" min="0" max="20" type="number">
-                            </div>
-							<br>
-                       
-                    
-									<div class="occasion-cart">
+									@foreach($kho as $khos)
+							
+
+										<form action="" method="POST">
+									{{csrf_field()}}
+										<label class="control-label">Số Lượng: </label>
+										<div class="form-group quantity-box" style="display: inline-flex;align-items: baseline;justify-content: space-evenly;">                                
+											<input class="form-control col-sm-3" id="So_Luong_SP" name="So_Luong" value="1" min="1" max="{{$khos->SoLuongTon}}" type="number" style="width:150px"> (Còn {{$khos->SoLuongTon}} sản phẩm)
+											<input type="hidden" name="id" value="{{ $books->id }}"/>
+											
+										</div>
+										<br>
+							
+										<div class="occasion-cart" style="display: inline-flex; padding-top:15px">
 											<div class="googles single-item singlepage">
-													<form action="#" method="post">
-														<input type="hidden" name="cmd" value="_cart">
-														<input type="hidden" name="add" value="1">
-														<input type="hidden" name="googles_item" value="Farenheit">
-														<input type="hidden" name="amount" value="149.000">
-														<button type="submit" class="googles-cart pgoogles-cart">
-															Chọn Mua
-														</button>
-														
-													</form>
-		
+												<button type="submit" class="link-product-add-cart">
+													Mua ngay
+												</button>														
 											</div>
-									</div>
+											<div class="vertical-line" style="height: 40px; margin-left:10px"></div>
+											<div class="googles single-item singlepage" style="margin-left:10px">
+												<button type="button" onclick="AddCart({{ $books->id }})" class="link-product-add-cart">
+													Thêm giỏ hàng
+												</button>														
+											</div>
+										</div>
+									
+										@endforeach
+									</form>
+										<br>
+						
+										
 									
 								</div>
 								<div class="clearfix"> </div>

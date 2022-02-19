@@ -13,7 +13,10 @@ class Kho extends Model
         'id',
         'IdSach',
         'SoLuongTon',
-        'TrangThai',
+        'Xoa',
 
     ];
+    public function Sach(){
+        return $this->belongsTo('App\Models\Sach', 'IdSach', 'id');
+    }
 }

@@ -4,10 +4,11 @@ namespace App\Http\Controllers\admin;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
-use App\Models\NhaCungCap;
+use App\Models\Kho;
+use App\Models\Sach;
 use Session;
-use DB;
-class NhaCungCapController extends Controller
+
+class KhoController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -16,8 +17,8 @@ class NhaCungCapController extends Controller
      */
     public function index()
     {
-        $nhacungcap = NhaCungCap::where('Xoa',0)->orderBy('created_at', 'desc')->get();
-        return View('admin.pages.NhaCungCap.index', compact('nhacungcap'));
+        $kho = Kho::where('Xoa', 0)->orderBy('created_at', 'desc')->get();
+        return View('admin.pages.Kho.index', compact('kho'));
     }
 
     /**
@@ -27,7 +28,9 @@ class NhaCungCapController extends Controller
      */
     public function create()
     {
-        return view('admin.pages.NhaCungCap.create');
+        //
+        $sach = Sach::where('Xoa',0)->get();
+        return view('admin.pages.Kho.create',['sach'=>$sach]);
     }
 
     /**
@@ -38,27 +41,27 @@ class NhaCungCapController extends Controller
      */
     public function store(Request $request)
     {
-        $nhacungcap = new NhaCungCap;
+        //
+        if($request->IdSach==$request->idSach){
+        $kho = new Kho;
         $this->validate($request, [
-            'TenNCC' => 'required',
-            'DiaChi' => 'required',
-            'SDT' => 'required',
-            'Email' => 'required',
-            'TrangThai' => 'required',         
+            'IdSach' => 'required',
+            'SoLuongTon' => 'required',
+                  
         ]);
-        $nhacungcap->TenNCC=$request->TenNCC;
-        $nhacungcap->DiaChi=$request->DiaChi;
-        $nhacungcap->SDT=$request->SDT;
-        $nhacungcap->Email=$request->Email;
-        $nhacungcap->TrangThai=$request->TrangThai;
-        $nhacungcap->Xoa=0;
-        if($nhacungcap->save())
+        $kho->IdSach=$request->IdSach;
+        $kho->SoLuongTon=$request->SoLuongTon;
+        $kho->Xoa=0;
+        if($kho->save())
         {
             Session::flash('message', 'successfully!');
         }
         else
             Session::flash('message', 'Failure!');
-        return redirect()->route('nhacungcap.index');
+    }else {
+        Session::flash('message', 'Sách đã có trong kho!');
+    }
+        return redirect()->route('kho.index');
     }
 
     /**
@@ -80,9 +83,9 @@ class NhaCungCapController extends Controller
      */
     public function edit($id)
     {
-        $nhacungcap= NhaCungCap::find($id);//Nhacungcap tên model      
-        return view('admin.pages.NhaCungCap.edit')->with('nhacungcap', $nhacungcap);
-
+        //
+        $kho= Kho::find($id);//Kho tên model      
+        return view('admin.pages.Kho.edit')->with('kho', $kho);
     }
 
     /**
@@ -94,25 +97,22 @@ class NhaCungCapController extends Controller
      */
     public function update(Request $request, $id)
     {
-        $nhacungcap= NhaCungCap::find($id);
+        //
+        $kho= Kho::find($id);
         
         $data=$request->validate([
-            'TenNCC' => 'required',
-            'DiaChi' => 'required',
-            'SDT' => 'required',
-            'Email' => 'required',
-            'TrangThai' => 'required',  
+            'SoLuongTon' => 'required',
+          
         ]);    
         
-        if($nhacungcap->update($data))
+        if($kho->update($data))
         { 
             Session::flash('message', 'cập nhật thành công!');
         }
         else
             Session::flash('message', 'cập nhật thất bại!');
             
-        return redirect()->route('nhacungcap.index');
-
+        return redirect()->route('kho.index');
     }
 
     /**
@@ -121,21 +121,8 @@ class NhaCungCapController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function delete(Request $request, $id)
-    {
-        $nhacungcap = NhaCungCap::find($id);
-        $nhacungcap->Xoa = 1;
-        $nhacungcap->save();
-        return redirect()->back();
-    }
     public function destroy($id)
     {
         //
-    }
-    public function search(Request $request)
-    {
-        $nhacungcap = NhaCungCap::where([ ['TenNCC','like','%'.$request->bookName.'%'],['Xoa', '=', '0'] ])
-                    ->paginate(5);
-        return View('admin.pages.NhaCungCap.index', ['nhacungcap'=>$nhacungcap]);
     }
 }

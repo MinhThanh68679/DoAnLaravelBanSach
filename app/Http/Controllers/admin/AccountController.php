@@ -158,4 +158,11 @@ class AccountController extends Controller
     {
         //
     }
+    public function search(Request $request)
+    {
+        $taikhoan = User::where([ ['HoTen','like','%'.$request->bookName.'%'],['Xoa', '=', '0'] ])
+                    ->orwhere([ ['Email','like','%'.$request->bookName.'%'],['Xoa', '=', '0'] ])
+                    ->paginate(5);
+        return View('admin.pages.TaiKhoan.index', ['taikhoan'=>$taikhoan]);
+    }
 }

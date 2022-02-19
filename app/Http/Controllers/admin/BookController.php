@@ -180,4 +180,12 @@ class BookController extends Controller
     {
        
     }
+    public function search(Request $request)
+    {
+        $sach = Sach::where([ ['TenSach','like','%'.$request->bookName.'%'],['Xoa', '=', '0'] ])
+                    ->orwhere([ ['DichGia','like','%'.$request->bookName.'%'],['Xoa', '=', '0'] ])
+                    ->paginate(5);
+        return View('admin.pages.Book.index', ['sach'=>$sach]);
+    }
+
 }

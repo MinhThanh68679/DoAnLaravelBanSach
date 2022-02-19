@@ -81,5 +81,11 @@ class LoginController extends Controller
         if($user->save())
         return redirect()->route('getLogin')->with('status','Tạo tài khoản thành công!');  
     }
+    public function getLogout(Request $request)
+    {
+        Auth::logout();
+        $request->session()->forget('infoUser');
+        return view('Login.Login');
+    }
            
 }

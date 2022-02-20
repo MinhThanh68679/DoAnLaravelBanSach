@@ -104,6 +104,7 @@ class UserController extends Controller
         $binhluan->TrangThai=$request->TrangThai;
         $binhluan->Ngay= Carbon::now('Asia/Ho_Chi_Minh')->format('d-m-Y H:i');   //lấy ngày hiện tại
         $binhluan->Duyet = 0;
+        $binhluan->Xoa = 0;
         if($binhluan->save())
         {
            return 'Đã gửi bình luận';  

@@ -189,6 +189,7 @@
 					
 								<span class="fa fa-user" aria-hidden="true" style="color: rgb(35, 175, 156);"></span><a href="{{route('getLogout')}}" class="hover-nut"> Đăng Xuất </a>
 						</li>
+						@endif
 						<!-- Giỏ hàng -->
 						<li>
 								<span class="fas fa-cart-plus" aria-hidden="true" style="color: rgb(35, 175, 156)"></span><a href="#" class="hover-nut"> Giỏ Hàng </a>
@@ -202,7 +203,6 @@
 								</button>
 							</form> -->
 						</li>
-            @endif
 					</ul>
 				</div>
 			</div>

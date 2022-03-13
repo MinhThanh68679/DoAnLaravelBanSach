@@ -219,13 +219,7 @@
 				</div>
 			</div>
       <!--Model-->
-      @if(count($errors)>0)
-                <div class="alert alert-danger">
-                    @foreach($errors->all() as $err)
-                    <p>{{$err}}</p>
-                    @endforeach
-                </div>
-                @endif
+      
                 @if (session()->has('infoUser') != null)
                 <?php
                             $myaccount = session()->get('infoUser');

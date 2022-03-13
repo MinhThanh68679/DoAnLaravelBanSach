@@ -14,19 +14,19 @@
           </li>
           <li class="nav-item">
             <a class="nav-link" href="/admin/theloai">
-              <i class="icon-book menu-icon"></i>
+              <i class="fas fa-newspaper menu-icon"></i>
               <span class="menu-title">Quản lý thể loại</span>
             </a>
           </li>
           <li class="nav-item">
             <a class="nav-link" href="/admin/theloaisach">
-              <i class="icon-book menu-icon"></i>
+            <i class="fas fa-book"></i>&nbsp &nbsp &nbsp
               <span class="menu-title">Quản lý thể loại sách</span>
             </a>
           </li>
           <li class="nav-item">
             <a class="nav-link" href="/admin/nhacungcap">
-              <i class="icon-book menu-icon"></i>
+              <i class="fas fa-home"></i>&nbsp &nbsp &nbsp
               <span class="menu-title">Quản lý nhà cung cấp</span>
             </a>
           </li>
@@ -38,8 +38,8 @@
           </li>
           <li class="nav-item">
             <a class="nav-link" href="/admin/slideshow">
-              <i class="icon-head menu-icon"></i>
-              <span class="menu-title">Quản lý slideshow</span>
+            <i class="fas fa-caret-square-down"></i>&nbsp &nbsp &nbsp              
+            <span class="menu-title">Quản lý slideshow</span>
             </a>
           </li>
           <li class="nav-item">
@@ -56,8 +56,8 @@
           </li>
           <li class="nav-item">
             <a class="nav-link" href="/admin/kho" aria-expanded="false" aria-controls="auth">
-              <i class="icon-head menu-icon"></i>
-              <span class="menu-title">Quản lý kho</span>
+            <i class="fas fa-warehouse"></i>    &nbsp &nbsp &nbsp              
+            <span class="menu-title">Quản lý kho</span>
             </a>
           </li>
           <li class="nav-item">

@@ -73,7 +73,7 @@
 					</div>
 				</div>
 				<div class="contact_grid_right">
-					<form action="" method="POST">
+					<form action="{{route('user.mailcontact')}}" method="POST">
 					@csrf
 						<div class="row contact_left_grid">
 							<div class="col-md-6 con-left">
@@ -85,10 +85,7 @@
 									<label>Email</label>
 									<input class="form-control" type="email" name="Email" placeholder="" required="">
 								</div>
-								<div class="form-group">
-									<label class="my-2">Số điện thoại</label>
-									<input class="form-control" type="text" name="Phone" placeholder="" required="">
-								</div>
+								
 							</div>
 							<div class="col-md-6 con-right">
 								<div class="form-group">

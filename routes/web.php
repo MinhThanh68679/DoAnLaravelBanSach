@@ -32,7 +32,7 @@ Route::group(['prefix' => '', 'namespace' => 'user'], function() {
     Route::get("single/{id?}","UserController@Single")->name("user.single");
     Route::get("about","UserController@About")->name("user.about");
     Route::get("new","UserController@New")->name("user.new");
-    Route::get("cart","UserController@Cart")->name("user.cart");
+    Route::get('cart','UserController@Cart')->name("user.cart");
     Route::get("payment","UserController@Payment")->name("user.payment");
     //Đăng Nhập
     Route::get('login','LoginController@getLogin')->name('getLogin');
@@ -49,6 +49,14 @@ Route::group(['prefix' => '', 'namespace' => 'user'], function() {
     Route::post('comment','UserController@postComment')->name('postComment');
     //
     Route::post('/them-gio-hang',"CartController@addcart")->name("account.addcart");
+    //
+    Route::get('the loai','UserController@TheLoai')->name('theloai');
+    Route::get('the loai sach/{id}','UserController@TheLoaiSach')->name('theloaisach');
+    //gửi phản hồi
+    Route::post('gui-lien-he',"UserController@mailcontact")->name("user.mailcontact");
+    //
+    
+    Route::post('taikhoan/{id}','LoginController@updateAccount')->name('updateAccount');
 });
 
 Route::group(["prefix" => "admin", "namespace" => "admin"], function() {

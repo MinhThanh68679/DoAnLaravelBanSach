@@ -29,61 +29,18 @@
 							<ul class="dropdown-menu mega-menu">
 								<li>
 									<div class="row">
+										@foreach($sach1 as $book)
 										<div class="col-md-4 media-list span4 text-left">
-											<h5 class="tittle-w3layouts-sub"> Học Tập </h5>
+											<h5 class="tittle-w3layouts-sub"> {{$book->Ten}} </h5>
 											<ul>
 												<li class="media-mini mt-3">
-													<a href="{{ route('user.shop')}}">Sách Giáo Khoa</a>
-												</li>
-												<li class="">
-													<a href="{{ route('user.shop')}}">Sách Tham Khảo</a>
-												</li>
-												<li>
-													<a href="{{ route('user.shop')}}">Sách Học Ngoại Ngữ/Từ Điển</a>
-												</li>
-												<li>
-													<a href="{{ route('user.shop')}}">Văn Học</a>
+													<a href="{{ route('theloaisach',$book->id)}}">{{$book->TenTheLoai}}</a>
 												</li>
 												
 											</ul>
 										</div>
-										<div class="col-md-4 media-list span4 text-left">
-											<h5 class="tittle-w3layouts-sub"> Giải Trí</h5>
-											<ul>
-												<li class="media-mini mt-3">
-													<a href="{{ route('user.shop')}}">Truyện Tranh</a>
-												</li>
-												<li class="">
-													<a href="{{ route('user.shop')}}"> Sách Thiếu Nhi</a>
-												</li>
-												<li>
-													<a href="{{ route('user.shop')}}"> Văn Hóa/Du Lịch </a>
-												</li>
-												<li>
-													<a href="{{ route('user.shop')}}"> Thưởng Thức/Đời Sống </a>
-												</li>
-												<li>
-													<a href="{{ route('user.shop')}}"> Tạp Chí</a>
-												</li>
-											</ul>
-										</div>
-										<div class="col-md-4 media-list span4 text-left">
-											<h5 class="tittle-w3layouts-sub"> Kỹ Năng </h5>
-											<ul>
-												<li class="media-mini mt-3">
-													<a href="{{ route('user.shop')}}">Kỹ Năng Sống</a>
-												</li>
-												<li class="">
-													<a href="{{ route('user.shop')}}"> Kinh Tế</a>
-												</li>
-												<li>
-													<a href="{{ route('user.shop')}}">Sách Ẩm Thực</a>
-												</li>
-												<li>
-													<a href="{{ route('user.shop')}}">Tâm Lý/Giáo Dục</a>
-												</li>
-											</ul>
-										</div>
+										@endforeach
+										
 									</div>
 									<hr>
 									<a href="{{ route('user.shop')}}" style="text-align:center;color:black"><h5 class="tittle-w3layouts-sub"> Xem Tất Cả </h5></a>

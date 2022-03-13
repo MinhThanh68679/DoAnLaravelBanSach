@@ -7,7 +7,7 @@
             <div class="col-md-12 grid-margin">
               <div class="row">
                 <div class="col-12 col-xl-8 mb-4 mb-xl-0">
-                  <h3 class="font-weight-bold">QUẢN THỂ LOẠI SÁCH</h3>
+                  <h3 class="font-weight-bold">QUẢN LÝ THỂ LOẠI SÁCH</h3>
                 </div>
                 <div class="col-12 col-xl-8 mb-4 mb-xl-0" style="padding-top:50px">
                   <a class="btn btn-primary" href="{{ route('theloaisach.create')}}"  style="padding: 0.5rem 1.5rem; border-radius: 10px; margin-left:40px"><i class='fas fa-plus' style='font-size:15px'></i></a>
@@ -27,8 +27,11 @@
                     
                     <td>{{$theloaisachs->Sach->TenSach}}</td>
                     <td>{{$theloaisachs->TheLoai->TenTheLoai}}</td>
-
+                    <td>                    
+                      <a href="{{ route('theloaisach.edit', [$theloaisachs->id])}}" class="btn btn-warning" style="padding: 0.5rem 1.5rem; border-radius: 10px;"><i class='fas fa-edit' style='font-size:15px'></i></a>
+                    </td>
                   </tr>
+                  
                   @endforeach
                   </tbody>
                 </table>

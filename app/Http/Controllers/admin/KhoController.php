@@ -42,7 +42,7 @@ class KhoController extends Controller
     public function store(Request $request)
     {
         //
-        if($request->IdSach==$request->idSach){
+        
         $kho = new Kho;
         $this->validate($request, [
             'IdSach' => 'required',
@@ -58,9 +58,7 @@ class KhoController extends Controller
         }
         else
             Session::flash('message', 'Failure!');
-    }else {
-        Session::flash('message', 'Sách đã có trong kho!');
-    }
+    
         return redirect()->route('kho.index');
     }
 

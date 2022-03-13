@@ -19,7 +19,7 @@ class TheLoaiSachController extends Controller
      */
     public function index()
     {
-        $theloaisach = TheLoaiSach::all();
+        $theloaisach = TheLoaiSach::orderBy('created_at', 'desc')->get();;
         return View('admin.pages.TheLoaiSach.index', compact('theloaisach'));
     }
 
@@ -81,6 +81,10 @@ class TheLoaiSachController extends Controller
     public function edit($id)
     {
         //
+        $sach = Sach::where('Xoa',0)->get();
+        $theloai = TheLoai::all();
+        $theloaisach= TheLoaiSach::find($id);//Nhacungcap tên model      
+        return view('admin.pages.TheLoaiSach.edit')->with('theloaisach', $theloaisach)->with('theloai',$theloai)->with('sach',$sach);
     }
 
     /**
@@ -93,6 +97,21 @@ class TheLoaiSachController extends Controller
     public function update(Request $request, $id)
     {
         //
+        $theloaisach= TheLoaiSach::find($id);
+        
+        $data=$request->validate([
+            'IdTheLoai' => 'required',
+            'IdSach' => 'required',
+        ]);    
+        
+        if($theloaisach->update($data))
+        { 
+            Session::flash('message', 'successfully!');
+        }
+        else
+            Session::flash('message', 'Failure!');
+            
+        return redirect()->route('theloaisach.index');
     }
 
     /**

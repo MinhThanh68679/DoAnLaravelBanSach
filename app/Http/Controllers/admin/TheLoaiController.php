@@ -17,6 +17,7 @@ class TheLoaiController extends Controller
      */
     public function index()
     {
+        
         $theloai = TheLoai::all();
         return View('admin.pages.TheLoai.index', compact('theloai'));
     }

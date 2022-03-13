@@ -87,5 +87,35 @@ class LoginController extends Controller
         $request->session()->forget('infoUser');
         return view('Login.Login');
     }
+   
+    public function updateAccount(Request $request, $id)
+    {
+        $user = User::find($id);
+        $data=$request->validate(
+        [
+            'HoTen'=>'required',
+            'Email'=>'required|Email',
+            'password'=>'required|min:6|max:20',
+            'repassword'=>'required|same:password'
+        ],
+        [
+            'HoTen.required'=>'Vui lòng nhập tên',
+            'Email.required'=>'Vui lòng nhập Email',
+            'Email.Email'=>'Không đúng định dạng Email',
+            'passwordcu.required'=>'Vui lòng nhập mật khẩu cũ',
+            'password.required'=>'Vui lòng nhập mật khẩu mới',
+            'repassword.required'=>'Vui lòng xác nhận mật khẩu mới',
+            'repassword.same'=>'Xác nhận mật khẩu không giống nhau',
+            'password.min'=>'Mật khẩu ít nhất 6 kí tự'
+        ]);
+    
+        $data['password'] = Hash::make($data['password']);
+        If(Hash::check($request['passwordcu'], $user->password))        
+        {
+            if($user->update($data)){
+            return redirect('/')->with('status','Cập nhật tài khoản thành công!');  }
            
+        }
+        else return redirect('/')->with('status','Cập nhật tài khoản thất bại!');  
+    }      
 }

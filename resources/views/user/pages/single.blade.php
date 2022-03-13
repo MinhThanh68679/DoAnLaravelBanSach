@@ -212,12 +212,13 @@
 											<div class="tab2">
 					
 												<div class="single_page">
-													<div class="bootstrap-tab-text-grids">
+													<div class="bootstrap-tab-text-grids" style="width:1100px">
 													<div id="binhluan">
 													@foreach($binhluan as $preview)
 														<div class="bootstrap-tab-text-grid">
 															<div class="bootstrap-tab-text-grid-left">
-																<img src="{!! asset('user/images/bl.jpg')!!}" alt=" " width="50%" hight="50%" class="img-fluid">
+																<br>
+																<img src="{!! asset('user/images/bl.jpg')!!}" alt=" " class="img-fluid" style="width:100px; height:100px; object-fit:cover">
 															</div>
 															<div class="bootstrap-tab-text-grid-right">
 																<ul>
@@ -235,8 +236,8 @@
 															@if(session()->has('infoUser'))
                         								<?php $infoUser =session()->get('infoUser') ?>
 
-																	<input class="form-control" type="text" name="HoTen" placeholder="Bạn hãy nhập tên..." id="inputname"
-                                       								 value="{{$infoUser['HoTen']}}" required="">
+																	<input class="form-control" type="text" name="HoTen" readonly placeholder="Bạn hãy nhập tên..." id="inputname"
+                                       								 value="{{$infoUser['HoTen']}}" required="" style="width:1100px">
 																<textarea name="Message" name="NoiDung" id="inputcontent" placeholder="Nhập nội dung" required=""></textarea>
 																<input type="text" name="idKH" hidden class="form-control" id="inputid_user"
                                 								value="{{$infoUser['id']}}">

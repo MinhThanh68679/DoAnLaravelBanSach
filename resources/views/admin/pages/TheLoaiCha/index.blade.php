@@ -7,7 +7,7 @@
             <div class="col-md-12 grid-margin">
               <div class="row">
                 <div class="col-12 col-xl-8 mb-4 mb-xl-0">
-                  <h3 class="font-weight-bold">QUẢN LÝ KHO</h3>
+                  <h3 class="font-weight-bold">QUẢN LÝ THỂ LOẠI CHA</h3>
                 </div>
                 @if(Session::has('message'))
                 <div class="alert alert-success alert-dismissible fade show notify" role="alert">
@@ -18,27 +18,26 @@
                     </div>
                         @endif
                 <div class="col-12 col-xl-8 mb-4 mb-xl-0" style="padding-top:50px">
-                  <a class="btn btn-primary" href="{{ route('kho.create')}}"  style="padding: 0.5rem 1.5rem; border-radius: 10px; margin-left:40px"><i class='fas fa-plus' style='font-size:15px'></i></a>
+                  <a class="btn btn-primary" href="{{ route('theloaicha.create')}}"  style="padding: 0.5rem 1.5rem; border-radius: 10px; margin-left:40px"><i class='fas fa-plus' style='font-size:15px'></i></a>
                   <!-- /.card-header -->
                   <div class="col-12 col-xl-8 mb-4 mb-xl-0">
                     <div class="card-body">
                     <table id="book" class="table" broder="1"  >
                   <thead>
                   <tr>
-                    <th>Tên Sách</th>
-                    <th>Số Lượng Tồn</th>
+                    <th>Tên Thể Loại</th>
                     <th>Tùy Chỉnh</th>
                   </tr>
                   </thead>
                   <tbody>
-                  @foreach($kho ?? '' as $khos)
+                  @foreach($theloaicha ?? '' as $theloaichas)
                   <tr>
-                    <td>{{$khos->Sach->TenSach}}</td>
-                    <td>{{$khos->SoLuongTon}}</td>
-                  
+                    
+                    <td>{{$theloaichas->TenTheLoaiCha}}</td>
+                   
                     <td>
-                    <a href="{{ route('kho.edit', [$khos->id])}}" class="btn btn-warning" style="padding: 0.5rem 1.5rem; border-radius: 10px;"><i class='fas fa-edit' style='font-size:15px'></i></a>
-                    <a onclick="return ComfirmDelete();" href="{{ route('kho.delete', [$khos->id]) }}" class="btn btn-danger" style="padding: 0.5rem 1.5rem; border-radius: 10px;"><i class='fas fa-trash-alt' style='font-size:15px'></i></a>
+                    <a href="{{ route('theloaicha.edit', [$theloaichas->id])}}" class="btn btn-warning" style="padding: 0.5rem 1.5rem; border-radius: 10px;"><i class='fas fa-edit' style='font-size:15px'></i></a>
+                    <a onclick="return ComfirmDelete();" href="{{ route('theloaicha.delete', [$theloaichas->id]) }}" class="btn btn-danger" style="padding: 0.5rem 1.5rem; border-radius: 10px;"><i class='fas fa-trash-alt' style='font-size:15px'></i></a>
 
                     </td>
                   </tr>
@@ -57,7 +56,7 @@
 <script>
   function ComfirmDelete() {
   var txt;
-  if (confirm("Bạn có muốn xóa sản phẩm trong kho đã chọn?")) {
+  if (confirm("Bạn có muốn xóa thể loại cha đã chọn?")) {
     return true;
   }
   return false;

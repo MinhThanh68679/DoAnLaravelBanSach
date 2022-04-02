@@ -35,12 +35,12 @@
                     <table id="book" class="table" broder="1"  >
                   <thead>
                   <tr>
-                    <th>Ảnh bìa</th>
-                    <th>Tên sách</th>
+                    <th>Ảnh Bìa</th>
+                    <th>Tên Sách</th>
                     <th>Nhà Xuất Bản</th>
                     <th>Tác Giả</th>
-                    <th>Giá tiền</th>
-                    <th>Trạng thái</th>
+                    <th>Giá Tiền</th>
+                    <th>Trạng Thái</th>
                     <th>Tùy Chỉnh</th>
                   </tr>
                   </thead>
@@ -50,7 +50,7 @@
                     <td><img src="{{asset('image/'.$sachs->AnhSach)}}" style="width:50px; height:50px; border-radius:0%"></td>
                     <td style="max-width: 180px; text-overflow: ellipsis; overflow: hidden">{{$sachs->TenSach}}</td>
                     <td>{{$sachs->NhaXuatBan}}</td>
-                    <td>{{$sachs->DichGia}}</td>
+                    <td style="max-width: 180px; text-overflow: ellipsis; overflow: hidden">{{$sachs->DichGia}}</td>
                     <td>{{$sachs->GiaTien}}</td>
                     <td>@if($sachs->TrangThai == 1) {{"Tạm hết hàng"}}
                     @elseif (($sachs->TrangThai == 0)) {{"Ngừng bán"}}

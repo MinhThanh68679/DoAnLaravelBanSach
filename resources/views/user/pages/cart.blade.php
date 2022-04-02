@@ -49,6 +49,7 @@
 							$tong= $cart->Sach->GiaTien * $cart->So_Luong;
 							$tongall+=$tong;
 							?>
+							
 							<tr class="rem1">
 								<td class="invert ">1</td>
 								<td class="invert-image">
@@ -57,7 +58,7 @@
 									</a>
 								</td>
 								<td class="invert">					
-									<input type="number" min="1" max="{{$cart->SLMax }}" name="So_Luong" style="width:50px;border: 1px solid #CDCDCD;color: #868282" value="{{$cart->So_Luong}}">
+									<input type="number" min="1" max="{{$cart->SLMax }}" id="So_Luong{{$cart->id}}" style="width:50px;border: 1px solid #CDCDCD;color: #868282" value="{{$cart->So_Luong}}">
 									<input type="hidden" name="id" value="{{$cart->id}}" class="form-control">
 								</td>
 								<td class="invert">{{$cart->Sach->TenSach}} </td>
@@ -65,13 +66,14 @@
 								<td class="invert">{{number_format($cart->Sach->GiaTien,0,",",".")}} VNĐ</td>
 								<td class="invert">{{ number_format($cart->Sach->GiaTien * $cart->So_Luong,0,",",".") }} VNĐ</td>
 								<td class="invert">
-									<div class="rem">
-										<div class="close1"> </div>
-									</div>
+								<button class="cart-hover" type="submit"  onclick="UpdateCart({{$cart->id}}, {{$cart->SLMax}})" style="background:white; border:none; cursor:pointer"><i class="fas fa-sync-alt" style="font-size:15px"></i></button> &nbsp;
+
+								<button class="cart-hover"  onclick="DeleteCart({{$cart->id}})">
+										<i class="fas fa-trash-alt" style="font-size:15px;"></i>
+</button>
 
 								</td>
 							</tr>
-							
 							
 @endforeach
 						</tbody>>
@@ -85,8 +87,8 @@
 								<input id="money-total" style="border: none; color: #f40017; text-align:right" readonly/>
 							</li>
 						</ul>
-						<a id="btn-pay" href="" class="btn">THANH TOÁN</a>
-						<a href="{{ route('user.single')}}" class="btn">TIẾP TỤC MUA SẮM</a>
+						<a id="btn-pay" href="{{ route('user.payment') }}" class="btn">THANH TOÁN</a>
+						<a href="{{ route('user.shop')}}" class="btn">TIẾP TỤC MUA SẮM</a>
 					</div>
 					<div class="clearfix"> </div>
 				</div>

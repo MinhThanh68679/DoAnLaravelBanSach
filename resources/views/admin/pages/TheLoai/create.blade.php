@@ -30,7 +30,14 @@
                     <label for="exampleInputTitle">Tên Sách</label>
                     <input class="form-control" type="text" name="TenTheLoai" id="TenTheLoai" placeholder="Tên thể loại">
                   </div>
-
+                  <div class="col-lg-6">
+                    <label for="exampleInputTitle">Tên Thể Loại Cha</label>
+                    <select style="border: 1px solid #CED4DA;border-radius: 4px; outline: none;" name="TenTLCha" class="form-control" id="TenTLCha" placeholder="Title">
+                    @foreach($theloaicha as $theloaichas)
+                        <option value="{{$theloaichas->id}}">{{$theloaichas->TenTheLoaiCha}}</option>
+                  @endforeach
+                    </select>
+                  </div>
                 </div>
                 <div class="row" style="float:right">
                   <button type="submit" class="btn btn-success"><i class="fas fa-save"></i></button> &nbsp;

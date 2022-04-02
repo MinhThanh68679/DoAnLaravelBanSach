@@ -10,12 +10,10 @@ class TheLoaiCha extends Model
     use HasFactory;
     protected $table='theloaicha';
     protected $fillable = [
-        'TenTLCha',
-        'IdTheLoai',
+        'id',
+        'TenTheLoaiCha',
+        
 
     ];
-   
-    public function TheLoai(){
-        return $this->belongsTo('App\Models\TheLoai', 'IdTheLoai', 'id');
-    }
+
 }

@@ -186,7 +186,7 @@
 						@else
 						<span class="fa fa-user" aria-hidden="true" style="color: rgb(35, 175, 156);"><a class="hover-nut dropdown-toggle" href="#" data-toggle="dropdown" id="profileDropdown"><?php $infoUser =session()->get('infoUser') ?>Hi!&nbsp{{$infoUser['HoTen']}} </a>
 						<div class="dropdown-menu dropdown-menu-right navbar-dropdown" aria-labelledby="profileDropdown" style="margin-top:-2px; margin-left: -20px;">
-							<a class="dropdown-item hover-nut" href="" style="text-transform:none;font-size: 1rem;letter-spacing: 3px;color: #9c9b9b;cursor: pointer">
+							<a class="dropdown-item hover-nut" href="{{ route('user.account') }}" style="text-transform:none;font-size: 1rem;letter-spacing: 3px;color: #9c9b9b;cursor: pointer">
 								<i class="fas fa-address-card" style="color: rgb(35, 175, 156);"></i>
 								Thông tin
 							</a>
@@ -216,6 +216,15 @@
 							</form> -->
 						</li>
 					</ul>	
+          @if(Session::has('message'))
+                <div class="alert alert-success alert-dismissible fade show notify" role="alert">
+                      <strong>Thông báo! </strong>{{Session::get('message')}}.
+                      <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                      </button>
+                    </div>
+                        @endif
+                       
 				</div>
 			</div>
       <!--Model-->
@@ -224,7 +233,16 @@
                 <?php
                             $myaccount = session()->get('infoUser');
                  ?>
-
+ @if(session()->has('status'))
+                <div class="alert alert-success">{{session()->get('status')}}</div>
+                @endif
+                @if(count($errors)>0)
+                <div class="alert alert-danger">
+                    @foreach($errors->all() as $err)
+                    <p>{{$err}}</p>
+                    @endforeach
+                </div>
+                @endif
   <div class="modal fade" id="exampleEditPassCenter" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
   <div class="modal-dialog modal-dialog-centered" role="document">
     <div class="modal-content">

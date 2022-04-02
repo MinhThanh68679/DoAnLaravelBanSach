@@ -61,6 +61,18 @@
             </a>
           </li>
           <li class="nav-item">
+            <a class="nav-link" href="/admin/theloaicha" aria-expanded="false" aria-controls="auth">
+            <i class="fas fa-warehouse"></i>    &nbsp &nbsp &nbsp              
+            <span class="menu-title">Quản lý thể loại cha</span>
+            </a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="/admin/magiamgia" aria-expanded="false" aria-controls="auth">
+            <i class="fas fa-warehouse"></i>    &nbsp &nbsp &nbsp              
+            <span class="menu-title">Quản lý mã giảm giá</span>
+            </a>
+          </li>
+          <li class="nav-item">
             <a class="nav-link" href="pages/documentation/documentation.html">
               <i class="fas fa-sign-out-alt menu-icon"></i>
               <span class="menu-title">Đăng xuất</span>

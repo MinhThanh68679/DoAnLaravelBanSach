@@ -47,16 +47,23 @@ Route::group(['prefix' => '', 'namespace' => 'user'], function() {
     Route::post('register','LoginController@postRegister')->name('postRegister');
     //Bình Luận
     Route::post('comment','UserController@postComment')->name('postComment');
-    //
+    //Thêm giỏ hàng
     Route::post('/them-gio-hang',"CartController@addcart")->name("account.addcart");
-    //
+    //Load thể loại sách
     Route::get('the loai','UserController@TheLoai')->name('theloai');
     Route::get('the loai sach/{id}','UserController@TheLoaiSach')->name('theloaisach');
     //gửi phản hồi
     Route::post('gui-lien-he',"UserController@mailcontact")->name("user.mailcontact");
-    //
-    
+    //Cập nhật tài khoản người dùng
     Route::post('taikhoan/{id}','LoginController@updateAccount')->name('updateAccount');
+    //Cập nhật giỏ hàng
+    Route::post('/cap-nhat-gio-hang',"CartController@updatecart")->name("account.updatecart");
+    //Delete giỏ hàng
+    Route::delete('/xoa-gio-hang/{id?}',"CartController@deletecart")->name("account.cartdelete");
+    //
+    Route::get('/quan-ly-tai-khoan',"LoginController@index")->name("user.account");
+    Route::post('/cap-nhat-thong-tin/{id}',"LoginController@updateinfomation")->name("user.updateinfomation");
+    
 });
 
 Route::group(["prefix" => "admin", "namespace" => "admin"], function() {
@@ -67,6 +74,7 @@ Route::group(["prefix" => "admin", "namespace" => "admin"], function() {
     Route::post('search','BookController@search')->name('sach.search');
     //Đường dẫn đến trang thể loại
     Route::resource('theloai',TheLoaiController::class);
+    Route::get('theloai/{id}/delete','TheLoaiController@delete')->name('theloai.delete');
     //Đường dẫn đến trang thể loại sách
     Route::resource('theloaisach',TheLoaiSachController::class);
     //Đường dẫn đến trang nhà cung cấp
@@ -87,4 +95,11 @@ Route::group(["prefix" => "admin", "namespace" => "admin"], function() {
     Route::post('allow_comment','BinhLuanController@allow_comment')->name('allow_comment');
     //Đường dẫn đến trang kho
     Route::resource('kho',KhoController::class);
+    Route::get('kho/{id}/delete','KhoController@delete')->name('kho.delete');
+    //Đường dẫn đến trang thể loại cha
+    Route::resource('theloaicha',TheLoaiChaController::class);
+    Route::get('theloaicha/{id}/delete','TheLoaiChaController@delete')->name('theloaicha.delete');
+    //Đường dẫn đến trang mã giảm giá
+    Route::resource('magiamgia',MaGiamGiaController::class);
+    Route::get('magiamgia/{id}/delete','MaGiamGiaController@delete')->name('magiamgia.delete');
 });

@@ -5,6 +5,9 @@ namespace App\Http\Controllers\user;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Models\Cart;
+use App\Models\User;
+use App\Models\TheLoai;
+
 use session;
 class CartController extends Controller
 {
@@ -46,4 +49,35 @@ class CartController extends Controller
         }
         return response()->json($s_luong);
     }
+    public function updatecart(Request $request)
+    {
+        //
+        
+
+        $id = $request['Id_Cart'];
+        $cart = Cart::find($id);
+
+        if($cart != null){
+            $cart->So_Luong = $request['So_Luong'];
+            if($cart->save()){
+                return 'Cập nhật thành công';
+            };
+        }           
+        return 'Thất bại';
+    }
+    public function deletecart(Request $request)
+    {
+        //
+        $id = $request['Id_Cart'];
+        $cart = Cart::find($id);
+        if($cart != null){
+            $cart->delete();
+            if($cart->delete()){
+                return 'Xoá thành công';
+            };
+            return 'Thất bại';
+        }           
+    }
+    
+
 }

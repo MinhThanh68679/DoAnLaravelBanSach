@@ -9,9 +9,10 @@ use App\Models\SlideShow;
 use Carbon\Carbon;
 use App\Models\BinhLuan;
 use App\Models\TheLoai;
+use App\Models\TheLoaiCha;
 use App\Models\Cart;
 use App\Models\Kho;
-
+use App\Models\User;
 use App\Models\TheLoaiSach;
 use DB;
 use Mail;
@@ -32,52 +33,94 @@ class UserController extends Controller
         $slideshow3=SlideShow::where('Xoa',0)->where('id',3)->get();
         $slideshow4=SlideShow::where('Xoa',0)->where('id',4)->get();
         $slideshow5=SlideShow::where('Xoa',0)->where('id',5)->get();
-        $sach1=TheLoai::all();
         
-            return view($this->user."index",compact('slideshow','slideshow2','slideshow3','slideshow4','slideshow5','sach1'));
+        $listcha=TheLoaiCha::all();
+       foreach($listcha as $cha){
+           $cha->listcon=TheLoai::where('TenTLCha',$cha->id)->get();
+           
+       }
 
+            return view($this->user."index",compact('slideshow','listcha','cha','slideshow2','slideshow3','slideshow4','slideshow5'));
 
     
     }
 
     public function Shop(){
         $sach=Sach::where('Xoa',0)->where('TrangThai',2)->paginate(12);
-        $sach1=TheLoai::all();
-        
-        return view($this->user."shop",compact('sach','sach1'));
+        $listcha=TheLoaiCha::all();
+        foreach($listcha as $cha){
+            $cha->listcon=TheLoai::where('TenTLCha',$cha->id)->get();
+            
+        }
+        return view($this->user."shop",compact('sach','listcha'));
     }
     public function TheLoai(){
        
+        $listcha=TheLoaiCha::all();
         $sach1=TheLoai::all();
-        return view('user.header.menu',compact('sach','sach1'));
+        foreach($listcha as $cha){
+            $cha->listcon=TheLoai::where('TenTLCha',$cha->id)->get();
+            
+        }
+        return view('user.header.menu',compact('sach','listcha','sach1'));
     }
     public function TheLoaiSach($id){
     $idsach = TheLoaiSach::select('IdSach')->where('IdTheLoai', $id)->get();
-    $sach= Sach::whereIn('id', $idsach)->where('Xoa',0)->where('TrangThai',2)->paginate(12); $sach1=TheLoai::all();
-     return view($this->user."theloai",compact('sach','sach1'));
+    $sach= Sach::whereIn('id', $idsach)->where('Xoa',0)->where('TrangThai',2)->paginate(12);
+    $listcha=TheLoaiCha::all();
+    $sach1=TheLoai::all();
+    foreach($listcha as $cha){
+        $cha->listcon=TheLoai::where('TenTLCha',$cha->id)->get();
+        
+    }
+     return view($this->user."theloai",compact('sach','listcha','sach1'));
     }
     public function Contact(){
-        $sach1=TheLoai::all();
+        $listcha=TheLoaiCha::all();
+        foreach($listcha as $cha){
+            $cha->listcon=TheLoai::where('TenTLCha',$cha->id)->get();
+            
+        }
        
-        return view($this->user."contact",compact('sach1'));
+        return view($this->user."contact",compact('listcha'));
     }
-    public function Single($id){
+    public function Single($id,Request $request){
       
         $binhluan = BinhLuan::where('idSach',$id)->where('Duyet', 1)->where('TrangThai',1)->where('Xoa',0)->get();
         $sach = Sach::where('id',$id)->where('TrangThai',2)->where('Xoa',0)->get();
+        foreach($sach as $key=>$value){
+             $meta_desc = $value->MoTa;
+             $meta_title = $value->TenSach;
+             $url_canonical = $request->url();
+             $share_images = url('images/'.$value->AnhSach);
+            }
+
         $kho=DB::table('kho')->Where('IdSach','=',$id)->get();
-        $sach1=TheLoai::all();
+        $listcha=TheLoaiCha::all();
+        foreach($listcha as $cha){
+            $cha->listcon=TheLoai::where('TenTLCha',$cha->id)->get();
+            
+        }
        
-        return view($this->user."single", compact('sach','binhluan','kho','sach1'));
+        return view($this->user."single", compact('sach','binhluan','kho','listcha','url_canonical','meta_desc','meta_title','share_images'));
     }
     public function About(){
-        $sach1=TheLoai::all();
+        $listcha=TheLoaiCha::all();
+        foreach($listcha as $cha){
+            $cha->listcon=TheLoai::where('TenTLCha',$cha->id)->get();
+            
+        }
        
-        return view($this->user."about",compact('sach1'));
+        return view($this->user."about",compact('listcha'));
     }
     public function Cart(Request $request){
-        $sach1=TheLoai::all();
-       
+        
+        $listcha=TheLoaiCha::all();
+        foreach($listcha as $cha){
+            $cha->listcon=TheLoai::where('TenTLCha',$cha->id)->get();
+            
+        }
+ 
         if($request->session()->has('infoUser')){
             
             $IdTK = $request->session()->get('infoUser')['id'];
@@ -85,32 +128,49 @@ class UserController extends Controller
             foreach($gio_hang as $sp){
                 $kho= Kho::where('IdSach','=',$sp->Id_Sach)->get();
                 $sp->SLMax=$kho[0]->SoLuongTon;           }
-            return view($this->viewprefix."cart", ['gio_hang' => $gio_hang,'sach1'=>$sach1]);
+            return view($this->viewprefix."cart", ['gio_hang' => $gio_hang,'listcha'=>$listcha]);
         }
         else
         {
             $errors = new MessageBag(['error' => ["Bạn chưa đăng nhập. Vui lòng đăng nhập để xem giỏ hàng!"]]);
-            return view($this->viewprefix."error",compact('sach1'))->withErrors($errors);
+            return view($this->viewprefix."error",compact('listcha'))->withErrors($errors);
         }
-        return view($this->user."cart",compact('sach1'));
+        return view($this->user."cart",compact('listcha'));
     }
-    public function Payment(){
-        return view($this->user."payment");
+    public function Payment(Request $request){
+        $listcha=TheLoaiCha::all();
+        foreach($listcha as $cha){
+            $cha->listcon=TheLoai::where('TenTLCha',$cha->id)->get();
+            
+        }
+        
+        $sach = Cart::where('Id_TK', $request->session()->get('infoUser')['id'])->get();
+        
+        $tai_khoan = User::find($request->session()->get('infoUser')['id']);
+        return view($this->user."payment",compact('listcha','tai_khoan','sach'));
     }
     public function New(){
-        $sach1=TheLoai::all();
+        $listcha=TheLoaiCha::all();
+        foreach($listcha as $cha){
+            $cha->listcon=TheLoai::where('TenTLCha',$cha->id)->get();
+            
+        }
         
-        return view($this->user."news",compact('sach1'));
+        return view($this->user."news",compact('listcha'));
     }
     //Hàm Tìm Kiếm
     public function Search(Request $request)
-
-     { 
+     {  
+         $listcha=TheLoaiCha::all();
+        foreach($listcha as $cha){
+            $cha->listcon=TheLoai::where('TenTLCha',$cha->id)->get();
+            
+        }
          $key=$request->keyword;
          $kq=Sach::where('TenSach','like','%'.$key.'%')->where('TrangThai',2)->where('Xoa',0)->get();
         
-        $sach1=TheLoai::all();
-          return view($this->viewprefix."search",compact('kq','sach1'));
+        
+          return view($this->viewprefix."search",compact('kq','listcha'));
             
          
      }

@@ -2,11 +2,7 @@
 <html lang="zxx">
 @include('Login.LoginCss')
 <body>
-@if (session('status'))
-                    <ul>
-                        <li class="text-success"> {{ session('status') }}</li>
-                    </ul>
-                @endif
+
 <div class="login-wrap" style="background-image: url(user/images/background-login.jpg);">
 	<div class="login-html">
 		<input id="tab-1" type="radio" name="tab" class="sign-in" checked><label for="tab-1" class="tab">Đăng Nhập</label>

@@ -6,6 +6,9 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
 use App\Models\User;
+use App\Models\TheLoaiCha;
+use App\Models\TheLoai;
+use App\Classes\Helper;
 use session;
 class LoginController extends Controller
 {
@@ -32,16 +35,16 @@ class LoginController extends Controller
             $request->session()->put('infoUser',$infoUser);
             if(Auth::User()->LoaiTK=="0")
             { 
-            return redirect()->route('user.index')->with('status', 'Đăng nhập thành công');
+            return redirect()->route('user.index')->with('message', 'Đăng nhập thành công');
             } 
             else
             {
-            return redirect('admin/dashboard')->with('status', 'Đăng nhập thành công');
+            return redirect('admin/dashboard')->with('message', 'Đăng nhập thành công');
             }
         }
         else 
         {
-               return redirect()->back()->with('status', 'Email hoặc Password không chính xác');
+               return redirect()->back()->with('message', 'Email hoặc Password không chính xác');
         }
     }
     //Đăng Ký
@@ -79,7 +82,7 @@ class LoginController extends Controller
         $user->TrangThai=1;
         $user->Xoa=0;
         if($user->save())
-        return redirect()->route('getLogin')->with('status','Tạo tài khoản thành công!');  
+        return redirect()->route('getLogin')->with('message','Tạo tài khoản thành công!');  
     }
     public function getLogout(Request $request)
     {
@@ -110,12 +113,47 @@ class LoginController extends Controller
         ]);
     
         $data['password'] = Hash::make($data['password']);
-        If(Hash::check($request['passwordcu'], $user->password))        
+        if(Hash::check($request['passwordcu'], $user->password))        
         {
             if($user->update($data)){
-            return redirect('/')->with('status','Cập nhật tài khoản thành công!');  }
+            return redirect('/')->with('message','Cập nhật tài khoản thành công!');  }
            
         }
-        else return redirect('/')->with('status','Cập nhật tài khoản thất bại!');  
-    }      
+        else return redirect('/')->with('message','Cập nhật tài khoản thất bại!');  
+    }   
+    public function index(Request $request)
+    { $listcha=TheLoaiCha::all();
+        foreach($listcha as $cha){
+            $cha->listcon=TheLoai::where('TenTLCha',$cha->id)->get();
+            
+            
+        }
+        $request->session()->has('infoUser');
+        $IdTK = $request->session()->get('infoUser')['id'];
+        $user = User::where('id', '=',$IdTK)->first();
+        //return dd($user);
+        return view('user.pages.usermanagement', ['user'=>$user],compact('listcha'));
+        //
+    }   
+   
+    public function updateinfomation(Request $request, $id)
+    {
+        //
+        $tai_khoan = User::find($id);
+        if($request->file('AnhDaiDien')!= null){
+            $anh_dai_dien = $request->file('AnhDaiDien')->getClientOriginalName();   
+            $request->file('AnhDaiDien')->move(public_path('image'),$anh_dai_dien);
+          // $anh_dai_dien = $request->file('AnhDaiDien')->move( $name);
+          //dd($anh_dai_dien);  
+        } 
+        else $anh_dai_dien=$tai_khoan->AnhDaiDien;
+        
+        $tai_khoan->HoTen=$request['HoTen'];
+        $tai_khoan->AnhDaiDien=$anh_dai_dien;
+        $tai_khoan->SDT=$request['SDT'];
+        $tai_khoan->DiaChi=$request['DiaChi'];
+        //$tai_khoan->Gioi_Tinh=$request['Gioi_Tinh'];
+        $tai_khoan->save();
+        return redirect()->back();
+    }
 }

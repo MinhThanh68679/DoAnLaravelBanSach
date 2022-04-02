@@ -27,10 +27,10 @@
                                 <hr width="100%">
 								<br>
                                 <div style="padding-bottom:10px; text-align:center">
-                                <img src="{!! asset('user/images/user.jpg')!!}" alt="" style="width:150px; height:150px; border-radius:50%">
+                                <img src="{{asset('image/'.$user->AnhDaiDien)}}" alt="" style="width:150px; height:150px; border-radius:50%">
                                 </div>
                                 <br>
-                                <h6 style="font-weight:700; padding-bottom:10px">THÔNG TIN CÁ NHÂN</h6>
+                                <h6 style="font-weight:700; width:1100px; padding-bottom:10px">THÔNG TIN CÁ NHÂN</h6>
                                 <table class="thong-tin" style="border-style:double">
 								<tbody>
 									<tr>
@@ -53,102 +53,69 @@
 										<td>Địa chỉ:</td>
 										<td>800 Nguyễn Văn Linh, Phường Tân Phú, Quận 7, TP HCM</td>
 									</tr>
-                                    <tr>
-                                        <td><button class="btn btn-success" style="font-size:90%">CẬP NHẬT</button><td>
+                  <tr>
+                                        <td><button class="btn btn-success" style="font-size:90%" data-toggle="modal" data-target="#exampleEditModalCenter">CẬP NHẬT</button><td>
                                     </tr>
 								</tbody>
 								</table>
 								<br>
-									<div id="horizontalTab">
-										<ul class="resp-tabs-list">
-											
-											<li>DANH SÁCH ĐƠN HÀNG</li>
-											<li>SẢN PHẨM YÊU THÍCH</li>
-										</ul>
-										<div class="resp-tabs-container">
-											<!--/tab_one-->
-											<div class="tab1">
-					
+									
 					<div class="single_page">
-					<table class="table table-bordered">
-                    <thead>
-                    <tr style="text-align:center">
-                        <th>Mã đơn hàng</th>
-                        <th>Tên người nhận</th>
-                        <th>Địa chỉ</th>
-                        <th>Tổng tiền</th>
-                        <th>Trạng thái</th>
-                        <th></th>
-                    </tr>
-                    </thead>
-                    <tbody>
-                    <tr>
-                        <td>BC8OE</td>
-                        <td>Ngô Hoài Phong</td>
-                        <td>800 Nguyễn Văn Linh, Phường Tân Phú, Quận 7, TP HCM</td>
-                        <td>168.000 VNĐ</td>
-                        <td>Đang giao</td>
-                        <td><button class="btn btn-primary">Xem chi tiết</button></td>
-                    </tr>
-                    <tr>
-                        <td>BC703</td>
-                        <td>Ngô Hoài Phong</td>
-                        <td>800 Nguyễn Văn Linh, Phường Tân Phú, Quận 7, TP HCM</td>
-                        <td>168.000 VNĐ</td>
-                        <td>Đang giao</td>
-                        <td><button class="btn btn-primary">Xem chi tiết</button></td>
-                    </tr>
-                    </tbody>
-                    </table>						
+									
 					</div>
 				</div>
                 <!--//tab_one-->
-                <div class="tab2">
-
-                    <div class="single_page">
-                    <table class="table table-bordered">
-                    <thead>
-                    <tr style="text-align:center">
-                        <th>Tên sách</th>
-                        <th>Ảnh bìa</th>
-                        <th>Tác giả</th>
-                        <th>Nhà xuất bản</th>
-                        <th>Phiên bản</th>
-                        <th>Giá tiền</th>
-                        <th>Trạng thái</th>
-                        <th></th>
-                    </tr>
-                    </thead>
-                    <tbody>
-                    <tr>
-                        <td>Có những điều chẳng thể nói cùng ai</td>
-                        <td></td>
-                        <td>Minh Nhật</td>
-                        <td>SkyBooks</td>
-                        <td>Thường</td>
-                        <td>83.000 VNĐ</td>
-                        <td>Còn hàng</td>
-                        <td><button class="btn btn-primary">Xem chi tiết</button></td>
-                    </tr>
-                    <tr>
-                        <td>Chắc gì ta đã yêu nhau</td>
-                        <td></td>
-                        <td>Minh Nhật</td>
-                        <td>SkyBooks</td>
-                        <td>Thường</td>
-                        <td>87.000 VNĐ</td>
-                        <td>Tạm hết hàng</td>
-                        <td><button class="btn btn-primary">Xem chi tiết</button></td>
-                    </tr>
-                    </tbody>
-                    </table>				
-                    </div>
-                </div>
+                
     
             </div>
         </div>
     </div>
-
+    <div class="modal fade" id="exampleEditModalCenter" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered" role="document">
+    <div class="modal-content">
+      <div class="modal-header" style="background-color:#ffa500a8;">
+        <h5 class="modal-title" id="exampleModalLongTitle" style="color:white; font-size:120%; padding-left:130px">THÔNG TIN CÁ NHÂN</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      @if (session()->has('infoUser') != null)
+                <?php
+                            $myaccount = session()->get('infoUser');
+                 ?>
+      <form action="{{ route('user.updateinfomation', $myaccount) }}" method="POST" enctype="multipart/form-data">
+      @csrf
+      <div class="modal-body" style="margin-top:10px; padding-left:10px; padding-right:10px">
+          <div class="row">
+              <div class="col-lg-12">
+                <label for="exampleInputTopic">Ảnh đại diện</label>
+                <div class="custom-file">
+                    <input accept="image/*" title="" type="file" class="form-control" name="AnhDaiDien" id="AnhDaiDien" placeholder="Chọn ảnh" />
+               </div>
+              </div>
+              <div class="col-lg-12" style="margin-top:20px">
+                <label for="exampleInputTopic">Họ tên</label>
+                <input type="text" class="form-control" value="HoTen" name="HoTen" placeholder="Họ tên" >
+              </div>
+              <div class="col-lg-12" style="margin-top:20px">
+                <label for="exampleInputTopic">Số điện thoại</label>
+                <input type="text" class="form-control" value="SDT" name="SDT" placeholder="Số điện thoại" >
+              </div>
+              <div class="col-lg-12" style="margin-top:20px; margin-bottom:10px">
+                <label for="exampleInputTopic">Địa chỉ</label>
+                <input type="text" class="form-control" value="DiaChi" name="DiaChi" placeholder="Địa chỉ">
+              </div>
+          </div>
+      </div>
+      <div class="modal-footer" style="background-color:#ffa50099">
+        <button type="submit" class="btn btn-primary"><i class="fas fa-save"></i></button>
+        <button type="button" class="btn btn-secondary" data-dismiss="modal"><i class="fas fa-window-close"></i></button>
+      </div>
+      </form>
+    </div>
+  </div>
+</div>
+@endif
     <!--//tabs-->
         </div>
     </div>

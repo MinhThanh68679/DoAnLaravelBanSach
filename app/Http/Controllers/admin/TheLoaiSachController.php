@@ -19,7 +19,7 @@ class TheLoaiSachController extends Controller
      */
     public function index()
     {
-        $theloaisach = TheLoaiSach::orderBy('created_at', 'desc')->get();;
+        $theloaisach = TheLoaiSach::orderBy('created_at', 'desc')->get();
         return View('admin.pages.TheLoaiSach.index', compact('theloaisach'));
     }
 

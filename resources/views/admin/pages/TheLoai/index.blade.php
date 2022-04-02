@@ -18,6 +18,7 @@
                   <thead>
                   <tr>
                     <th>Tên Thể Loại</th>
+                    <th>Tên Thể Loại Cha</th>
                     <th>Tùy Chỉnh</th>
                   </tr>
                   </thead>
@@ -26,10 +27,11 @@
                   <tr>
                     
                     <td>{{$theloais->TenTheLoai}}</td>
-                   
+                    <td>{{$theloais->TheLoaiCha->TenTheLoaiCha}}</td>
                     <td>
                         <a href="{{ route('theloai.edit', [$theloais->id])}}" class="btn btn-warning" style="padding: 0.5rem 1.5rem; border-radius: 10px;"><i class='fas fa-edit' style='font-size:15px'></i></a>
-                        
+                        <a onclick="return ComfirmDelete();" href="{{ route('theloai.delete', [$theloais->id]) }}" class="btn btn-danger" style="padding: 0.5rem 1.5rem; border-radius: 10px;"><i class='fas fa-trash-alt' style='font-size:15px'></i></a>
+
                     </td>
                   </tr>
                   @endforeach
@@ -44,7 +46,15 @@
         </div>
     </div>
 </div>
-
+<script>
+  function ComfirmDelete() {
+  var txt;
+  if (confirm("Bạn có muốn xóa thể loại đã chọn?")) {
+    return true;
+  }
+  return false;
+}
+</script>
 @stop
 <style> 
 tr:hover{

@@ -262,7 +262,7 @@
 																</li>
 															</ul>
 														</div>
-														
+														@if (session()->has('infoUser') != null)
 														<div class="googles single-item hvr-outline-out">
 														<form action="" method="POST">
 															{{csrf_field()}}
@@ -271,7 +271,7 @@
 															</button>								
 														</form>
 														</div>
-														
+														@endif
 													</div>
 													<div class="clearfix"></div>
 												</div>

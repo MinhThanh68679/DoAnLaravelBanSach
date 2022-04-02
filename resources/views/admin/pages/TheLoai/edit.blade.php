@@ -32,8 +32,16 @@
                     <label for="exampleInputTitle">Tên Sách</label>
                     <input class="form-control" type="text" name="TenTheLoai" value="{{$theloai->TenTheLoai}}" id="TenTheLoai" placeholder="Tên sách">
                   </div>
-
-                </div>
+                  
+                  <div class="col-lg-6">
+                    <label for="exampleInputTitle">Tên Thể Loại Cha</label>
+                    <select style="border: 1px solid #CED4DA;border-radius: 4px; outline: none;" name="TenTLCha" class="form-control" id="TenTLCha" placeholder="Title">
+                    @foreach($theloaicha as $theloaichas)
+                        <option value="{{$theloaichas->id}}">{{$theloaichas->TenTheLoaiCha}}</option>
+                  @endforeach
+                    </select>
+                  </div>
+              
                 <div class="row" style="float:right">
                   <button type="submit" class="btn btn-success"><i class="fas fa-save"></i></button> &nbsp;
                   <a class="btn btn-secondary" href="{{route('theloai.index')}}" style="margin-left: 15px;margin-right: 30px; color:white"><i class="fas fa-window-close"></i></a>

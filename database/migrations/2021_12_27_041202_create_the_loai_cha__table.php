@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateMaGiamgiaTable extends Migration
+class CreateTheLoaiChaTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,15 +13,9 @@ class CreateMaGiamgiaTable extends Migration
      */
     public function up()
     {
-        Schema::create('ma_giamgia', function (Blueprint $table) {
+        Schema::create('theloaicha', function (Blueprint $table) {
             $table->increments('id');
-            $table->string('Code');
-            $table->string('SoLuong');
-            $table->integer('ChietKhau');
-            $table->integer('LoaiKM');
-            $table->integer('NgayBĐ');
-            $table->integer('NgayKT');
-            $table->integer('TrangThai');
+            $table->string('TenTheLoaiCha');
             $table->timestamps();
         });
     }
@@ -33,6 +27,6 @@ class CreateMaGiamgiaTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('ma_giamgia');
+        Schema::dropIfExists('theloaicha');
     }
 }

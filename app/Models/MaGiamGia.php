@@ -14,6 +14,9 @@ class MaGiamGia extends Model
         'SoLuong',
         'ChietKhau',
         'LoaiKM',
+        'NgayBĐ',
+        'NgayKT',
+        'TrangThai',
 
     ];
 }

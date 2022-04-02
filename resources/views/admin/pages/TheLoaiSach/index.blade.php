@@ -9,6 +9,14 @@
                 <div class="col-12 col-xl-8 mb-4 mb-xl-0">
                   <h3 class="font-weight-bold">QUẢN LÝ THỂ LOẠI SÁCH</h3>
                 </div>
+                @if(Session::has('message'))
+                <div class="alert alert-success alert-dismissible fade show notify" role="alert">
+                      <strong>Thông báo! </strong>{{Session::get('message')}}.
+                      <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                      </button>
+                    </div>
+                        @endif
                 <div class="col-12 col-xl-8 mb-4 mb-xl-0" style="padding-top:50px">
                   <a class="btn btn-primary" href="{{ route('theloaisach.create')}}"  style="padding: 0.5rem 1.5rem; border-radius: 10px; margin-left:40px"><i class='fas fa-plus' style='font-size:15px'></i></a>
                   <!-- /.card-header -->
@@ -23,10 +31,11 @@
                   </thead>
                   <tbody>
                   @foreach($theloaisach ?? '' as $theloaisachs)
+                
                   <tr>
                     
                     <td>{{$theloaisachs->Sach->TenSach}}</td>
-                    <td>{{$theloaisachs->TheLoai->TenTheLoai}}</td>
+                    <td>@if(!empty($theloaisachs->TheLoai->TenTheLoai)){{ $theloaisachs->TheLoai->TenTheLoai}} @endif</td>
                     <td>                    
                       <a href="{{ route('theloaisach.edit', [$theloaisachs->id])}}" class="btn btn-warning" style="padding: 0.5rem 1.5rem; border-radius: 10px;"><i class='fas fa-edit' style='font-size:15px'></i></a>
                     </td>

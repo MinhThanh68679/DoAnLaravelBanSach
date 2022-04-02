@@ -16,6 +16,7 @@ class CreateTheloaiTable extends Migration
         Schema::create('theloai', function (Blueprint $table) {
             $table->increments('id');
             $table->string('TenTheLoai');
+            $table->integer('TenTLCha')->unsigned();//khoa ngoai
             $table->timestamps();
         });
     }

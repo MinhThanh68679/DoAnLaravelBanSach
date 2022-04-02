@@ -4,11 +4,10 @@ namespace App\Http\Controllers\admin;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
-use App\Models\Kho;
-use App\Models\Sach;
+use App\Models\TheLoaiCha;
 use Session;
 
-class KhoController extends Controller
+class TheLoaiChaController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -17,8 +16,9 @@ class KhoController extends Controller
      */
     public function index()
     {
-        $kho = Kho::where('Xoa', 0)->orderBy('created_at', 'desc')->get();
-        return View('admin.pages.Kho.index', compact('kho'));
+        //
+        $theloaicha = TheLoaiCha::where('Xoa', 0)->orderBy('created_at', 'desc')->get();
+        return View('admin.pages.TheLoaiCha.index', compact('theloaicha'));
     }
 
     /**
@@ -29,8 +29,8 @@ class KhoController extends Controller
     public function create()
     {
         //
-        $sach = Sach::where('Xoa',0)->get();
-        return view('admin.pages.Kho.create',['sach'=>$sach]);
+        return view('admin.pages.TheLoaiCha.create');
+
     }
 
     /**
@@ -42,24 +42,23 @@ class KhoController extends Controller
     public function store(Request $request)
     {
         //
-        
-        $kho = new Kho;
+        $theloaicha= new TheLoaiCha;
         $this->validate($request, [
-            'IdSach' => 'required',
-            'SoLuongTon' => 'required',
-                  
+            'TenTheLoaiCha' => 'required',
+            
+            
         ]);
-        $kho->IdSach=$request->IdSach;
-        $kho->SoLuongTon=$request->SoLuongTon;
-        $kho->Xoa=0;
-        if($kho->save())
+       
+        $theloaicha->TenTheLoaiCha=$request->TenTheLoaiCha;
+        $theloaicha->Xoa=0;
+       
+        if($theloaicha->save())
         {
             Session::flash('message', 'successfully!');
         }
         else
             Session::flash('message', 'Failure!');
-    
-        return redirect()->route('kho.index');
+        return redirect()->route('theloaicha.index');
     }
 
     /**
@@ -82,8 +81,8 @@ class KhoController extends Controller
     public function edit($id)
     {
         //
-        $kho= Kho::find($id);//Kho tên model      
-        return view('admin.pages.Kho.edit')->with('kho', $kho);
+        $theloaicha= TheLoaiCha::find($id);//Kho tên model      
+        return view('admin.pages.TheLoaiCha.edit')->with('theloaicha', $theloaicha);
     }
 
     /**
@@ -96,21 +95,21 @@ class KhoController extends Controller
     public function update(Request $request, $id)
     {
         //
-        $kho= Kho::find($id);
+        $theloaicha= TheLoaiCha::find($id);
         
         $data=$request->validate([
-            'SoLuongTon' => 'required',
+            'TenTheLoaiCha' => 'required',
           
         ]);    
         
-        if($kho->update($data))
+        if($theloaicha->update($data))
         { 
             Session::flash('message', 'cập nhật thành công!');
         }
         else
             Session::flash('message', 'cập nhật thất bại!');
             
-        return redirect()->route('kho.index');
+        return redirect()->route('theloaicha.index');
     }
 
     /**
@@ -125,9 +124,9 @@ class KhoController extends Controller
     }
     public function delete(Request $request, $id)
     {
-        $kho = Kho::find($id);
-        $kho->Xoa = 1;
-        $kho->save();
+        $theloaicha = TheLoaiCha::find($id);
+        $theloaicha->Xoa = 1;
+        $theloaicha->save();
         return redirect()->back();
     }
 }

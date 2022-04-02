@@ -1,5 +1,19 @@
 @extends('user.layout')
 	@section('content')
+	
+	<meta name="description" content="{{$meta_desc}}">
+    <meta name="robots" content="INDEX,FOLLOW"/>
+    <link  rel="canonical" href="{{$url_canonical}}" />
+    <meta name="author" content="">
+    <link  rel="icon" type="image/x-icon" href="" />
+    
+      <meta property="og:image" content="{{$share_images}}" />
+      <meta property="og:site_name" content="http://sach.net:8000/" />
+      <meta property="og:description" content="{{$meta_desc}}" />
+      <meta property="og:title" content="{{$meta_title}}" />
+      <meta property="og:url" content="{{$url_canonical}}" />
+      <meta property="og:type" content="website" />
+	
 		<!-- banner -->
 		<div class="banner_inner">
 			<div class="services-breadcrumb">
@@ -136,8 +150,7 @@
 												</button>														
 											</div>
 										</div>
-									
-										@endforeach
+										<div class="fb-share-button" data-href="{{$url_canonical}}" data-layout="button_count" data-size="small"><a target="_blank" href="https://www.facebook.com/sharer/sharer.php?u={{$url_canonical}}" class="fb-xfbml-parse-ignore">Chia sẻ</a></div>										@endforeach
 									</form>
 										<br>
 						
@@ -727,3 +740,5 @@
 				</div>
 		</section>
 		@stop
+		<div id="fb-root"></div>
+<script async defer crossorigin="anonymous" src="https://connect.facebook.net/vi_VN/sdk.js#xfbml=1&version=v13.0" nonce="apvmyhxB"></script>

@@ -69,5 +69,4 @@
 				</p>
 			</div>
 		</div>
-		<div id="addcart">Đã thêm vào giỏ hàng</div>
 	</footer>

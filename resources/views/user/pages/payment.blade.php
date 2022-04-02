@@ -82,10 +82,11 @@ td, th {
 						</thead>
 						<tbody>
 							<tr class="rem1"> 
+							@foreach ($sach as $book)
 								<td class="invert ">1</td>
 								<td class="invert-image">
-									<a href="{{ route('user.single')}}">
-										<img src="user\images\Book\SACH_KINH_TE\Đừng Bao Giờ Đi Ăn Một Mình (Tái Bản)\DD.png" alt=" " class="img-responsive">
+									<a href="{{route('user.single',$book->Sach->id)}}">
+										<img src="{!! asset('image/'.$book->Sach->AnhSach)!!}" alt=" " class="img-responsive">
 									</a>
 								</td>
 								<td class="invert">
@@ -93,67 +94,19 @@ td, th {
 										<div class="quantity-select">
 											
 											<div class="entry value">
-												<span>1</span>
+												<span>{{$book->So_Luong}}</span>
 											</div>
 											
 										</div>
 									</div>
 								</td>
-								<td class="invert">Đừng Bao Giờ Đi Ăn Một Mình </td>
+								<td class="invert">{{$book->Sach->TenSach}} </td>
 
-								<td class="invert">73.700 VNĐ</td>
-								<td class="invert">73.700 VNĐ</td>
+								<td class="invert">{{number_format($book->Sach->GiaTien,0,",",".")}} VNĐ</td>
+								<td class="invert">{{ number_format($book->Sach->GiaTien * $book->So_Luong,0,",",".") }} VNĐ</td>
 
 							</tr>
-							<tr class="rem2">
-								<td class="invert">2</td>
-								<td class="invert-image">
-									<a href="{{ route('user.single')}}">
-										<img src="user\images\Book\SACH_KINH_TE\How Money Works - Hiểu Hết Về Tiền\DD.png" alt=" " class="img-responsive">
-									</a>
-								</td>
-								<td class="invert">
-									<div class="quantity">
-										<div class="quantity-select">
-										
-											<div class="entry value">
-												<span>1</span>
-											</div>
-
-										</div>
-									</div>
-								</td>
-								<td class="invert">Hiểu Hết Về Tiền </td>
-
-								<td class="invert">223.700 VNĐ</td>
-								<td class="invert">223.700 VNĐ</td>
-
-								
-							</tr>
-							<tr class="rem3">
-								<td class="invert">3</td>
-								<td class="invert-image">
-									<a href="{{ route('user.single')}}">
-										<img src="user\images\Book\SACH_KINH_TE\Phân Tích Chứng Khoán\DD.png" alt=" " class="img-responsive">
-									</a>
-								</td>
-								<td class="invert">
-									<div class="quantity">
-										<div class="quantity-select">
-											
-											<div class="entry value">
-												<span>1</span>
-											</div>
-										</div>
-									</div>
-								</td>
-								<td class="invert">Phân Tích Chứng Khoán</td>
-
-								<td class="invert">334.200 VNĐ</td>
-								<td class="invert">334.200 VNĐ</td>
-
-								
-							</tr>
+							@endforeach
 
 						</tbody>
 					</table>

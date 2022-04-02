@@ -75,6 +75,12 @@ class CreateAddForeignKeyTable extends Migration
             $table->foreign('IdKH')->references('id')->on('user');
                 
         });
+         //Khoa ngoai bang chi tiet ma giam gia
+         Schema::table('theloai', function (Blueprint $table) {
+            $table->foreign('TenTLCha')->references('id')->on('theloaicha');
+           
+                
+        });
     }
 
     /**

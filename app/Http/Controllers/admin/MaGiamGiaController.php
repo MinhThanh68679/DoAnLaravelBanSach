@@ -4,11 +4,9 @@ namespace App\Http\Controllers\admin;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
-use App\Models\Kho;
-use App\Models\Sach;
+use App\Models\MaGiamGia;
 use Session;
-
-class KhoController extends Controller
+class MaGiamGiaController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -17,8 +15,9 @@ class KhoController extends Controller
      */
     public function index()
     {
-        $kho = Kho::where('Xoa', 0)->orderBy('created_at', 'desc')->get();
-        return View('admin.pages.Kho.index', compact('kho'));
+        //
+        $magiamgia= MaGiamGia::where('Xoa',0)->orderBy('created_at', 'desc')->get();
+        return View('admin.pages.MaGiamGia.index', compact('magiamgia'));
     }
 
     /**
@@ -29,8 +28,7 @@ class KhoController extends Controller
     public function create()
     {
         //
-        $sach = Sach::where('Xoa',0)->get();
-        return view('admin.pages.Kho.create',['sach'=>$sach]);
+        return view('admin.pages.MaGiamGia.create');
     }
 
     /**
@@ -42,24 +40,32 @@ class KhoController extends Controller
     public function store(Request $request)
     {
         //
-        
-        $kho = new Kho;
+        $magiamgia = new MaGiamGia;
         $this->validate($request, [
-            'IdSach' => 'required',
-            'SoLuongTon' => 'required',
-                  
+            'Code' => 'required',
+            'SoLuong' => 'required',
+            'ChietKhau' => 'required',
+            'LoaiKM' => 'required',
+            'NgayBĐ' => 'required',
+            'NgayKT' => 'required',
+            'TrangThai'=> 'required',
         ]);
-        $kho->IdSach=$request->IdSach;
-        $kho->SoLuongTon=$request->SoLuongTon;
-        $kho->Xoa=0;
-        if($kho->save())
+        $magiamgia->Code=$request->Code;
+        $magiamgia->SoLuong=$request->SoLuong;
+        $magiamgia->ChietKhau=$request->ChietKhau;
+        $magiamgia->LoaiKM=$request->LoaiKM;
+        $magiamgia->NgayBĐ=$request->NgayBĐ;
+        $magiamgia->NgayKT=$request->NgayKT;
+        $magiamgia->TrangThai=$request->TrangThai;
+        $magiamgia->Xoa=0;
+        if($magiamgia->save())
         {
             Session::flash('message', 'successfully!');
         }
         else
             Session::flash('message', 'Failure!');
     
-        return redirect()->route('kho.index');
+        return redirect()->route('magiamgia.index');
     }
 
     /**
@@ -82,8 +88,8 @@ class KhoController extends Controller
     public function edit($id)
     {
         //
-        $kho= Kho::find($id);//Kho tên model      
-        return view('admin.pages.Kho.edit')->with('kho', $kho);
+        $magiamgia= MaGiamGia::find($id);//Kho tên model      
+        return view('admin.pages.MaGiamGia.edit')->with('magiamgia', $magiamgia);
     }
 
     /**
@@ -96,21 +102,27 @@ class KhoController extends Controller
     public function update(Request $request, $id)
     {
         //
-        $kho= Kho::find($id);
+        $magiamgia= MaGiamGia::find($id);
         
         $data=$request->validate([
-            'SoLuongTon' => 'required',
+            'Code' => 'required',
+            'SoLuong' => 'required',
+            'ChietKhau' => 'required',
+            'LoaiKM' => 'required',
+            'NgayBĐ' => 'required',
+            'NgayKT' => 'required',
+            'TrangThai'=> 'required',
           
         ]);    
         
-        if($kho->update($data))
+        if($magiamgia->update($data))
         { 
             Session::flash('message', 'cập nhật thành công!');
         }
         else
             Session::flash('message', 'cập nhật thất bại!');
             
-        return redirect()->route('kho.index');
+        return redirect()->route('magiamgia.index');
     }
 
     /**
@@ -125,9 +137,9 @@ class KhoController extends Controller
     }
     public function delete(Request $request, $id)
     {
-        $kho = Kho::find($id);
-        $kho->Xoa = 1;
-        $kho->save();
+        $magiamgia = MaGiamGia::find($id);
+        $magiamgia->Xoa = 1;
+        $magiamgia->save();
         return redirect()->back();
     }
 }

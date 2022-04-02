@@ -9,6 +9,14 @@
                 <div class="col-12 col-xl-8 mb-4 mb-xl-0">
                   <h3 class="font-weight-bold">QUẢN LÝ TÀI KHOẢN</h3>
                 </div>
+                @if(Session::has('message'))
+                <div class="alert alert-success alert-dismissible fade show notify" role="alert">
+                      <strong>Thông báo! </strong>{{Session::get('message')}}.
+                      <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                      </button>
+                    </div>
+                        @endif
                 <div class="col-lg-12" style="padding-top:20px; display: flex; margin-bottom: 10px">
                   <div class="col-lg-6">
                   <a class="btn btn-primary" href="{{ route('taikhoan.create')}}" style="padding: 0.7rem 1.5rem; border-radius: 10px; margin-left:10px;"><i class='fas fa-plus' style='font-size:15px'></i></a>

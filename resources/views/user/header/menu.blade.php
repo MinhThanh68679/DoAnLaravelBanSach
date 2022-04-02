@@ -29,14 +29,16 @@
 							<ul class="dropdown-menu mega-menu">
 								<li>
 									<div class="row">
-										@foreach($sach1 as $book)
+										@foreach($listcha as $book)
 										<div class="col-md-4 media-list span4 text-left">
-											<h5 class="tittle-w3layouts-sub"> {{$book->Ten}} </h5>
+											<h5 class="tittle-w3layouts-sub"> {{$book->TenTheLoaiCha}} </h5>
 											<ul>
+											@foreach($book->listcon as $con)
+
 												<li class="media-mini mt-3">
-													<a href="{{ route('theloaisach',$book->id)}}">{{$book->TenTheLoai}}</a>
+													<a href="{{ route('theloaisach',$book->id)}}">{{$con->TenTheLoai}}</a>
 												</li>
-												
+												@endforeach
 											</ul>
 										</div>
 										@endforeach

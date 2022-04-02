@@ -11,6 +11,10 @@ class TheLoai extends Model
     protected $table='theloai';
     protected $fillable = [
         'TenTheLoai',
+        'TenTLCha',
         
     ];
+    public function TheLoaiCha(){
+        return $this->belongsTo('App\Models\TheLoaiCha', 'TenTLCha', 'id');
+    }
 }

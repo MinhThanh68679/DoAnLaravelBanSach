@@ -24,6 +24,8 @@
 <link rel="stylesheet" href="//cdn.jsdelivr.net/npm/alertifyjs@1.13.1/build/css/themes/semantic.min.css"/>
 <!-- Bootstrap theme -->
 <link rel="stylesheet" href="//cdn.jsdelivr.net/npm/alertifyjs@1.13.1/build/css/themes/bootstrap.min.css"/>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/js/toastr.min.js" type="text/javascript" charset="utf-8" async defer></script>
+
 	<script>
 		googles.render();
 
@@ -353,10 +355,11 @@
 	<script>
 		function AddCart(e){
 			var soluong = $('#So_Luong_SP').val();
-
+			
 			if(soluong != null){
 				var num = soluong;
 			}
+
 			else{
 				var num = 1;
 			}
@@ -365,18 +368,62 @@
                     type:'POST',
                     data: {Id_Sach: e, So_Luong: num, _token: '{{ csrf_token() }}' },
                     success: function(data) {
-						console.log(data);
-						ShowMessageCart(data);
+						toastr.success('Đã thêm sản phẩm vào giỏ hàng');
 						$(".count").html(data);
                     }
                 });
 		}
-		</script>
-		<script>
-	
-	function ShowMessageCart(e) {
-	var x = document.getElementById("addcart");
-	x.className = "show";
-	setTimeout(function(){ x.className = x.className.replace("show", ""); }, 3000);
-	}
 	</script>
+	
+
+<script>
+	
+	function UpdateCart(id, slmax){
+			
+			var soluong = $('#So_Luong' + id).val();
+			if(soluong > 0 && soluong <= 50){
+				var num = soluong;
+				$.ajax({
+                    url: "{{ route('account.updatecart') }}",
+                    type:'POST',
+                    data: {Id_Cart: id, So_Luong: num, _token: '{{ csrf_token() }}' },
+                    success: function(data) {
+						//alertify.alert(data);
+						//$(".count").html(data);
+						toastr.success('Cập nhật thành công');
+						setTimeout(function(){ 	location.reload(); }, 2000);
+					
+						//aletify.success(data);
+                    }
+                });
+			}
+			else if(soluong>slmax){
+				toastr.warning('Số lượng sản phẩm trong kho không đủ');
+			}
+			else if(soluong>50){
+				toastr.warning('Số lượng không được vượt quá 50 sản phẩm');
+			} else if(soluong==0){
+            toastr.warning('Số lượng không được nhỏ hơn 0');
+           }
+                
+		}
+		function DeleteCart(id){
+			
+			
+                $.ajax({
+                    url: "{{ route('account.cartdelete') }}",
+                    type:'DELETE',
+                    data: {Id_Cart: id, _token: '{{ csrf_token() }}' },
+                    success: function(data) {
+						//alertify.alert(data);
+						//$(".count").html(data);
+						toastr.success('Xoá sản phẩm thành công');
+						setTimeout(function(){ 	location.reload(); }, 2000);
+					
+					
+						//aletify.success(data);
+                    }
+                });
+		}
+	</script>
+		

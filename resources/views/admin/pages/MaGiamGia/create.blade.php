@@ -97,7 +97,7 @@ function genderChanged(obj)
 </script>
 <script language="javascript">
  function Changed(obj){
-  if (obj.value.length >100 && obj.value.length<0 && typeof (obj.value.length  === 'string'  )){
+  if (obj.value.length >100 && obj.value.length<0){
     alert('Vui lòng nhập số nhỏ hơn 100 và lớn hơn 0!');
   }
   

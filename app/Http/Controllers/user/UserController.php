@@ -34,9 +34,9 @@ class UserController extends Controller
         $slideshow4=SlideShow::where('Xoa',0)->where('id',4)->get();
         $slideshow5=SlideShow::where('Xoa',0)->where('id',5)->get();
         
-        $listcha=TheLoaiCha::all();
+        $listcha=TheLoaiCha::where('Xoa',0)->get();
        foreach($listcha as $cha){
-           $cha->listcon=TheLoai::where('TenTLCha',$cha->id)->get();
+           $cha->listcon=TheLoai::where('Xoa',0)->where('TenTLCha',$cha->id)->get();
            
        }
 
@@ -47,19 +47,38 @@ class UserController extends Controller
 
     public function Shop(){
         $sach=Sach::where('Xoa',0)->where('TrangThai',2)->paginate(12);
-        $listcha=TheLoaiCha::all();
+        $listcha=TheLoaiCha::where('Xoa',0)->get();
         foreach($listcha as $cha){
-            $cha->listcon=TheLoai::where('TenTLCha',$cha->id)->get();
+            $cha->listcon=TheLoai::where('Xoa',0)->where('TenTLCha',$cha->id)->get();
             
         }
         return view($this->user."shop",compact('sach','listcha'));
     }
+    public function Promotion(){
+        $sach=Sach::where('Xoa',0)->where('TrangThai',2)->where('IdKM','!=',NULL)->paginate(12);
+        foreach($sach as $sach1){
+       if($sach1->IdKM!=null){
+           $sach1->GiaKM= $sach1->GiaTien-(($sach1->GiaTien/100)*$sach1->KhuyenMai->ChietKhau);
+        
+       }
+       else{
+        $sach1->GiaKM=0;
+       }
+        $listcha=TheLoaiCha::where('Xoa',0)->get();
+        foreach($listcha as $cha){
+            $cha->listcon=TheLoai::where('Xoa',0)->where('TenTLCha',$cha->id)->get();
+            
+        }
+    }
+
+        return view($this->user."promotion",compact('listcha','sach'));
+    }
     public function TheLoai(){
        
-        $listcha=TheLoaiCha::all();
+        $listcha=TheLoaiCha::where('Xoa',0)->get();
         $sach1=TheLoai::all();
         foreach($listcha as $cha){
-            $cha->listcon=TheLoai::where('TenTLCha',$cha->id)->get();
+            $cha->listcon=TheLoai::where('Xoa',0)->where('TenTLCha',$cha->id)->get();
             
         }
         return view('user.header.menu',compact('sach','listcha','sach1'));
@@ -67,18 +86,18 @@ class UserController extends Controller
     public function TheLoaiSach($id){
     $idsach = TheLoaiSach::select('IdSach')->where('IdTheLoai', $id)->get();
     $sach= Sach::whereIn('id', $idsach)->where('Xoa',0)->where('TrangThai',2)->paginate(12);
-    $listcha=TheLoaiCha::all();
+    $listcha=TheLoaiCha::where('Xoa',0)->get();
     $sach1=TheLoai::all();
     foreach($listcha as $cha){
-        $cha->listcon=TheLoai::where('TenTLCha',$cha->id)->get();
+        $cha->listcon=TheLoai::where('Xoa',0)->where('TenTLCha',$cha->id)->get();
         
     }
      return view($this->user."theloai",compact('sach','listcha','sach1'));
     }
     public function Contact(){
-        $listcha=TheLoaiCha::all();
+        $listcha=TheLoaiCha::where('Xoa',0)->get();
         foreach($listcha as $cha){
-            $cha->listcon=TheLoai::where('TenTLCha',$cha->id)->get();
+            $cha->listcon=TheLoai::where('Xoa',0)->where('TenTLCha',$cha->id)->get();
             
         }
        
@@ -96,18 +115,18 @@ class UserController extends Controller
             }
 
         $kho=DB::table('kho')->Where('IdSach','=',$id)->get();
-        $listcha=TheLoaiCha::all();
+        $listcha=TheLoaiCha::where('Xoa',0)->get();
         foreach($listcha as $cha){
-            $cha->listcon=TheLoai::where('TenTLCha',$cha->id)->get();
+            $cha->listcon=TheLoai::where('Xoa',0)->where('TenTLCha',$cha->id)->get();
             
         }
        
         return view($this->user."single", compact('sach','binhluan','kho','listcha','url_canonical','meta_desc','meta_title','share_images'));
     }
     public function About(){
-        $listcha=TheLoaiCha::all();
+        $listcha=TheLoaiCha::where('Xoa',0)->get();
         foreach($listcha as $cha){
-            $cha->listcon=TheLoai::where('TenTLCha',$cha->id)->get();
+            $cha->listcon=TheLoai::where('Xoa',0)->where('TenTLCha',$cha->id)->get();
             
         }
        
@@ -115,9 +134,9 @@ class UserController extends Controller
     }
     public function Cart(Request $request){
         
-        $listcha=TheLoaiCha::all();
+        $listcha=TheLoaiCha::where('Xoa',0)->get();
         foreach($listcha as $cha){
-            $cha->listcon=TheLoai::where('TenTLCha',$cha->id)->get();
+            $cha->listcon=TheLoai::where('Xoa',0)->where('TenTLCha',$cha->id)->get();
             
         }
  
@@ -138,9 +157,9 @@ class UserController extends Controller
         return view($this->user."cart",compact('listcha'));
     }
     public function Payment(Request $request){
-        $listcha=TheLoaiCha::all();
+        $listcha=TheLoaiCha::where('Xoa',0)->get();
         foreach($listcha as $cha){
-            $cha->listcon=TheLoai::where('TenTLCha',$cha->id)->get();
+            $cha->listcon=TheLoai::where('Xoa',0)->where('TenTLCha',$cha->id)->get();
             
         }
         
@@ -150,9 +169,9 @@ class UserController extends Controller
         return view($this->user."payment",compact('listcha','tai_khoan','sach'));
     }
     public function New(){
-        $listcha=TheLoaiCha::all();
+        $listcha=TheLoaiCha::where('Xoa',0)->get();
         foreach($listcha as $cha){
-            $cha->listcon=TheLoai::where('TenTLCha',$cha->id)->get();
+            $cha->listcon=TheLoai::where('Xoa',0)->where('TenTLCha',$cha->id)->get();
             
         }
         
@@ -161,9 +180,9 @@ class UserController extends Controller
     //Hàm Tìm Kiếm
     public function Search(Request $request)
      {  
-         $listcha=TheLoaiCha::all();
+         $listcha=TheLoaiCha::where('Xoa',0)->get();
         foreach($listcha as $cha){
-            $cha->listcon=TheLoai::where('TenTLCha',$cha->id)->get();
+            $cha->listcon=TheLoai::where('Xoa',0)->where('TenTLCha',$cha->id)->get();
             
         }
          $key=$request->keyword;

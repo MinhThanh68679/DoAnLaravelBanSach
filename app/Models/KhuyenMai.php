@@ -14,7 +14,6 @@ class KhuyenMai extends Model
         'TenCTKM',
         'ThoiGianBD',
         'ThoiGianKT',
-        'ChietKhau',
         'LoaiKM',
         'TrangThai',
     ];

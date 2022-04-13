@@ -18,7 +18,7 @@
 						</li>
 						<!-- Ưu đãi lớn -->
 						<li class="nav-item">
-							<a class="nav-link" href="{{ route('user.shop')}}">Khuyến Mãi</a>
+							<a class="nav-link" href="{{ route('user.promotion')}}">Khuyến Mãi</a>
 						</li>
 						<!-- Cửa hàng -->
 						<li class="nav-item dropdown">
@@ -36,7 +36,7 @@
 											@foreach($book->listcon as $con)
 
 												<li class="media-mini mt-3">
-													<a href="{{ route('theloaisach',$book->id)}}">{{$con->TenTheLoai}}</a>
+													<a href="{{ route('theloaisach',$con->id)}}">{{$con->TenTheLoai}}</a>
 												</li>
 												@endforeach
 											</ul>

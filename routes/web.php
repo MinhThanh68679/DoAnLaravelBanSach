@@ -34,6 +34,7 @@ Route::group(['prefix' => '', 'namespace' => 'user'], function() {
     Route::get("new","UserController@New")->name("user.new");
     Route::get('cart','UserController@Cart')->name("user.cart");
     Route::get("payment","UserController@Payment")->name("user.payment");
+    Route::get("promotion","UserController@Promotion")->name("user.promotion");
     //Đăng Nhập
     Route::get('login','LoginController@getLogin')->name('getLogin');
     Route::post('login','LoginController@postLogin')->name('postLogin');
@@ -102,4 +103,6 @@ Route::group(["prefix" => "admin", "namespace" => "admin"], function() {
     //Đường dẫn đến trang mã giảm giá
     Route::resource('magiamgia',MaGiamGiaController::class);
     Route::get('magiamgia/{id}/delete','MaGiamGiaController@delete')->name('magiamgia.delete');
+    //
+    Route::resource('khuyenmai',KhuyenMaiController::class);
 });

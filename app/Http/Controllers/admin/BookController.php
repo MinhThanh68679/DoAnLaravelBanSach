@@ -31,7 +31,7 @@ class BookController extends Controller
      */
     public function create()
     {
-        $km = KhuyenMai::all();
+        $km = KhuyenMai::where('TrangThai',1)->get();
         $nhacc = NhaCungCap::all();
         return view('admin.pages.Book.create',['nhacc'=>$nhacc],['km'=>$km]);
     }
@@ -55,6 +55,7 @@ class BookController extends Controller
     public function store(Request $request)
     {
         $sach = new Sach;
+       // dd($request);dd($request);
         $this->validate($request, [
             'TenSach' => 'required',
             'AnhSach' => 'required',
@@ -71,19 +72,23 @@ class BookController extends Controller
             'TrangThai'=>'required',
 
         ]);
+        
         $sach->TenSach=$request->TenSach;
         $sach->AnhSach=$this->imageUpload($request);
         $sach->NhaXuatBan=$request->NhaXuatBan;
         $sach->IdNCC=$request->IdNCC;
         $sach->LoaiBia=$request->LoaiBia;
         $sach->SoTrang=$request->SoTrang;
-        $sach->NamXB=$request->NamXB;
+        
         $sach->GiaTien=$request->GiaTien;
         $sach->DichGia=$request->DichGia;
         $sach->NamXB=$request->NamXB;
         $sach->KichThuoc=$request->KichThuoc;
         $sach->MoTa=$request->MoTa;
+        if(empty($request->check)){
         $sach->IdKM=$request->IdKM;
+    }
+        
         $sach->TrangThai=$request->TrangThai;
         $sach->Xoa=0;
         if($sach->save())

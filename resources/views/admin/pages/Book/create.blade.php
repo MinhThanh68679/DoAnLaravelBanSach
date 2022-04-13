@@ -63,7 +63,12 @@
                         <option value="{{$kms->id}}">{{$kms->TenCTKM}}</option>
                   @endforeach
                     </select>
+                    <div class="col-lg-6">
+                  <input id="check" type="checkbox" class="check" name="check" >
+                  <label for="check"><span class="icon"></span> Không khuyến mãi</label>
+                </div>
                   </div>
+                 
                 </div>
                 <div class="row">
                   <div class="col-lg-6">

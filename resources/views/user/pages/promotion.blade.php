@@ -221,7 +221,11 @@
 															<a href="{{route('user.single',$books->id)}}" class="link-product-add-cart">Xem Ngay</a>
 														</div>
 													</div>
-													<span class="product-new-top">Mới</span>
+                                                    @if($books->GiaKM !=0)
+													<span class="product-new-top">-{{$books->KhuyenMai->ChietKhau}}%</span>
+                                                    @else
+                                                    <span class="product-new-top">Mới</span>
+                                                    @endif
 												</div>
 												<div class="item-info-product">
 													<div class="info-product-price">
@@ -231,7 +235,13 @@
 																	<a href="{{route('user.single',$books->id)}}">{{$books->TenSach}}</a>
 																</h4>
 																<div class="grid-price mt-2">
-																	<span class="money ">{{number_format($books->GiaTien,0,",",".")}} VNĐ</span>
+                                                                    @if($books->GiaKM !=0)
+                                                                <span class="money ">{{number_format($books->GiaKM,0,",",".")}} VNĐ</span>
+                                                                  
+																<del>	<span class="money ">{{number_format($books->GiaTien,0,",",".")}} VNĐ</span></del>
+                                                                @else
+                                                                <span class="money ">{{number_format($books->GiaTien,0,",",".")}} VNĐ</span>
+                                                                @endif
 																</div>
 															</div>
 															<ul class="stars">
@@ -270,14 +280,6 @@
 																<i class="fas fa-cart-plus"></i>
 															</button>								
 														</form>
-														</div>
-														<div class="googles single-item hvr-outline-out" style="">
-															<form>
-															{{ csrf_field() }}
-																<button type="button" class="googles-heart">
-																	<i class="fas fa-heart"></i>
-																</button>	
-															</form>
 														</div>
 														@endif
 													</div>

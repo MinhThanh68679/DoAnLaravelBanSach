@@ -35,23 +35,19 @@
 								<tbody>
 									<tr>
 										<td>Họ và tên:</td>
-										<td>Ngô Hoài Phong</td>
+										<td>{{$user->HoTen}}</td>
 									</tr>
 									<tr>
-										<td>Ngày sinh:</td>
-										<td>07-2000</td>
+										<td>Email:</td>
+										<td>{{$user->Email}}</td>
 									</tr>
 									<tr>
 										<td>Số điện thoại:</td>
-										<td>0933809731</td>
-									</tr>
-                                    <tr>
-										<td>Email:</td>
-										<td>ngophong030700@gmail.com</td>
+										<td>{{$user->SDT}}</td>
 									</tr>
 									<tr>
 										<td>Địa chỉ:</td>
-										<td>800 Nguyễn Văn Linh, Phường Tân Phú, Quận 7, TP HCM</td>
+										<td>{{$user->DiaChi}}</td>
 									</tr>
                   <tr>
                                         <td><button class="btn btn-success" style="font-size:90%" data-toggle="modal" data-target="#exampleEditModalCenter">CẬP NHẬT</button><td>

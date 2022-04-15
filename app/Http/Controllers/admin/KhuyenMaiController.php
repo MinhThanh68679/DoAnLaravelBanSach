@@ -98,6 +98,8 @@ class KhuyenMaiController extends Controller
     public function edit($id)
     {
         //
+        $khuyenmai= KhuyenMai::find($id);//Kho tên model      
+        return view('admin.pages.KhuyenMai.edit')->with('khuyenmai', $khuyenmai);
     }
 
     /**
@@ -110,6 +112,24 @@ class KhuyenMaiController extends Controller
     public function update(Request $request, $id)
     {
         //
+        $khuyenmai= KhuyenMai::find($id);
+        
+        $data=$request->validate([
+            'TenCTKM' => 'required',
+            'ThoiGianBD' => 'required',
+            'ThoiGianKT' => 'required',
+            'ChietKhau' => 'required',
+          
+        ]);    
+        
+        if($khuyenmai->update($data))
+        { 
+            Session::flash('message', 'cập nhật thành công!');
+        }
+        else
+            Session::flash('message', 'cập nhật thất bại!');
+            
+        return redirect()->route('khuyenmai.index');
     }
 
     /**
@@ -121,5 +141,12 @@ class KhuyenMaiController extends Controller
     public function destroy($id)
     {
         //
+    }
+    public function delete(Request $request, $id)
+    {
+        $khuyenmai = KhuyenMai::find($id);
+        $khuyenmai->Xoa = 1;
+        $khuyenmai->save();
+        return redirect()->back();
     }
 }

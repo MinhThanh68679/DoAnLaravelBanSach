@@ -31,7 +31,7 @@ class BookController extends Controller
      */
     public function create()
     {
-        $km = KhuyenMai::where('TrangThai',1)->get();
+        $km = KhuyenMai::where('TrangThai',1)->where('Xoa',0)->get();
         $nhacc = NhaCungCap::all();
         return view('admin.pages.Book.create',['nhacc'=>$nhacc],['km'=>$km]);
     }

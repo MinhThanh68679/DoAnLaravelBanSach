@@ -105,4 +105,5 @@ Route::group(["prefix" => "admin", "namespace" => "admin"], function() {
     Route::get('magiamgia/{id}/delete','MaGiamGiaController@delete')->name('magiamgia.delete');
     //
     Route::resource('khuyenmai',KhuyenMaiController::class);
+    Route::get('khuyenmai/{id}/delete','KhuyenMaiController@delete')->name('khuyenmai.delete');
 });

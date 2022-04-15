@@ -10,28 +10,27 @@
         <div class="row">
             <div class="col-md-12" style="margin-left: 80px; padding-right:70px">
                 <div class="col-12 col-xl-8 mb-4 mb-xl-0">
-                  <h3 class="font-weight-bold">THÊM KHUYẾN MÃI</h3>
+                  <h3 class="font-weight-bold">Sửa Khuyến Mãi</h3>
                 </div>
                 <div class="col-12" style="padding-top:10px;">
                     <ul class="breadcrumb" style="border: none">
                       <li><a href="{{route('dashboard.index')}}">Dashboard</a></li><li>/</li>
-                      <li><a href="{{route('khuyenmai.index')}}">Quản lý khuyến mãi</a></li><li>/</li>
-                      <li>Thêm khuyến mãi</li>
+                      <li><a href="{{route('kho.index')}}">Quản lý khuyến mãi</a></li>
+                      <li>Sửa khuyến mãi</li>
                     </ul>
                 </div>
             </div>
         </div>
         <div class="container">
             <!-- form start -->
-            @if($errors->any())
-  <h4>{{$errors->first()}}</h4><br>
-  @endif
-                <form action=" {{route('khuyenmai.store')}} " method="POST" enctype="multipart/form-data" onsubmit="return CheckInput();">
-                @csrf
-                <div class="row">
+                <form action=" {{ route('khuyenmai.update', $khuyenmai->id) }}" method="POST" enctype="multipart/form-data" onsubmit="return CheckInput();">
+                {{ csrf_field() }}
+    @csrf
+            @method('PUT')
+            <div class="row">
                   <div class="col-lg-6">
                     <label for="exampleInputTitle">Tên CT Khuyến Mãi</label>
-                    <input class="form-control" type="text" name="TenCTKM" id="TenCTKM" placeholder="Tên chương trình khuyến mãi">
+                    <input class="form-control" type="text" name="TenCTKM" id="TenCTKM" value="{{$khuyenmai->TenCTKM}}" placeholder="Tên chương trình khuyến mãi">
                   </div>
                  
                 </div>
@@ -39,7 +38,7 @@
                   <div class="col-lg-6">
                     <label for="exampleInputTopic">Thời Gian Bắt Đầu</label>
                     <div class="custom-file">
-                        <input type="date" class="form-control" name="ThoiGianBD" id="ThoiGianBD" placeholder="Thời gian bắt đầu" />
+                        <input type="date" class="form-control" name="ThoiGianBD" value="{{$khuyenmai->ThoiGianBD}}" id="ThoiGianBD" placeholder="Thời gian bắt đầu" />
                     </div>
                   </div>
                   
@@ -48,14 +47,14 @@
                 <div class="col-lg-6">
                     <label for="exampleInputTopic">Thời Gian Kết Thúc</label>
                     <div class="custom-file">
-                        <input type="date" class="form-control" name="ThoiGianKT" id="ThoiGianKT" placeholder="Thời gian kết thúc"/>
+                        <input type="date" class="form-control" name="ThoiGianKT" value="{{$khuyenmai->ThoiGianKT}}" id="ThoiGianKT" placeholder="Thời gian kết thúc"/>
                     </div>
                   </div>
                 </div>
                 <div class="row">
                   <div class="col-lg-6">
                     <label for="exampleInputTitle">Khuyến Mãi Theo Phần Trăm</label>
-                    <input class="form-control" type="text" name="ChietKhau" id="ChietKhau" placeholder="Nhập số % khuyến mãi">
+                    <input class="form-control" type="text" name="ChietKhau" id="ChietKhau" value="{{$khuyenmai->ChietKhau}}" placeholder="Nhập số % khuyến mãi">
                   </div>
                 </div>
                 <div class="row" style="float:right">

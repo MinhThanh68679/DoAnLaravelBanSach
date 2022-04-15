@@ -66,7 +66,7 @@ td, th {
 					</div>
 				</div>
 				<div class="col-md-7 address_form">
-					<div class="container-fluid" style="border:1px solid;">
+					<div class="container-fluid" style="border:1px solid; padding-bottom: 20px;">
 					<h4>Đơn hàng</h4>
 					<table class="timetable_sub">
 						<thead>
@@ -111,11 +111,24 @@ td, th {
 						</tbody>
 					</table>
 					</div>	
-					<div style="text-align:right; margin-top: 15px; font-size:90%; font-weight:bold; color: #888"> Tổng đơn hàng: 175.000<input style="width:110px; border:none; font-size:110%; text-align:right" id="order-total" readonly/></div>		
-					<div style="text-align:right; margin-top: 5px; font-size:90%; font-weight:bold; color: #888"> Phí giao hàng: 15,000 VNĐ</div>
-					<hr style="margin-top:10px; margin-bottom:-15px" />
-					<div style="text-align:right; margin-top: 20px; font-size:120%; font-weight:bold; color: #888"> Tổng cộng: 190.000VNĐ<input style="width:130px; border:none; color:red; text-align:right" id="total" readonly/></div>
-					<div class="container-fluid" style="border:1px solid; margin-top:15px;">	
+					<div class="all-total">
+						<div class="all-order">Tổng đơn hàng: <p>175.000 VNĐ</p></div>		
+						<div class="price-delivery">Phí giao hàng: <p>15,000 VNĐ</p> </div>
+						<div class="discout-payment">
+							<p>Nhập mã khuyến mãi: </p>
+							<div class="giamgiatien">
+								<!-- <p>@lang('lang.dis_code')</p> -->
+									<!-- <form method="POST" action="{{url('/check-coupon')}}" class="nhapma"> -->
+									@csrf
+										<input type="text" class="form-control coup" name="coupon" placeholder="nhập mã khuyến mãi">
+										<input type="submit" class="btn btn-default check_coupon giam" name="check_coupon" value="Tính mã giảm giá">
+									<!-- </form> -->
+							</div>
+						</div>
+					</div>
+					<hr style="margin-top:15px; margin-bottom:10px" />
+					<div class="all-total-price">Tổng cộng: <p>190.000 VNĐ</p></div>
+					<!-- <div class="container-fluid" style="border:1px solid; margin-top:15px;">	
 					<h4>Phương thức thanh toán</h4>
 						<div class="col-lg-12" style="display: flex; margin-bottom: 15px">
 							<div class="col-lg-4">
@@ -131,20 +144,20 @@ td, th {
 								<img src="{{asset('user/images/e-banking.jpg')}}" style="width:140px; height:90px" />
 							</div>
 						</div>
-					</div>
+					</div> -->
+					<!-- text-align:right; margin-top: 15px; font-size:90%; font-weight:bold; color: #888  
+				    style="text-align:right; margin-top: 5px; font-size:90%; font-weight:bold; color: #888"
+				<input style="width:110px; border:none; font-size:110%; text-align:right" id="order-total" readonly/>
+			<input style="width:130px; border:none; color:red; text-align:right" id="total" readonly/>-->
 					
 					<div class="checkout-right-basket">
 						<a id="payment" style="color:white; cursor:pointer">Đặt hàng </a>
 					</div>
 					
 				</div>
-
 				<div class="clearfix"> </div>
-
 			</div>
-
 		</div>
-
 	</div>
 </section>
 

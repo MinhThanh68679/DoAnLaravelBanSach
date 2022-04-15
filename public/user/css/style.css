@@ -2439,3 +2439,27 @@ div#search_ajax {
     position: absolute;
     top: 56px;
 }
+
+
+/* .container-fluid{
+    display: none;
+} */
+.all-total p, .all-total-price p{
+    font-family: serif;
+    font-size: 22px;
+    font-weight: 700;
+    color: #28a745;
+}
+.all-total ,.all-total-price{
+    font-family: serif;
+    font-size: 25px;
+    font-weight: 800;
+    color: #888;
+}
+.all-order, .price-delivery, .discout-payment, .all-total-price{
+    display: flex;
+    justify-content: space-between;
+}
+.giamgiatien{
+    display: flex;
+}

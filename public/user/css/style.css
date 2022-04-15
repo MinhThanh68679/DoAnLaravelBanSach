@@ -300,10 +300,18 @@ li.number-phone {
     position: relative;
 }
 
+ul.cart-inner-info{
+    display: flex;
+    justify-content: space-between;
+}
+.count{
+    padding: 5px 10px; 
+}
+
 ul.cart-inner-info li {
     display: inline-block;
     list-style: none;
-    margin-left: 2em;
+    margin-left: 1em;
 }
 
 .top-info ul li {
@@ -2462,4 +2470,12 @@ div#search_ajax {
 }
 .giamgiatien{
     display: flex;
+}
+button.googles-heart {
+    border: 1px solid #fff;
+    background: #fff;
+    padding-top: 5px;
+}
+.wishlist {
+    color: #000;
 }

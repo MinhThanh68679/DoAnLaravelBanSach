@@ -458,7 +458,7 @@ p.sbmincart-empty-text {
 .product-men:nth-child(7) .product-new-top {
 	background: #FFC107;
 	/* Safari */
-	-webkit-transform: rotate(-90deg);
+	-webkit-transform: rotate(0deg);
 	/* Firefox */
 	-moz-transform: rotate(-90deg);
 	/* IE */
@@ -472,7 +472,7 @@ p.sbmincart-empty-text {
 .product-men:nth-child(3) .product-new-top {
 	background: #219ff3;
 	/* Safari */
-	-webkit-transform: rotate(-90deg);
+	-webkit-transform: rotate(0deg);
 	/* Firefox */
 	-moz-transform: rotate(-90deg);
 	/* IE */
@@ -484,9 +484,9 @@ p.sbmincart-empty-text {
 .product-new-top {
     background: #F60B0E;
     color: #fff;
-    right: -18px;
+    right: -10px;
     position: absolute;
-    top: 10px;
+    top: -5px;
     width: 79px;
     font-size: 13px;
     height: 29px;
@@ -905,6 +905,11 @@ input.checked {
 .product_price h4 a {
 	color: #959596;
     font-size: 0.8em;
+	line-height: 25px;
+	-webkit-line-clamp: 2;
+    overflow: hidden;
+    display: -webkit-box !important;
+    -webkit-box-orient: vertical;
 }
 
 /*-- //customer --*/
@@ -960,8 +965,12 @@ span.item_price {
 
 .info-product-price del {
 	font-weight: 300;
-	margin-left: 13px;
+	/* margin-left: 13px; */
 	font-size: 15px;
+	color: #999999;
+}
+.info-product-price del span {
+    color: #999999;
 }
 
 .product-sec1.product-sec2 {
@@ -1657,6 +1666,9 @@ span.item_price {
 		top: 15.9%;
 		width: 294px;
 	}
+}
+.col-md-3.product-men.women_two.shop-gd {
+    margin-bottom: 15px;
 }
 
 /*-- //Responsive --*/

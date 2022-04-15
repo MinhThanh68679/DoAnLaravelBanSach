@@ -156,7 +156,7 @@
 									</div>
 									<div class="img-deal1">
 										<h3>Đừng Bao Giờ Đi Ăn Một Mình (Tái Bản)</h3>
-										<a href="{{ route('user.single')}}">73.700 VNĐ</a>
+										<a href="{{ route('user.single')}}">73.700 ₫</a>
 									</div>
 									<div class="clearfix"></div>
 								</div>
@@ -166,7 +166,7 @@
 									</div>
 									<div class="col-xs-8 img-deal1">
 										<h3>Đừng Để Mất Bò - 7 Bước Quản Lý Cửa Hàng Hiệu Quả Và Chống Thất Thoát</h3>
-										<a href="{{ route('user.single')}}">149.000 VNĐ</a>
+										<a href="{{ route('user.single')}}">149.000 ₫</a>
 									</div>
 									<div class="clearfix"></div>
 								</div>
@@ -176,7 +176,7 @@
 										</div>
 										<div class="col-xs-8 img-deal1">
 											<h3>How Money Works - Hiểu Hết Về Tiền</h3>
-											<a href="{{ route('user.single')}}">223.700 VNĐ</a>
+											<a href="{{ route('user.single')}}">223.700 ₫</a>
 										</div>
 										<div class="clearfix"></div>
 									</div>
@@ -186,7 +186,7 @@
 											</div>
 											<div class="col-xs-8 img-deal1">
 												<h3>Nghệ Thuật đầu tư Dhandho - The Dhandho</h3>
-												<a href="{{ route('user.single')}}">238.000 VNĐ</a>
+												<a href="{{ route('user.single')}}">238.000 ₫</a>
 											</div>
 											<div class="clearfix"></div>
 										</div>
@@ -231,7 +231,7 @@
 																	<a href="{{route('user.single',$books->id)}}">{{$books->TenSach}}</a>
 																</h4>
 																<div class="grid-price mt-2">
-																	<span class="money ">{{number_format($books->GiaTien,0,",",".")}} VNĐ</span>
+																	<span class="money ">{{number_format($books->GiaTien,0,",",".")}} ₫</span>
 																</div>
 															</div>
 															<ul class="stars">
@@ -275,7 +275,7 @@
 															<form>
 															{{ csrf_field() }}
 																<button type="button" class="googles-heart">
-																	<i class="fas fa-heart"></i>
+																   <a class="wishlist" href=""><i class="fas fa-heart"></i></a>	
 																</button>	
 															</form>
 														</div>

@@ -271,6 +271,14 @@
 															</button>								
 														</form>
 														</div>
+														<div class="googles single-item hvr-outline-out" style="">
+															<form>
+															{{ csrf_field() }}
+																<button type="button" class="googles-heart">
+																   <a class="wishlist" href=""><i class="fas fa-heart"></i></a>	
+																</button>	
+															</form>
+														</div>
 														@endif
 													</div>
 													<div class="clearfix"></div>

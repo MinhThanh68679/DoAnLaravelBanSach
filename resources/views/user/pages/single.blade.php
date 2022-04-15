@@ -85,7 +85,7 @@
 										</div>
 									</div>
 
-									<p><span class="item_price">149.000 VNĐ</span>
+									<p><span class="item_price">149.000 ₫</span>
 										<del>{{$books->GiaTien}}</del>
 									</p>
 									<div class="rating1">
@@ -310,7 +310,7 @@
 																		<a href="{{ route('user.single')}}">Phân Tích Chứng Khoán </a>
 																	</h4>
 																	<div class="grid-price mt-2">
-																		<span class="money ">325.00 VNĐ</span>
+																		<span class="money ">325.00 ₫</span>
 																	</div>
 																</div>
 																<ul class="stars">
@@ -384,7 +384,7 @@
 																		<a href="{{ route('user.single')}}">Đừng Để Mất Bò </a>
 																	</h4>
 																	<div class="grid-price mt-2">
-																		<span class="money ">425.00 VNĐ</span>
+																		<span class="money ">425.00 ₫</span>
 																	</div>
 																</div>
 																<ul class="stars">
@@ -458,7 +458,7 @@
 																		<a href="{{ route('user.single')}}">Cây Cam Ngọt Của Tôi </a>
 																	</h4>
 																	<div class="grid-price mt-2">
-																		<span class="money ">425.00 VNĐ</span>
+																		<span class="money ">425.00 ₫</span>
 																	</div>
 																</div>
 																<ul class="stars">
@@ -532,7 +532,7 @@
 																		<a href="{{ route('user.single')}}">Thần Thoại Hy Lạp </a>
 																	</h4>
 																	<div class="grid-price mt-2">
-																		<span class="money ">281.00 VNĐ</span>
+																		<span class="money ">281.00 ₫</span>
 																	</div>
 																</div>
 																<ul class="stars">
@@ -606,7 +606,7 @@
 																		<a href="{{ route('user.single')}}">10 Phút Tĩnh Tâm </a>
 																	</h4>
 																	<div class="grid-price mt-2">
-																		<span class="money ">525.00 VNĐ</span>
+																		<span class="money ">525.00 ₫</span>
 																	</div>
 																</div>
 																<ul class="stars">

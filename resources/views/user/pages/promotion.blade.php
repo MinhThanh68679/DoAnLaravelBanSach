@@ -236,11 +236,11 @@
 																</h4>
 																<div class="grid-price mt-2">
                                                                     @if($books->GiaKM !=0)
-                                                                <span class="money ">{{number_format($books->GiaKM,0,",",".")}} VNĐ</span>
+																<div class="price"><span class="money ">{{number_format($books->GiaKM,0,",",".")}} ₫</span></div>
                                                                   
-																<del>	<span class="money ">{{number_format($books->GiaTien,0,",",".")}} VNĐ</span></del>
+																<div class="rootprice"> <del>	<span class="money ">{{number_format($books->GiaTien,0,",",".")}} ₫</span></del></div>
                                                                 @else
-                                                                <span class="money ">{{number_format($books->GiaTien,0,",",".")}} VNĐ</span>
+                                                                <span class="money ">{{number_format($books->GiaTien,0,",",".")}} ₫</span>
                                                                 @endif
 																</div>
 															</div>
@@ -280,6 +280,14 @@
 																<i class="fas fa-cart-plus"></i>
 															</button>								
 														</form>
+														</div>
+														<div class="googles single-item hvr-outline-out" style="">
+															<form>
+															{{ csrf_field() }}
+																<button type="button" class="googles-heart">
+																   <a class="wishlist" href=""><i class="fas fa-heart"></i></a>	
+																</button>	
+															</form>
 														</div>
 														@endif
 													</div>

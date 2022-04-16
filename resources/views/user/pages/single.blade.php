@@ -234,7 +234,7 @@
 														<div class="bootstrap-tab-text-grid">
 															<div class="bootstrap-tab-text-grid-left">
 																<br>
-																<img src="{!! asset('user/images/bl.jpg')!!}" alt=" " class="img-fluid" style="width:100px; height:100px; object-fit:cover">
+																<img src="{{asset('image/'.$preview->TaiKhoan->AnhDaiDien)}}" alt=" " class="img-fluid" style="width:100px; height:100px; object-fit:cover">
 															</div>
 															<div class="bootstrap-tab-text-grid-right">
 																<ul>

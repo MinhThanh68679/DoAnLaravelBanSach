@@ -91,15 +91,15 @@
               </div>
               <div class="col-lg-12" style="margin-top:20px">
                 <label for="exampleInputTopic">Họ tên</label>
-                <input type="text" class="form-control" value="HoTen" name="HoTen" placeholder="Họ tên" >
+                <input type="text" class="form-control" value="{{$user->HoTen}}" name="HoTen" placeholder="Họ tên" >
               </div>
               <div class="col-lg-12" style="margin-top:20px">
                 <label for="exampleInputTopic">Số điện thoại</label>
-                <input type="text" class="form-control" value="SDT" name="SDT" placeholder="Số điện thoại" >
+                <input type="text" class="form-control" value="{{$user->SDT}}" name="SDT" placeholder="Số điện thoại" >
               </div>
               <div class="col-lg-12" style="margin-top:20px; margin-bottom:10px">
                 <label for="exampleInputTopic">Địa chỉ</label>
-                <input type="text" class="form-control" value="DiaChi" name="DiaChi" placeholder="Địa chỉ">
+                <input type="text" class="form-control" value="{{$user->DiaChi}}" name="DiaChi" placeholder="Địa chỉ">
               </div>
           </div>
       </div>

@@ -46,7 +46,7 @@ class UserController extends Controller
     }
 
     public function Shop(){
-        $sach=Sach::where('Xoa',0)->where('TrangThai',2)->paginate(12);
+        $sach=Sach::where('Xoa',0)->where('IdKM','=',NULL)->where('TrangThai',2)->paginate(12);
         $listcha=TheLoaiCha::where('Xoa',0)->get();
         foreach($listcha as $cha){
             $cha->listcon=TheLoai::where('Xoa',0)->where('TenTLCha',$cha->id)->get();
@@ -107,6 +107,14 @@ class UserController extends Controller
       
         $binhluan = BinhLuan::where('idSach',$id)->where('Duyet', 1)->where('TrangThai',1)->where('Xoa',0)->get();
         $sach = Sach::where('id',$id)->where('TrangThai',2)->where('Xoa',0)->get();
+        foreach($sach as $sach1){
+            if($sach1->IdKM!=null){
+                $sach1->GiaKM= $sach1->GiaTien-(($sach1->GiaTien/100)*$sach1->KhuyenMai->ChietKhau);
+             
+            }
+            else{
+             $sach1->GiaKM=0;
+            }}
         foreach($sach as $key=>$value){
              $meta_desc = $value->MoTa;
              $meta_title = $value->TenSach;

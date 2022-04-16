@@ -84,9 +84,12 @@
 										  @endif</span>
 										</div>
 									</div>
-
-									<p><span class="item_price">149.000 ₫</span>
-										<del>{{$books->GiaTien}}</del>
+									@if($books->GiaKM !=0)
+									<p><span class="item_price">{{number_format($books->GiaKM,0,",",".")}} ₫</span>
+										<del>{{number_format($books->GiaTien,0,",",".")}} ₫</del>
+										@else
+										<span class="item_price">{{number_format($books->GiaTien,0,",",".")}} ₫
+										@endif
 									</p>
 									<div class="rating1">
 										<ul class="stars">

@@ -179,6 +179,12 @@
 				<!--Cá nhân -->
 				<div class="col-md-3 text-right mt-lg-4">
         <ul class="cart-inner-info">
+            <!-- Yêu thích -->
+            <li>
+              <span class="wishlist"> <a href="" class="hover-nut"> <i class="fas fa-heart" aria-hidden="true"></i> </a> </span>
+					  	@if (session()->has('infoUser') != null)	@endif
+              <!-- <span class="count"></span> -->
+            </li>
 						<!-- Đăng nhập -->
 						<li class="dropdown">
 						@if (session()->has('infoUser') == null)
@@ -201,9 +207,10 @@
 						</div>
 						@endif
 						</li>
+
 						<!-- Giỏ hàng -->
             <li>
-								<span class="fas fa-cart-plus" aria-hidden="true" style="color: rgb(35, 175, 156)"></span><a href="{{route('user.cart')}}" class="hover-nut"> Giỏ Hàng </a>
+								<span class="fas fa-cart-plus" aria-hidden="true" style="color: rgb(35, 175, 156)"></span><a href="{{route('user.cart')}}" class="hover-nut"> Giỏ hàng </a>
 								@if (session()->has('infoUser') != null)	<span class="count"></span>@endif
 								
 							<!-- <form action="#" method="post" class="last">

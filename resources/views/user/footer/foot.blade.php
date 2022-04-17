@@ -426,4 +426,17 @@
                 });
 		}
 	</script>
+	<script>
+		function Favorite(e){
+                $.ajax({
+                    url: "{{ route('user.accountheart') }}",
+                    type:'POST',
+                    data: {IdSach: e, _token: '{{ csrf_token() }}' },
+                    success: function(data) {
+						toastr.success('Thêm sản phẩm yêu thích thành công');
+						setTimeout(function(){ 	location.reload(); }, 2000);
+                    }
+                });
+		}
+		</script>
 		

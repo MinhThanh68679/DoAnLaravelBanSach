@@ -64,6 +64,9 @@ Route::group(['prefix' => '', 'namespace' => 'user'], function() {
     //
     Route::get('/quan-ly-tai-khoan',"LoginController@index")->name("user.account");
     Route::post('/cap-nhat-thong-tin/{id}',"LoginController@updateinfomation")->name("user.updateinfomation");
+    //
+    Route::post('/them-sach-yeu-thich',"UserController@addfavoritebook")->name("user.accountheart");
+    Route::get('/yeuthich',"UserController@YeuThich")->name("user.wishlist");
     
 });
 

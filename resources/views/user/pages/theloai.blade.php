@@ -274,7 +274,7 @@
 														<div class="googles single-item hvr-outline-out" style="">
 															<form>
 															{{ csrf_field() }}
-																<button type="button" class="googles-heart">
+																<button type="button" class="googles-heart" onclick="Favorite({{ $books->id }})">
 																   <a class="wishlist" href=""><i class="fas fa-heart"></i></a>	
 																</button>	
 															</form>

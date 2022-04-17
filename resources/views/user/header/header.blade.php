@@ -181,7 +181,7 @@
         <ul class="cart-inner-info">
             <!-- Yêu thích -->
             <li>
-              <span class="wishlist"> <a href="" class="hover-nut"> <i class="fas fa-heart" aria-hidden="true"></i> </a> </span>
+              <span class="wishlist"> <a href="{{route('user.wishlist')}}" class="hover-nut"> <i class="fas fa-heart" aria-hidden="true"></i> </a> </span>
 					  	@if (session()->has('infoUser') != null)	@endif
               <!-- <span class="count"></span> -->
             </li>

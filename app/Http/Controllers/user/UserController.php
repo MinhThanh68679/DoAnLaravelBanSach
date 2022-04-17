@@ -10,6 +10,7 @@ use Carbon\Carbon;
 use App\Models\BinhLuan;
 use App\Models\TheLoai;
 use App\Models\TheLoaiCha;
+use App\Models\SanPhamYeuThich;
 use App\Models\Cart;
 use App\Models\Kho;
 use App\Models\User;
@@ -261,4 +262,30 @@ class UserController extends Controller
         return redirect()->back();
         //return dd($data);
     }
+    //
+    public function addfavoritebook(Request $request)
+    {
+        $sach = $request['IdSach'];
+        $check = SanPhamYeuThich::where([ ['IdSach', '=', $sach], ['IdKH', '=', $request->session()->get('infoUser')['id']] ])->first();
+        if($check == null){
+            $sach_yeu_thich=SanPhamYeuThich::create([
+                'IdSach'=>$sach,
+                'IdKH'=>$request->session()->get('infoUser')['id'],
+                'TrangThai'=>0
+            ]);
+            return response()->json('Đã thêm vào sách yêu thích!');
+        }           
+        return response()->json('Sách đã yêu thích');
+    }
+    public function YeuThich(Request $request)
+    {
+        $listcha=TheLoaiCha::where('Xoa',0)->get();
+        foreach($listcha as $cha){
+            $cha->listcon=TheLoai::where('Xoa',0)->where('TenTLCha',$cha->id)->get();
+            
+        }
+        $sach_yeu_thich = SanPhamYeuThich::where('IdKH', $request->session()->get('infoUser')['id'])->get();
+        return view($this->user."wishlist", ['sach_yeu_thich'=>$sach_yeu_thich],compact('listcha'));
+    }
+
 }

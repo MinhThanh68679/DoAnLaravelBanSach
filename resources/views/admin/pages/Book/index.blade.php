@@ -53,7 +53,7 @@
                     <td style="max-width: 180px; text-overflow: ellipsis; overflow: hidden">{{$sachs->DichGia}}</td>
                     <td>{{$sachs->GiaTien}}</td>
                     <td>@if($sachs->TrangThai == 1) {{"Tạm hết hàng"}}
-                    @elseif (($sachs->TrangThai == 0)) {{"Ngừng bán"}}
+                    @elseif ($sachs->TrangThai == 0) {{"Ngừng bán"}}
                     @else {{"Còn hàng"}}
                     @endif</td>
                     <td>

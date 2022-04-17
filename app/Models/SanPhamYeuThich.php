@@ -16,4 +16,7 @@ class SanPhamYeuThich extends Model
         'TrangThai',
 
     ];
+    public function Sach(){
+        return $this->belongsTo('App\Models\Sach', 'IdSach', 'id');
+    }
 }

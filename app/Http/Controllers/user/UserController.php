@@ -35,13 +35,14 @@ class UserController extends Controller
         $slideshow4=SlideShow::where('Xoa',0)->where('id',4)->get();
         $slideshow5=SlideShow::where('Xoa',0)->where('id',5)->get();
         
+        $sach_moi_nhat = Sach::where('Xoa', 0)->where('IdKM','=',NULL)->orderBy('created_at', 'desc')->where('TrangThai',2)->take(8)->get();
         $listcha=TheLoaiCha::where('Xoa',0)->get();
        foreach($listcha as $cha){
            $cha->listcon=TheLoai::where('Xoa',0)->where('TenTLCha',$cha->id)->get();
            
        }
 
-            return view($this->user."index",compact('slideshow','listcha','cha','slideshow2','slideshow3','slideshow4','slideshow5'));
+            return view($this->user."index",compact('slideshow','sach_moi_nhat','listcha','cha','slideshow2','slideshow3','slideshow4','slideshow5'));
 
     
     }
@@ -285,7 +286,26 @@ class UserController extends Controller
             
         }
         $sach_yeu_thich = SanPhamYeuThich::where('IdKH', $request->session()->get('infoUser')['id'])->get();
+        foreach($sach_yeu_thich as $sach1){
+       if($sach1->Sach->IdKM!=null){
+           $sach1->Sach->GiaKM= $sach1->Sach->GiaTien-(($sach1->Sach->GiaTien/100)*$sach1->Sach->KhuyenMai->ChietKhau);
+        
+       }
+       else{
+        $sach1->Sach->GiaKM=0;
+       }}
+    
+        
         return view($this->user."wishlist", ['sach_yeu_thich'=>$sach_yeu_thich],compact('listcha'));
     }
-
+    public function deletefavoritebook(Request $request)
+    {
+        $sach = $request['id'];
+        $sach_yt = SanPhamYeuThich::find($sach);
+        if($sach_yt != null){
+            $sach_yt->delete();
+        }
+        $sach_yeu_thich = SanPhamYeuThich::where('IdKH', $request->session()->get('infoUser')['id'])->get();         
+        return response()->json($sach_yeu_thich);
+    }
 }

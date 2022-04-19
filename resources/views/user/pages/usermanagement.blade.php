@@ -87,6 +87,7 @@
                 <label for="exampleInputTopic">Ảnh đại diện</label>
                 <div class="custom-file">
                     <input accept="image/*" title="" type="file" class="form-control" name="AnhDaiDien" id="AnhDaiDien" placeholder="Chọn ảnh" />
+                    <img width="15%" hight="10%" src="{{asset('image/'.$user->AnhDaiDien)}}" class="img-thumbnail" />
                </div>
               </div>
               <div class="col-lg-12" style="margin-top:20px">

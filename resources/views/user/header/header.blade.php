@@ -180,11 +180,13 @@
 				<div class="col-md-3 text-right mt-lg-4">
         <ul class="cart-inner-info">
             <!-- Yêu thích -->
+            @if (session()->has('infoUser') != null)
             <li>
               <span class="wishlist"> <a href="{{route('user.wishlist')}}" class="hover-nut"> <i class="fas fa-heart" aria-hidden="true"></i> </a> </span>
-					  	@if (session()->has('infoUser') != null)	@endif
+					  		
               <!-- <span class="count"></span> -->
             </li>
+            @endif
 						<!-- Đăng nhập -->
 						<li class="dropdown">
 						@if (session()->has('infoUser') == null)

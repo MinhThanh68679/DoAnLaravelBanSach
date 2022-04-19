@@ -438,5 +438,17 @@
                     }
                 });
 		}
+		function DeleteFavorite(e){
+			var tablefavorite = document.getElementById("favorite-book");
+                $.ajax({
+                    url: "{{ route('user.deleteheart') }}",
+                    type:'POST',
+                    data: {id: e, _token: '{{ csrf_token() }}' },
+                    success: function(data) {
+						toastr.success('Xoá sách thành công...!');
+						setTimeout(function(){ 	location.reload(); }, 2000);
+                    }
+                });
+		}
 		</script>
 		

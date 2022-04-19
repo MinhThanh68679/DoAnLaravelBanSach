@@ -67,6 +67,7 @@ Route::group(['prefix' => '', 'namespace' => 'user'], function() {
     //
     Route::post('/them-sach-yeu-thich',"UserController@addfavoritebook")->name("user.accountheart");
     Route::get('/yeuthich',"UserController@YeuThich")->name("user.wishlist");
+    Route::post('/xoa-sach-yeu-thich',"UserController@deletefavoritebook")->name("user.deleteheart");
     
 });
 

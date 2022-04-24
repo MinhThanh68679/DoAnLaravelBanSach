@@ -31,7 +31,7 @@ class LoginController extends Controller
                  ];
     
         if (Auth::attempt($login)) {
-            $infoUser=['id'=>Auth::User()->id,'Email'=>Auth::User()->Email,'HoTen'=>Auth::User()->HoTen];
+            $infoUser=['id'=>Auth::User()->id,'Email'=>Auth::User()->Email,'HoTen'=>Auth::User()->HoTen,'AnhDaiDien'=>Auth::User()->AnhDaiDien,'DiaChi'=>Auth::User()->DiaChi,'SDT'=>Auth::User()->SDT];
             $request->session()->put('infoUser',$infoUser);
             if(Auth::User()->LoaiTK=="0")
             { 
@@ -128,11 +128,9 @@ class LoginController extends Controller
             
             
         }
-        $request->session()->has('infoUser');
-        $IdTK = $request->session()->get('infoUser')['id'];
-        $user = User::where('id', '=',$IdTK)->first();
+       
         //return dd($user);
-        return view('user.pages.usermanagement', ['user'=>$user],compact('listcha'));
+        return view('user.pages.usermanagement', compact('listcha'));
         //
     }   
    
@@ -153,7 +151,11 @@ class LoginController extends Controller
         $tai_khoan->SDT=$request['SDT'];
         $tai_khoan->DiaChi=$request['DiaChi'];
         //$tai_khoan->Gioi_Tinh=$request['Gioi_Tinh'];
+        $newName=$tai_khoan->HoTen;
+
         $tai_khoan->save();
-        return redirect()->back();
+        $request->session()->forget('infoUser');
+        $request->session()->put('infoUser', $tai_khoan);
+        return redirect()->route('user.account');
     }
 }

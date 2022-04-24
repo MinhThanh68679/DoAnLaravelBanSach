@@ -21,13 +21,17 @@
 		<!--//banner -->
     <div class="container">
         <div class="row">
-        <!--/tabs-->				
+        <!--/tabs-->			
+        @if (session()->has('infoUser') != null)
+                <?php
+                            $user = session()->get('infoUser');
+                 ?>	
         <div class="responsive_tabs">
 								<h4 style="text-align:center;color: #828284;">QUẢN LÝ TÀI KHOẢN</h4>
                                 <hr width="100%">
 								<br>
                                 <div style="padding-bottom:10px; text-align:center">
-                                <img src="{{asset('image/'.$user->AnhDaiDien)}}" alt="" style="width:150px; height:150px; border-radius:50%">
+                                <img src="{{asset('image/'.$user['AnhDaiDien'])}}" alt="" style="width:150px; height:150px; border-radius:50%">
                                 </div>
                                 <br>
                                 <h6 style="font-weight:700; width:1100px; padding-bottom:10px">THÔNG TIN CÁ NHÂN</h6>
@@ -35,19 +39,19 @@
 								<tbody>
 									<tr>
 										<td>Họ và tên:</td>
-										<td>{{$user->HoTen}}</td>
+										<td>{{$user['HoTen']}}</td>
 									</tr>
 									<tr>
 										<td>Email:</td>
-										<td>{{$user->Email}}</td>
+										<td>{{$user['Email']}}</td>
 									</tr>
 									<tr>
 										<td>Số điện thoại:</td>
-										<td>{{$user->SDT}}</td>
+										<td>{{$user['SDT']}}</td>
 									</tr>
 									<tr>
 										<td>Địa chỉ:</td>
-										<td>{{$user->DiaChi}}</td>
+										<td>{{$user['DiaChi']}}</td>
 									</tr>
                   <tr>
                                         <td><button class="btn btn-success" style="font-size:90%" data-toggle="modal" data-target="#exampleEditModalCenter">CẬP NHẬT</button><td>
@@ -65,6 +69,7 @@
     
             </div>
         </div>
+        @endif
     </div>
     <div class="modal fade" id="exampleEditModalCenter" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
   <div class="modal-dialog modal-dialog-centered" role="document">
@@ -87,20 +92,20 @@
                 <label for="exampleInputTopic">Ảnh đại diện</label>
                 <div class="custom-file">
                     <input accept="image/*" title="" type="file" class="form-control" name="AnhDaiDien" id="AnhDaiDien" placeholder="Chọn ảnh" />
-                    <img width="15%" hight="10%" src="{{asset('image/'.$user->AnhDaiDien)}}" class="img-thumbnail" />
+                    <img width="15%" hight="10%" src="{{asset('image/'.$user['AnhDaiDien'])}}" class="img-thumbnail" />
                </div>
               </div>
               <div class="col-lg-12" style="margin-top:20px">
                 <label for="exampleInputTopic">Họ tên</label>
-                <input type="text" class="form-control" value="{{$user->HoTen}}" name="HoTen" placeholder="Họ tên" >
+                <input type="text" class="form-control" value="{{$user['HoTen']}}" name="HoTen" placeholder="Họ tên" >
               </div>
               <div class="col-lg-12" style="margin-top:20px">
                 <label for="exampleInputTopic">Số điện thoại</label>
-                <input type="text" class="form-control" value="{{$user->SDT}}" name="SDT" placeholder="Số điện thoại" >
+                <input type="text" class="form-control" value="{{$user['SDT']}}" name="SDT" placeholder="Số điện thoại" >
               </div>
               <div class="col-lg-12" style="margin-top:20px; margin-bottom:10px">
                 <label for="exampleInputTopic">Địa chỉ</label>
-                <input type="text" class="form-control" value="{{$user->DiaChi}}" name="DiaChi" placeholder="Địa chỉ">
+                <input type="text" class="form-control" value="{{$user['DiaChi']}}" name="DiaChi" placeholder="Địa chỉ">
               </div>
           </div>
       </div>
@@ -116,4 +121,5 @@
     <!--//tabs-->
         </div>
     </div>
+    
     @stop

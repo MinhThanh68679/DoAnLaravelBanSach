@@ -66,6 +66,10 @@
                     @endforeach
                     </select>
                   </div>
+                  <div class="col-lg-6">
+                  <input id="check" type="checkbox" class="check" name="check"  value="{{$sach->check}}">
+                  <label for="check"><span class="icon"></span> Không khuyến mãi</label>
+                </div>
                 </div>
                 <div class="row">
                   <div class="col-lg-6">

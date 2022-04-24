@@ -20,6 +20,9 @@ use Mail;
 use App\Mail\MailContact;
 use App\Mail\MailResponse;
 use Illuminate\Support\MessageBag;
+use Illuminate\Support\Facades\Auth;
+use App\Models\HoaDonBan;
+use App\Models\ChiTietHoaDonBan;
 class UserController extends Controller
 {
     //
@@ -308,4 +311,31 @@ class UserController extends Controller
         $sach_yeu_thich = SanPhamYeuThich::where('IdKH', $request->session()->get('infoUser')['id'])->get();         
         return response()->json($sach_yeu_thich);
     }
+    public function checkout(Request $request){
+        $hoadonban=new HoaDonBan();
+    
+    
+        $sach = Cart::where('Id_TK', $request->session()->get('infoUser')['id'])->get();
+        $mytime = Carbon::now();
+        // echo $mytime->toDateString();
+        $hoadonban->idKH=Auth::user()->id;
+        $hoadonban->NgayLap=$mytime->toDateString();
+        $hoadonban->DiaChiGH=Auth::user()->DiaChi;
+        $hoadonban->TongTien=$request->tongTien;
+        // dd($sach);
+        $hoadonban->save();
+        foreach($sach as $item){
+            $chitiethoadonban=new ChiTietHoaDonBan();
+            $sachInfo=Sach::find($item->Id_Sach);
+            $chitiethoadonban->IdSach=$item->Id_Sach;
+            $chitiethoadonban->IdHoaDB=$hoadonban->id;
+            $chitiethoadonban->SoLuong=$item->So_Luong;
+            $chitiethoadonban->GiaBan=$sachInfo->GiaTien;
+            $item->TrangThai=1;
+            $item->save();
+            $chitiethoadonban->save();
+        }
+        // dd($count);
+    }
+    
 }

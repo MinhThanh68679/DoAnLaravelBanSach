@@ -77,8 +77,9 @@
                 <i class="ti-settings text-primary"></i>
                 Cài đặt
               </a>
-              <a class="dropdown-item">
-                <i class="ti-power-off text-primary"></i>
+              <a class="dropdown-item" href="{{route('getLogout')}}">
+               
+              <i class="ti-power-off text-primary"></i>
                 Đăng xuất
               </a>
             </div>

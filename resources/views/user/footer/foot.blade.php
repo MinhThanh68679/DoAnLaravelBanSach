@@ -450,6 +450,65 @@
                     }
                 });
 		}
+		function InputCoupon(){
+			$('#coupon-error').attr('hidden', true);
+		}
+		function CheckDiscount(){
+			var code = $('#coupon').val();
+			var priceOriginal = parseInt($('#priceOriginal').val());
+			var feeship = parseInt($('#fee_ship').val());
+                $.ajax({
+                    url: "{{ route('user.check-discount') }}",
+                    type:'POST',
+                    data: {code: code, priceOriginal: priceOriginal, _token: '{{ csrf_token() }}' },
+                    success: function(data) {
+						if(data == false){//mã code sai
+						
+							$('#coupon-error').attr('hidden', false); //hiện thẻ thông báo mã code sai
+						}else{//mã code đúng
+							$('#div_num_discount').attr('hidden', false); //hiện thẻ số tiền giảm
+							$('#num_discount').html(formatVND(data));//hiện thẻ số tiền giảm
+							$('#total-money').html(formatVND(calculateMoney(data))); //tính toán lại tổng tiền (calculateMoney), fomart tiền (formatVND) 
+							disableCheckCoupon(); //không cho nhập tiếp. hiện nút hủy
+						}
+						
+						//$('#num_discount').value = data;
+                    }
+                });
+		}
+		function calculateMoney(coupon){
+			var priceOriginal = parseInt($('#priceOriginal').val()); //lấy giá gốc từ thẻ input ẩn
+			var feeship = parseInt($('#fee_ship').val()); //lấy ship từ thẻ input ẩn
+			var c = parseInt(coupon);
+			return priceOriginal - c + feeship;
+
+		}
+		function formatVND(money){ //hàm format tiền
+			var formatter = new Intl.NumberFormat('it-IT', {
+				style: 'currency',
+				currency: 'VND',
+
+				});
+
+		return formatter.format(money).replace('VND', 'VNĐ');
+		}
+		function disableCheckCoupon(){
+			$('#btn_check_coupon').attr('hidden', true);  //ẩn nút kiểm tra code
+			$('#coupon').attr('disabled', true);  //k cho nhập thẻ input code
+			$('#btn_remove_coupon').attr('hidden', false); //hiện nút hủy
+		}
+		function EnableCheckCoupon(){ //onClick của nut hủy
+			$('#btn_check_coupon').attr('hidden', false); // hiện nút kiểm tra code
+			$('#coupon').attr('disabled', false); // cho nhập thẻ input code
+			$('#btn_remove_coupon').attr('hidden', true); //ẩn nút hủy
+
+			var priceOriginal = parseInt($('#priceOriginal').val());
+			var feeship = parseInt($('#fee_ship').val()); //lấy ship từ thẻ input ẩn
+			$('#total-money').html(formatVND(priceOriginal + feeship)); //set lại giá gốc
+			$('#div_num_discount').attr('hidden', true); //ẩn thẻ số tiền giảm giá
+
+		}
+
 		</script>
 		
 		

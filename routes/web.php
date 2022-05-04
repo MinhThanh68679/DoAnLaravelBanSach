@@ -25,6 +25,8 @@ Route::get('/DangNhap', function () {
 Route::get('/NguoiDung', function () {
     return view('user/pages/usermanagement');
 });
+Route::get('logout','user/LoginController@getLogout')->name('getLogout');
+
 Route::group(['prefix' => '', 'namespace' => 'user'], function() {
     Route::get("/","UserController@Index")->name("user.index");
     Route::get("shop","UserController@Shop")->name("user.shop");
@@ -70,10 +72,12 @@ Route::group(['prefix' => '', 'namespace' => 'user'], function() {
     Route::get('/yeuthich',"UserController@YeuThich")->name("user.wishlist");
     Route::post('/xoa-sach-yeu-thich',"UserController@deletefavoritebook")->name("user.deleteheart");
 
+    Route::post('/discount',"CartController@CheckDiscount")->name("user.check-discount");
     
 });
 
 Route::group(["prefix" => "admin", "namespace" => "admin"], function() {
+    Route::get("/index", "DashboardController@index")->name("admin.dashboard");
     Route::resource('dashboard',DashboardController::class);
     //Đường dẫn đến trang sách
     Route::resource('sach',BookController::class);

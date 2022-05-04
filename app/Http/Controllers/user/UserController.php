@@ -327,6 +327,7 @@ class UserController extends Controller
         $hoadonban->NgayLap=$mytime->toDateString();
         $hoadonban->DiaChiGH=Auth::user()->DiaChi;
         $hoadonban->TongTien=$request->tongTien;
+        $hoadonban->TrangThai=1;
         // dd($sach);
         $hoadonban->save();
         foreach($sach as $item){

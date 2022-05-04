@@ -7,7 +7,8 @@ use Illuminate\Http\Request;
 use App\Models\Cart;
 use App\Models\User;
 use App\Models\TheLoai;
-
+use App\Models\MaGiamGia;
+use Carbon\Carbon;
 use session;
 class CartController extends Controller
 {
@@ -77,6 +78,31 @@ class CartController extends Controller
             };
             return 'Thất bại';
         }           
+    }
+
+    public function CheckDiscount(Request $request){
+        if($request->code){
+            if(MaGiamGia::where('Code', '=', $request->code)->exists()) {
+                
+               
+                $loaikm = MaGiamGia::where('Code', '=', $request->code)->value('LoaiKM');
+                $chietkhau = MaGiamGia::where('Code', '=', $request->code)->value('ChietKhau');
+                $ketqua = $chietkhau;
+                if($loaikm == 1){ //%
+                    $ketqua = ($request->priceOriginal/100) * $chietkhau;
+                }
+
+                $currentDate = Carbon::now('Asia/Ho_Chi_Minh')->format('Y-m-d');
+                $date1 = Carbon::createFromFormat ('Y-m-d', $currentDate);
+                $date2 = Carbon::createFromFormat ('Y-m-d', MaGiamGia::where('Code', '=', $request->code)->value('NgayKT'));
+            
+                if($date2->gte($date1) == false){
+                    return false;
+                }
+                  return $ketqua;
+
+            }else return false;
+        };
     }
     
 

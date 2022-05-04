@@ -33,13 +33,13 @@ class LoginController extends Controller
         if (Auth::attempt($login)) {
             $infoUser=['id'=>Auth::User()->id,'Email'=>Auth::User()->Email,'HoTen'=>Auth::User()->HoTen,'AnhDaiDien'=>Auth::User()->AnhDaiDien,'DiaChi'=>Auth::User()->DiaChi,'SDT'=>Auth::User()->SDT];
             $request->session()->put('infoUser',$infoUser);
-            if(Auth::User()->LoaiTK=="0")
+            if(Auth::User()->LoaiTK == 0)
             { 
             return redirect()->route('user.index')->with('message', 'Đăng nhập thành công');
             } 
             else
             {
-            return redirect('admin/dashboard')->with('message', 'Đăng nhập thành công');
+            return redirect()->route('admin.dashboard')->with('message', 'Đăng nhập thành công');
             }
         }
         else 

@@ -2464,7 +2464,7 @@ div#search_ajax {
     font-weight: 800;
     color: #888;
 }
-.all-order, .price-delivery, .discout-payment, .all-total-price{
+.all-order, .price-delivery, .discout-payment, .all-total-price, .price-discount{
     display: flex;
     justify-content: space-between;
 }

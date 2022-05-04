@@ -131,24 +131,28 @@ td, th {
                     <div class="all-total">
                         <div class="all-order">Tổng đơn hàng: <p>{{ number_format($tong_tien,0,",",".") }} VNĐ</p>
                         </div>
+                        <div class="price-discount" id="div_num_discount" hidden>Khuyến mãi: <p style="color:red" id="num_discount">15,000 VNĐ</p>
+                        </div>
                         <div class="price-delivery">Phí giao hàng: <p>15,000 VNĐ</p>
+                        <input id="fee_ship" hidden value="15000">
                         </div>
                         <div class="discout-payment">
                             <p>Nhập mã khuyến mãi: </p>
                             <div class="giamgiatien">
-                                <!-- <p>@lang('lang.dis_code')</p> -->
-                                <!-- <form method="POST" action="{{url('/check-coupon')}}" class="nhapma"> -->
-                                @csrf
-                                <input type="text" class="form-control coup" name="coupon"
+
+                                <input type="text" id="coupon" onkeyup="InputCoupon()" class="form-control coup" name="coupon"
                                     placeholder="nhập mã khuyến mãi">
-                                <input type="submit" class="btn btn-default check_coupon giam" name="check_coupon"
-                                    value="Tính mã giảm giá">
-                                <!-- </form> -->
+                                <button type="button" id="btn_check_coupon" onclick="CheckDiscount()" class="btn btn-success" name="check_coupon">
+                                    Tính mã giảm giá</button>
+                                    <button type="button" hidden id="btn_remove_coupon" onclick="EnableCheckCoupon()" class="btn btn-danger" name="remove_coupon">
+                                    Hủy</button>
                             </div>
                         </div>
+                        <p id="coupon-error" hidden style="color:red" >Mã khuyến mãi không hợp lệ</p>
                     </div>
                     <hr style="margin-top:15px; margin-bottom:10px" />
-                    <div class="all-total-price">Tổng cộng: <p>{{ number_format($tong_tien,0,",",".") }}</p>
+                    <div class="all-total-price">Tổng cộng: <p id="total-money">{{ number_format($tong_tien + 15000,0,",",".") }} VNĐ</p>
+                        <input hidden id="priceOriginal" value="{{$tong_tien}}"/>
                         <input type="text" value="{{ $tong_tien }}" hidden name="tongTien">
                     </div>
                     <!-- <div class="container-fluid" style="border:1px solid; margin-top:15px;">

@@ -34,6 +34,7 @@
 										<div class="clearfix"> </div>
 									</form>
 							</div>
+
 							<!-- price range -->
 							<div class="range">
 								<h3 class="agileits-sear-head">Giá khoảng</h3>
@@ -44,6 +45,9 @@
 										<input type="text" id="amount" style="border: 0; color: #ffffff; font-weight: normal;" />
 									</li>
 								</ul>
+								<div class="loc-price-button">
+									<button class="btn-search-price">Lọc</button>
+							    </div>
 							</div>
 							<!-- //price range -->
 							<!--preference -->

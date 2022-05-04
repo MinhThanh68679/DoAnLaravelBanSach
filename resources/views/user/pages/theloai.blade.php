@@ -44,10 +44,13 @@
 										<input type="text" id="amount" style="border: 0; color: #ffffff; font-weight: normal;" />
 									</li>
 								</ul>
+								<div class="loc-price-button">
+									<button class="btn-search-price">Lọc</button>
+							    </div>
 							</div>
 							<!-- //price range -->
 							<!--preference -->
-							<div class="left-side">
+							<!-- <div class="left-side">
 								<h3 class="agileits-sear-head">Ngôn ngữ</h3>
 								<ul>
 									<li>
@@ -64,10 +67,10 @@
 									</li>
 
 								</ul>
-							</div>
+							</div> -->
 							<!-- // preference -->
 							<!-- discounts -->
-							<div class="left-side">
+							<!-- <div class="left-side">
 								<h3 class="agileits-sear-head">Hình thức</h3>
 								<ul>
 									<li>
@@ -88,7 +91,7 @@
 									</li>
 			
 								</ul>
-							</div>
+							</div> -->
 							<!-- //discounts -->
 							<!-- reviews -->
 							<div class="customer-rev left-side">

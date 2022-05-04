@@ -175,12 +175,17 @@ class UserController extends Controller
             $cha->listcon=TheLoai::where('Xoa',0)->where('TenTLCha',$cha->id)->get();
             
         }
-        
+        if($request->session()->has('infoUser')){
         $sach = Cart::where('Id_TK', $request->session()->get('infoUser')['id'])->get();
         
         $tai_khoan = User::find($request->session()->get('infoUser')['id']);
         return view($this->user."payment",compact('listcha','tai_khoan','sach'));
-    }
+        }
+      else
+                {
+        $errors = new MessageBag(['error' => ["Bạn chưa đăng nhập. Vui lòng đăng nhập để xem trang thanh toán!"]]);
+        return view($this->user."error",compact('listcha'))->withErrors($errors);}
+     }
     public function New(){
         $listcha=TheLoaiCha::where('Xoa',0)->get();
         foreach($listcha as $cha){

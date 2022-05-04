@@ -149,7 +149,8 @@ class BookController extends Controller
             'KichThuoc'=>'required',
             'IdKM' => 'required',
             'TrangThai'=>'required',
-        ]);    
+        ]);  
+    
         if ($request->AnhSach == null) $imageName = $sach->AnhSach;
         else 
         $data['AnhSach']=$this->imageUpload($request);

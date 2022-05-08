@@ -125,13 +125,13 @@
     									</div>
   										</div>
 									<br>
-								
+									@if (session()->has('infoUser') != null)
 									
 									@foreach($kho as $khos)
 							
-
+										
 										<form action="" method="POST">
-									{{csrf_field()}}
+										{{csrf_field()}}
 										<label class="control-label">Số Lượng: </label>
 										<div class="form-group quantity-box" style="display: inline-flex;align-items: baseline;justify-content: space-evenly;">                                
 											<input class="form-control col-sm-3" id="So_Luong_SP" name="So_Luong" value="1" min="1" max="{{$khos->SoLuongTon}}" type="number" style="width:150px"> (Còn {{$khos->SoLuongTon}} sản phẩm)
@@ -154,9 +154,8 @@
 											</div>
 										</div>
 										<div class="fb-share-button" data-href="{{$url_canonical}}" data-layout="button_count" data-size="small"><a target="_blank" href="https://www.facebook.com/sharer/sharer.php?u={{$url_canonical}}" class="fb-xfbml-parse-ignore">Chia sẻ</a></div>										@endforeach
-									</form>
+									</form>@endif
 										<br>
-						
 										
 									
 								</div>

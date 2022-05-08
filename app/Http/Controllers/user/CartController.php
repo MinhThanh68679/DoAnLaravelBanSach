@@ -30,7 +30,8 @@ class CartController extends Controller
             $gio_hang = Cart::create([
                 'Id_Sach'=>$sach,
                 'Id_TK'=>$IdTK,
-                'So_Luong'=>$soluong
+                'So_Luong'=>$soluong,
+                'TrangThai'    =>1
             ]);
         }
         else

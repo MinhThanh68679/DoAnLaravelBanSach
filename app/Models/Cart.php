@@ -14,6 +14,7 @@ class Cart extends Model
         'Id_Sach',
         'Id_TK',
         'So_Luong',
+        'TrangThai',
     ];
     public function Sach(){
         return $this->belongsTo('App\Models\Sach', 'Id_Sach', 'id');

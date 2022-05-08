@@ -61,7 +61,7 @@ class UserController extends Controller
         $max_price = Sach::max('GiaTien');
         $min_price_range = Sach::min('GiaTien');
         $max_price_range = Sach::max('GiaTien');
-        if($request->start_price && $request->end_price){
+        if(isset($_GET['start_price']) && $_GET['end_price']){
             $min_price=$request->start_price;
             $max_price=$request->end_price;
             $sach=Sach::whereBetween('GiaTien',[$min_price,$max_price])->where('TrangThai',2)->orderBy('GiaTien',"ASC")->paginate(12);

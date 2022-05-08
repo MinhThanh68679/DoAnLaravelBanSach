@@ -32,7 +32,7 @@ class UserController extends Controller
         $this->user='user/pages/';
     }
     public function Index(){
-        $slideshow=SlideShow::where('Xoa',0)->where('id',1)->get();
+        $slideshow=SlideShow::where('Xoa',0)->where('id',6)->get();
         $slideshow2=SlideShow::where('Xoa',0)->where('id',2)->get();
         $slideshow3=SlideShow::where('Xoa',0)->where('id',3)->get();
         $slideshow4=SlideShow::where('Xoa',0)->where('id',4)->get();

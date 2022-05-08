@@ -2487,3 +2487,6 @@ button.googles-heart {
 .btn-search-price{
     padding: 5px 30px;
 }
+.carousel-caption{
+    display: none;
+}

@@ -213,6 +213,7 @@ td.invert-image a img {
 
 .checkout-right-basket a:hover {
 	background: #ff4e00;
+	color: #000;
 }
 
 .checkout-right-basket a span {

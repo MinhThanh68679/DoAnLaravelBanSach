@@ -35,19 +35,27 @@
 									</form>
 							</div>
 							<!-- price range -->
+							<form action="{{route('user.shop')}}" method= "get">
+								@csrf
 							<div class="range">
 								<h3 class="agileits-sear-head">Giá khoảng</h3>
 								<ul class="dropdown-menu6">
 									<li>
-
 										<div id="slider-range"></div>
 										<input type="text" id="amount" style="border: 0; color: #ffffff; font-weight: normal;" />
+										<input type="text" id="start_price" name="start_price" value = "{{$min_price}}" hidden />
+										<input type="text" id="end_price" name="end_price" value = "{{$max_price}}" hidden />
+										<input type="text" id="start_price_range" value = "{{$min_price_range}}" hidden />
+										<input type="text" id="end_price_range"  value = "{{$max_price_range}}" hidden />
+										
 									</li>
 								</ul>
 								<div class="loc-price-button">
-									<button class="btn-search-price">Lọc</button>
+									<input type="submit" value="Lọc" class="btn-search-price"/>
 							    </div>
+
 							</div>
+							</form>
 							
 							<!-- //price range -->
 							<!--preference -->
@@ -304,4 +312,17 @@
 			</div>
 		</section>
         @stop
-		
+		<script>
+			// function LocSanPham(){
+			// 	var e = $('#start_price').val();
+			// 	var end = $('#start_price').val();
+			// 	$.ajax({
+            //         url: "{{ route('user.shop') }}",
+            //         type:'GET',
+            //         data: {start_price: e,end_price: end, _token: '{{ csrf_token() }}' },
+            //         success: function(data) {
+						
+            //         }
+            //     });
+			// }
+		</script>

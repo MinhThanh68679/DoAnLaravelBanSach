@@ -104,13 +104,19 @@
 		<script>
 			//<![CDATA[ 
 			$(window).load(function () {
+				var max = $("#end_price").val();
+				var min = $("#start_price").val();
+				var max_range = $("#end_price_range").val();
+				var min_range = $("#start_price_range").val();
 				$("#slider-range").slider({
 					range: true,
 					min: 0,
-					max: 700000,
-					values: [0, 150000],
+					max: max_range,
+					values: [min, max],
 					slide: function (event, ui) {
 						$("#amount").val( ui.values[0] +"đ" + " - " + ui.values[1]+ "đ");
+						$("#start_price").val(ui.values[0]);
+						$("#end_price").val(ui.values[1]);
 					}
 				});
 				$("#amount").val( $("#slider-range").slider("values", 0)+"đ" + " - " + $("#slider-range").slider("values", 1)+"đ" );

@@ -107,7 +107,18 @@ class UserController extends Controller
         $cha->listcon=TheLoai::where('Xoa',0)->where('TenTLCha',$cha->id)->get();
         
     }
-     return view($this->user."theloai",compact('sach','listcha','sach1'));
+    $min_price = Sach::min('GiaTien');
+    $max_price = Sach::max('GiaTien');
+    $min_price_range = Sach::min('GiaTien');
+    $max_price_range = Sach::max('GiaTien');
+    if(isset($_GET['start_price']) && $_GET['end_price']){
+        $min_price=$request->start_price;
+        $max_price=$request->end_price;
+        $sach=Sach::whereBetween('GiaTien',[$min_price,$max_price])->where('TrangThai',2)->orderBy('GiaTien',"ASC")->paginate(12);
+       
+    }else $min_price = 0;
+
+     return view($this->user."theloai",compact('sach','listcha','sach1','min_price','max_price', 'min_price_range', 'max_price_range'));
     }
     public function Contact(){
         $listcha=TheLoaiCha::where('Xoa',0)->get();
@@ -186,10 +197,15 @@ class UserController extends Controller
             
         }
         if($request->session()->has('infoUser')){
-        $sach = Cart::where('Id_TK', $request->session()->get('infoUser')['id'])->get();
-        
+        $cart = Cart::where('Id_TK', $request->session()->get('infoUser')['id'])->get();
+        foreach($cart as $book){
+            $sach = Sach::find($book->Id_Sach);
+            $book->AnhSach = $sach->AnhSach;
+            $book->GiaTien = $sach->GiaTien;
+            $book->TenSach = $sach->TenSach;
+        }
         $tai_khoan = User::find($request->session()->get('infoUser')['id']);
-        return view($this->user."payment",compact('listcha','tai_khoan','sach'));
+        return view($this->user."payment",compact('listcha','tai_khoan','cart'));
         }
       else
                 {

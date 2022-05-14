@@ -73,6 +73,9 @@ Route::group(['prefix' => '', 'namespace' => 'user'], function() {
     Route::post('/xoa-sach-yeu-thich',"UserController@deletefavoritebook")->name("user.deleteheart");
 
     Route::post('/discount',"CartController@CheckDiscount")->name("user.check-discount");
+
+    Route::post('/thanh-toan',"CartController@payment")->name("user.thanhtoan");
+
     
 });
 

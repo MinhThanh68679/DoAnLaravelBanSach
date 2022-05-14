@@ -6,8 +6,10 @@ use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Models\Cart;
 use App\Models\User;
+use App\Models\Sach;
 use App\Models\TheLoai;
 use App\Models\MaGiamGia;
+use App\Models\TheLoaiCha;
 use Carbon\Carbon;
 use session;
 class CartController extends Controller
@@ -105,6 +107,26 @@ class CartController extends Controller
             }else return false;
         };
     }
-    
+    public function payment(Request $request)
+    {
+        $listcha=TheLoaiCha::where('Xoa',0)->get();
+        foreach($listcha as $cha){
+            $cha->listcon=TheLoai::where('Xoa',0)->where('TenTLCha',$cha->id)->get();
+            
+        }
+        //
+        $idsach = $request['id'];
+        $soluong = $request['So_Luong'];
+        $tai_khoan = $request->session()->get('infoUser')['id'];
+        if($idsach != null && $soluong != null)
+        {
+            $sach = Sach::where('id', $idsach)->get();          
+            foreach($sach as $book)
+            $book->So_Luong = $soluong;
+        }
+        
+        return View('user.pages.payment',compact('sach','listcha','tai_khoan'));
+    }
+
 
 }

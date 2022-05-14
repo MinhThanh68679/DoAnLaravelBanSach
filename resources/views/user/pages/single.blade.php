@@ -130,7 +130,7 @@
 									@foreach($kho as $khos)
 							
 										
-										<form action="" method="POST">
+										<form action="{{route('user.thanhtoan')}}" method="POST">
 										{{csrf_field()}}
 										<label class="control-label">Số Lượng: </label>
 										<div class="form-group quantity-box" style="display: inline-flex;align-items: baseline;justify-content: space-evenly;">                                

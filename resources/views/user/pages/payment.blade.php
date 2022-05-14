@@ -90,17 +90,18 @@ td, th {
                                 </thead>
                                 <tbody>
                                     <tr class="rem1">
+                                        <?php $stt = 1;?>
                                         @php
-                                        $tong_tien=0;
+                                        $tong_tien=0;                                     
                                         @endphp
-                                        @foreach ($sach as $book)
+                                        @foreach ($cart as $book)
                                         @php
-                                        $tong_tien+=$book->Sach->GiaTien * $book->So_Luong;
+                                        $tong_tien+=$book->GiaTien * $book->So_Luong;
                                         @endphp
-                                        <td class="invert ">1</td>
+                                        <td class="invert ">{{$stt}}</td>
                                         <td class="invert-image">
-                                            <a href="{{route('user.single',$book->Sach->id)}}">
-                                                <img src="{!! asset('image/'.$book->Sach->AnhSach)!!}" alt=" "
+                                            <a href="{{route('user.single',$book->id)}}">
+                                                <img src="{!! asset('image/'.$book->AnhSach)!!}" alt=" "
                                                     class="img-responsive">
                                             </a>
                                         </td>
@@ -115,14 +116,15 @@ td, th {
                                                 </div>
                                             </div>
                                         </td>
-                                        <td class="invert">{{$book->Sach->TenSach}} </td>
+                                        <td class="invert">{{$book->TenSach}} </td>
 
-                                        <td class="invert">{{number_format($book->Sach->GiaTien,0,",",".")}} VNĐ</td>
+                                        <td class="invert">{{number_format($book->GiaTien,0,",",".")}} VNĐ</td>
                                         <td class="invert">
-                                            {{ number_format($book->Sach->GiaTien * $book->So_Luong,0,",",".") }} VNĐ
+                                            {{ number_format($book->GiaTien * $book->So_Luong,0,",",".") }} VNĐ
                                         </td>
 
                                     </tr>
+                                    <?php $stt++; ?>
                                     @endforeach
 
                                 </tbody>

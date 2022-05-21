@@ -21,7 +21,7 @@ use App\Mail\MailContact;
 use App\Mail\MailResponse;
 use Illuminate\Support\MessageBag;
 use Illuminate\Support\Facades\Auth;
-use App\Models\HoaDonBan;
+
 use App\Models\ChiTietHoaDonBan;
 class UserController extends Controller
 {
@@ -37,17 +37,17 @@ class UserController extends Controller
         $slideshow3=SlideShow::where('Xoa',0)->where('id',3)->get();
         $slideshow4=SlideShow::where('Xoa',0)->where('id',4)->get();
         $slideshow5=SlideShow::where('Xoa',0)->where('id',5)->get();
-        
+
         $sach_moi_nhat = Sach::where('Xoa', 0)->where('IdKM','=',NULL)->orderBy('created_at', 'desc')->where('TrangThai',2)->take(8)->get();
         $listcha=TheLoaiCha::where('Xoa',0)->get();
        foreach($listcha as $cha){
            $cha->listcon=TheLoai::where('Xoa',0)->where('TenTLCha',$cha->id)->get();
-           
+
        }
 
             return view($this->user."index",compact('slideshow','sach_moi_nhat','listcha','cha','slideshow2','slideshow3','slideshow4','slideshow5'));
 
-    
+
     }
 
     public function Shop(Request $request){
@@ -55,7 +55,7 @@ class UserController extends Controller
         $listcha=TheLoaiCha::where('Xoa',0)->get();
         foreach($listcha as $cha){
             $cha->listcon=TheLoai::where('Xoa',0)->where('TenTLCha',$cha->id)->get();
-            
+
         }
         $min_price = Sach::min('GiaTien');
         $max_price = Sach::max('GiaTien');
@@ -65,7 +65,7 @@ class UserController extends Controller
             $min_price=$request->start_price;
             $max_price=$request->end_price;
             $sach=Sach::whereBetween('GiaTien',[$min_price,$max_price])->where('TrangThai',2)->orderBy('GiaTien',"ASC")->paginate(12);
-           
+
         }else $min_price = 0;
          return view($this->user."shop",compact('sach','listcha','min_price','max_price', 'min_price_range', 'max_price_range'));
     }
@@ -74,7 +74,7 @@ class UserController extends Controller
         foreach($sach as $sach1){
        if($sach1->IdKM!=null){
            $sach1->GiaKM= $sach1->GiaTien-(($sach1->GiaTien/100)*$sach1->KhuyenMai->ChietKhau);
-        
+
        }
        else{
         $sach1->GiaKM=0;
@@ -82,19 +82,19 @@ class UserController extends Controller
         $listcha=TheLoaiCha::where('Xoa',0)->get();
         foreach($listcha as $cha){
             $cha->listcon=TheLoai::where('Xoa',0)->where('TenTLCha',$cha->id)->get();
-            
+
         }
     }
 
         return view($this->user."promotion",compact('listcha','sach'));
     }
     public function TheLoai(){
-       
+
         $listcha=TheLoaiCha::where('Xoa',0)->get();
         $sach1=TheLoai::all();
         foreach($listcha as $cha){
             $cha->listcon=TheLoai::where('Xoa',0)->where('TenTLCha',$cha->id)->get();
-            
+
         }
         return view('user.header.menu',compact('sach','listcha','sach1'));
     }
@@ -105,7 +105,7 @@ class UserController extends Controller
     $sach1=TheLoai::all();
     foreach($listcha as $cha){
         $cha->listcon=TheLoai::where('Xoa',0)->where('TenTLCha',$cha->id)->get();
-        
+
     }
     $min_price = Sach::min('GiaTien');
     $max_price = Sach::max('GiaTien');
@@ -115,7 +115,7 @@ class UserController extends Controller
         $min_price=$request->start_price;
         $max_price=$request->end_price;
         $sach=Sach::whereBetween('GiaTien',[$min_price,$max_price])->where('TrangThai',2)->orderBy('GiaTien',"ASC")->paginate(12);
-       
+
     }else $min_price = 0;
 
      return view($this->user."theloai",compact('sach','listcha','sach1','min_price','max_price', 'min_price_range', 'max_price_range'));
@@ -124,19 +124,19 @@ class UserController extends Controller
         $listcha=TheLoaiCha::where('Xoa',0)->get();
         foreach($listcha as $cha){
             $cha->listcon=TheLoai::where('Xoa',0)->where('TenTLCha',$cha->id)->get();
-            
+
         }
-       
+
         return view($this->user."contact",compact('listcha'));
     }
     public function Single($id,Request $request){
-      
+
         $binhluan = BinhLuan::where('idSach',$id)->where('Duyet', 1)->where('TrangThai',1)->where('Xoa',0)->get();
         $sach = Sach::where('id',$id)->where('TrangThai',2)->where('Xoa',0)->get();
         foreach($sach as $sach1){
             if($sach1->IdKM!=null){
                 $sach1->GiaKM= $sach1->GiaTien-(($sach1->GiaTien/100)*$sach1->KhuyenMai->ChietKhau);
-             
+
             }
             else{
              $sach1->GiaKM=0;
@@ -152,32 +152,32 @@ class UserController extends Controller
         $listcha=TheLoaiCha::where('Xoa',0)->get();
         foreach($listcha as $cha){
             $cha->listcon=TheLoai::where('Xoa',0)->where('TenTLCha',$cha->id)->get();
-            
+
         }
-       
+
         return view($this->user."single", compact('sach','binhluan','kho','listcha','url_canonical','meta_desc','meta_title','share_images'));
     }
     public function About(){
         $listcha=TheLoaiCha::where('Xoa',0)->get();
         foreach($listcha as $cha){
             $cha->listcon=TheLoai::where('Xoa',0)->where('TenTLCha',$cha->id)->get();
-            
+
         }
-       
+
         return view($this->user."about",compact('listcha'));
     }
     public function Cart(Request $request){
-        
+
         $listcha=TheLoaiCha::where('Xoa',0)->get();
         foreach($listcha as $cha){
             $cha->listcon=TheLoai::where('Xoa',0)->where('TenTLCha',$cha->id)->get();
-            
+
         }
- 
+
         if($request->session()->has('infoUser')){
-            
+
             $IdTK = $request->session()->get('infoUser')['id'];
-            $gio_hang = Cart::where('Id_TK', '=',$IdTK)->get();
+            $gio_hang = Cart::where('Id_TK', '=',$IdTK)->where('TrangThai',1)->get();
             foreach($gio_hang as $sp){
                 $kho= Kho::where('IdSach','=',$sp->Id_Sach)->get();
                 $sp->SLMax=$kho[0]->SoLuongTon;           }
@@ -194,10 +194,10 @@ class UserController extends Controller
         $listcha=TheLoaiCha::where('Xoa',0)->get();
         foreach($listcha as $cha){
             $cha->listcon=TheLoai::where('Xoa',0)->where('TenTLCha',$cha->id)->get();
-            
+
         }
         if($request->session()->has('infoUser')){
-        $cart = Cart::where('Id_TK', $request->session()->get('infoUser')['id'])->get();
+        $cart = Cart::where('Id_TK', $request->session()->get('infoUser')['id'])->where('TrangThai',1)->get();
         foreach($cart as $book){
             $sach = Sach::find($book->Id_Sach);
             $book->AnhSach = $sach->AnhSach;
@@ -216,31 +216,31 @@ class UserController extends Controller
         $listcha=TheLoaiCha::where('Xoa',0)->get();
         foreach($listcha as $cha){
             $cha->listcon=TheLoai::where('Xoa',0)->where('TenTLCha',$cha->id)->get();
-            
+
         }
-        
+
         return view($this->user."news",compact('listcha'));
     }
     //Hàm Tìm Kiếm
     public function Search(Request $request)
-     {  
+     {
          $listcha=TheLoaiCha::where('Xoa',0)->get();
         foreach($listcha as $cha){
             $cha->listcon=TheLoai::where('Xoa',0)->where('TenTLCha',$cha->id)->get();
-            
+
         }
          $key=$request->keyword;
          $kq=Sach::where('TenSach','like','%'.$key.'%')->where('TrangThai',2)->where('Xoa',0)->get();
-        
-        
+
+
           return view($this->viewprefix."search",compact('kq','listcha'));
-            
-         
+
+
      }
      public function autocomplete_ajax(Request $request){
-        
+
         $data = $request->all();
-        
+
         if($data['query']){
 
             $product = Sach::where('TrangThai', 2)->where('TenSach','LIKE','%'.$data['query'].'%')->get();
@@ -281,7 +281,7 @@ class UserController extends Controller
         $binhluan->Xoa = 0;
         if($binhluan->save())
         {
-           return 'Đã gửi bình luận';  
+           return 'Đã gửi bình luận';
         }else return 'Có lỗi xảy ra';
     }
     public function mailcontact(Request $request)
@@ -292,8 +292,8 @@ class UserController extends Controller
             'content' => $request['Content'],
         ];
         Mail::to('kieunga406365@gmail.com')->send(new MailContact($data));
-        //password tài khoản: a@123456 
-        Mail::to($request['Email'])->send(new MailResponse());    
+        //password tài khoản: a@123456
+        Mail::to($request['Email'])->send(new MailResponse());
         return redirect()->back();
         //return dd($data);
     }
@@ -309,7 +309,7 @@ class UserController extends Controller
                 'TrangThai'=>0
             ]);
             return response()->json('Đã thêm vào sách yêu thích!');
-        }           
+        }
         return response()->json('Sách đã yêu thích');
     }
     public function YeuThich(Request $request)
@@ -317,19 +317,19 @@ class UserController extends Controller
         $listcha=TheLoaiCha::where('Xoa',0)->get();
         foreach($listcha as $cha){
             $cha->listcon=TheLoai::where('Xoa',0)->where('TenTLCha',$cha->id)->get();
-            
+
         }
         $sach_yeu_thich = SanPhamYeuThich::where('IdKH', $request->session()->get('infoUser')['id'])->get();
         foreach($sach_yeu_thich as $sach1){
        if($sach1->Sach->IdKM!=null){
            $sach1->Sach->GiaKM= $sach1->Sach->GiaTien-(($sach1->Sach->GiaTien/100)*$sach1->Sach->KhuyenMai->ChietKhau);
-        
+
        }
        else{
         $sach1->Sach->GiaKM=0;
        }}
-    
-        
+
+
         return view($this->user."wishlist", ['sach_yeu_thich'=>$sach_yeu_thich],compact('listcha'));
     }
     public function deletefavoritebook(Request $request)
@@ -339,35 +339,9 @@ class UserController extends Controller
         if($sach_yt != null){
             $sach_yt->delete();
         }
-        $sach_yeu_thich = SanPhamYeuThich::where('IdKH', $request->session()->get('infoUser')['id'])->get();         
+        $sach_yeu_thich = SanPhamYeuThich::where('IdKH', $request->session()->get('infoUser')['id'])->get();
         return response()->json($sach_yeu_thich);
     }
-    public function checkout(Request $request){
-        $hoadonban=new HoaDonBan();
-    
-    
-        $sach = Cart::where('Id_TK', $request->session()->get('infoUser')['id'])->get();
-        $mytime = Carbon::now();
-        // echo $mytime->toDateString();
-        $hoadonban->idKH=Auth::user()->id;
-        $hoadonban->NgayLap=$mytime->toDateString();
-        $hoadonban->DiaChiGH=Auth::user()->DiaChi;
-        $hoadonban->TongTien=$request->tongTien;
-        $hoadonban->TrangThai=1;
-        // dd($sach);
-        $hoadonban->save();
-        foreach($sach as $item){
-            $chitiethoadonban=new ChiTietHoaDonBan();
-            $sachInfo=Sach::find($item->Id_Sach);
-            $chitiethoadonban->IdSach=$item->Id_Sach;
-            $chitiethoadonban->IdHoaDB=$hoadonban->id;
-            $chitiethoadonban->SoLuong=$item->So_Luong;
-            $chitiethoadonban->GiaBan=$sachInfo->GiaTien;
-            $item->TrangThai=1;
-            $item->save();
-            $chitiethoadonban->save();
-        }
-        // dd($count);
-    }
-    
+
+
 }

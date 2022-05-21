@@ -46,7 +46,7 @@ class CartController extends Controller
         }
 
         // Lấy số lượng sp trong giỏ hàng
-        $g_hang = Cart::where('Id_TK', '=',$IdTK)->get();
+        $g_hang = Cart::where('Id_TK', '=',$IdTK)->where('TrangThai',1)->get();
         $s_luong = 0;
         if ($g_hang != null){
             foreach ($g_hang as $cart)

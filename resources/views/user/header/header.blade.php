@@ -19,7 +19,7 @@
     border-radius: 100%;
     border: 2px solid red;
 	background-color: red;
-	color: #000;
+	color: white;
 }
 
 #snackbar.show {

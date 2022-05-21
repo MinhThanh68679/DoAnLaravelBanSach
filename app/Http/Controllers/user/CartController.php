@@ -29,7 +29,7 @@ class CartController extends Controller
             $soluong = $request['So_Luong'];
         }
 
-        $check = Cart::where([ ['Id_Sach', '=', $sach], ['Id_TK', '=', $IdTK] ])->where('TrangThai',1)->first();
+        $check = Cart::where([ ['Id_Sach', '=', $sach], ['Id_TK', '=', $IdTK] ])->first();
 
         if($check == null){
             $gio_hang = Cart::create([
@@ -46,7 +46,7 @@ class CartController extends Controller
         }
 
         // Lấy số lượng sp trong giỏ hàng
-        $g_hang = Cart::where('Id_TK', '=',$IdTK)->where('TrangThai',1)->get();
+        $g_hang = Cart::where('Id_TK', '=',$IdTK)->get();
         $s_luong = 0;
         if ($g_hang != null){
             foreach ($g_hang as $cart)
@@ -125,12 +125,12 @@ class CartController extends Controller
         $tai_khoan = $request->session()->get('infoUser')['id'];
         if($idsach != null && $soluong != null)
         {
-            $cart = Sach::where('id', $idsach)->get();
-            foreach($cart as $book)
+            $sach = Sach::where('id', $idsach)->get();
+            foreach($sach as $book)
             $book->So_Luong = $soluong;
         }
 
-        return View('user.pages.payment',compact('cart','listcha','tai_khoan'));
+        return View('user.pages.payment',compact('sach','listcha','tai_khoan'));
     }
 
     public function checkout(Request $request){

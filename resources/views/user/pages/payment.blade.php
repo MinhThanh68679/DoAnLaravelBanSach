@@ -75,6 +75,7 @@ td, th {
                 <div class="col-md-7 address_form">
                     <div class="container-fluid" style="border:1px solid; padding-bottom: 20px;">
                         <form action="{{ route('user.checkout') }}" method="post">
+                            @csrf
                             <h4>Đơn hàng</h4>
                             <table class="timetable_sub">
                                 <thead>
@@ -92,7 +93,7 @@ td, th {
                                     <tr class="rem1">
                                         <?php $stt = 1;?>
                                         @php
-                                        $tong_tien=0;                                     
+                                        $tong_tien=0;
                                         @endphp
                                         @foreach ($cart as $book)
                                         @php
@@ -157,6 +158,18 @@ td, th {
                         <input hidden id="priceOriginal" value="{{$tong_tien}}"/>
                         <input type="text" value="{{ $tong_tien }}" hidden name="tongTien">
                     </div>
+                    <div class="form-check">
+                        <input class="form-check-input" type="radio" value="1" id="flexCheckDefault" name="menthodPay" checked>
+                        <label class="form-check-label" for="flexCheckDefault">
+                          COD
+                        </label>
+                      </div>
+                      <div class="form-check">
+                        <input class="form-check-input" type="radio" value="2" id="flexCheckChecked"  name="menthodPay">
+                        <label class="form-check-label" for="flexCheckChecked">
+                          VNPAY
+                        </label>
+                      </div>
                     <!-- <div class="container-fluid" style="border:1px solid; margin-top:15px;">
 					<h4>Phương thức thanh toán</h4>
 						<div class="col-lg-12" style="display: flex; margin-bottom: 15px">

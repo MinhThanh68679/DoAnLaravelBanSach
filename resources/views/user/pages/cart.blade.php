@@ -87,9 +87,7 @@
 								<input id="money-total" style="border: none; color: #f40017; text-align:right" readonly/>
 							</li>
 						</ul>
-						@if ($gio_hang->count()!=null)
 						<a id="btn-pay" href="{{ route('user.payment') }}" class="btn">THANH TOÁN</a>
-						@endif
 						<a href="{{ route('user.shop')}}" class="btn">TIẾP TỤC MUA SẮM</a>
 					</div>
 					<div class="clearfix"> </div>

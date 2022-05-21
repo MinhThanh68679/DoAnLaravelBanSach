@@ -137,7 +137,6 @@ class CartController extends Controller
         // dd('abc');
         $hoadonban=new HoaDonBan();
 
-
         $sach = Cart::where('Id_TK', $request->session()->get('infoUser')['id'])->get();
         $mytime = Carbon::now();
         // echo $mytime->toDateString();
@@ -148,9 +147,19 @@ class CartController extends Controller
         $hoadonban->TrangThai=1;
         // dd($sach);
         $hoadonban->save();
-        if ($request->menthodPay == 2) {
-            // $request->payment_status = 0;
-            // $request->save();
+        foreach($sach as $item){
+            $chitiethoadonban=new ChiTietHoaDonBan();
+            $sachInfo=Sach::find($item->Id_Sach);
+            $chitiethoadonban->IdSach=$item->Id_Sach;
+            $chitiethoadonban->IdHoaDB=$hoadonban->id;
+            $chitiethoadonban->SoLuong=$item->So_Luong;
+            $chitiethoadonban->GiaBan=$sachInfo->GiaTien;
+            $item->TrangThai=1;
+            $item->save();
+            $chitiethoadonban->save();
+        }
+        // dd($count);
+
 
             foreach($sach as $item){
                 $chitiethoadonban=new ChiTietHoaDonBan();
@@ -166,8 +175,7 @@ class CartController extends Controller
 
             $total = $hoadonban->TongTien; // chuyen sang tien vn
             return redirect("vnpay?total=$total");
-        }
-
+        
         foreach($sach as $item){
             $chitiethoadonban=new ChiTietHoaDonBan();
             $sachInfo=Sach::find($item->Id_Sach);

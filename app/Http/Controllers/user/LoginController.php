@@ -9,6 +9,8 @@ use App\Models\User;
 use App\Models\TheLoaiCha;
 use App\Models\TheLoai;
 use App\Classes\Helper;
+use App\Models\SlideShow;
+use App\Models\Sach;
 use session;
 class LoginController extends Controller
 {
@@ -88,7 +90,18 @@ class LoginController extends Controller
     {
         Auth::logout();
         $request->session()->forget('infoUser');
-        return view('Login.Login');
+        $slideshow=SlideShow::where('Xoa',0)->where('id',6)->get();
+        $slideshow2=SlideShow::where('Xoa',0)->where('id',2)->get();
+        $slideshow3=SlideShow::where('Xoa',0)->where('id',3)->get();
+        $slideshow4=SlideShow::where('Xoa',0)->where('id',4)->get();
+        $slideshow5=SlideShow::where('Xoa',0)->where('id',5)->get();
+        $sach_moi_nhat = Sach::where('Xoa', 0)->where('IdKM','=',NULL)->orderBy('created_at', 'desc')->where('TrangThai',2)->take(8)->get();
+        $listcha=TheLoaiCha::where('Xoa',0)->get();
+       foreach($listcha as $cha){
+           $cha->listcon=TheLoai::where('Xoa',0)->where('TenTLCha',$cha->id)->get();
+           
+       }
+        return view('user.pages.index',compact('slideshow','slideshow2','slideshow3','slideshow4','slideshow5','sach_moi_nhat','listcha'));
     }
    
     public function updateAccount(Request $request, $id)

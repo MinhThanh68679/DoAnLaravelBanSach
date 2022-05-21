@@ -36,7 +36,9 @@ Route::group(['prefix' => '', 'namespace' => 'user'], function() {
     Route::get("new","UserController@New")->name("user.new");
     Route::get('cart','UserController@Cart')->name("user.cart");
     Route::get("payment","UserController@Payment")->name("user.payment");
-    Route::post("checkout","UserController@checkout")->name("user.checkout");
+    Route::post("checkout","CartController@checkout")->name("user.checkout");
+    Route::get('vnpay', 'CartController@vnpay');
+
     Route::get("promotion","UserController@Promotion")->name("user.promotion");
     //Đăng Nhập
     Route::get('login','LoginController@getLogin')->name('getLogin');
@@ -76,7 +78,7 @@ Route::group(['prefix' => '', 'namespace' => 'user'], function() {
 
     Route::post('/thanh-toan',"CartController@payment")->name("user.thanhtoan");
 
-    
+
 });
 
 Route::group(["prefix" => "admin", "namespace" => "admin"], function() {

@@ -53,7 +53,7 @@
 			open = false;
 		});
 	</script>
-	>
+
 	<!--quantity-->
 	<script>
 		$('.value-plus').on('click', function () {
@@ -102,7 +102,7 @@
 	<!-- price range (top products) -->
 	<script src="{!! asset('user/js/jquery-ui.js') !!}"></script>
 		<script>
-			//<![CDATA[ 
+			//<![CDATA[
 			$(window).load(function () {
 				var max = $("#end_price").val();
 				var min = $("#start_price").val();
@@ -164,7 +164,7 @@
 		<script>
 			$(document).ready(function () {
 				$('#horizontalTab').easyResponsiveTabs({
-					type: 'default', //Types: default, vertical, accordion           
+					type: 'default', //Types: default, vertical, accordion
 					width: 'auto', //auto or any width like 600px
 					fit: true, // 100% fit in a container
 					closed: 'accordion', // Start closed if in accordion view
@@ -231,7 +231,7 @@
             							  containerID: 'toTop', // fading element id
             							containerHoverID: 'toTopHover', // fading element hover id
             							scrollSpeed: 1200,
-            							easingType: 'linear' 
+            							easingType: 'linear'
             						 };
             						*/
 
@@ -307,7 +307,7 @@
 </script>
 <script>
 			function saveSearch(){
-				$('#form-search').submit();				
+				$('#form-search').submit();
 			}
 </script>
 <script type="text/javascript">
@@ -323,20 +323,20 @@
               method:"POST",
               data:{query:query, _token:_token},
               success:function(data){
-               $('#search_ajax').fadeIn();  
+               $('#search_ajax').fadeIn();
                 $('#search_ajax').html(data);
               }
              });
 
             }else{
-                $('#search_ajax').fadeOut();  
+                $('#search_ajax').fadeOut();
             }
     });
 
-    $(document).on('click', '.li_search_ajax', function(){  
-        $('#keywords').val($(this).text());  
-        $('#search_ajax').fadeOut();  
-    }); 
+    $(document).on('click', '.li_search_ajax', function(){
+        $('#keywords').val($(this).text());
+        $('#search_ajax').fadeOut();
+    });
 </script>
 <script>
         $("#submitBinhLuan").click(function(){
@@ -351,7 +351,7 @@
                     "NoiDung":$("#inputcontent").val(),
                     "TrangThai":$("#inputtrangthai").val(),
                     },
-             }).done(function(reponse){	
+             }).done(function(reponse){
 				$("#inputcontent").val('');
 				document.getElementById('duyetbinhluan').hidden = false;
                 alertify.success(reponse);
@@ -361,7 +361,7 @@
 	<script>
 		function AddCart(e){
 			var soluong = $('#So_Luong_SP').val();
-			
+
 			if(soluong != null){
 				var num = soluong;
 			}
@@ -380,12 +380,12 @@
                 });
 		}
 	</script>
-	
+
 
 <script>
-	
+
 	function UpdateCart(id, slmax){
-			
+
 			var soluong = $('#So_Luong' + id).val();
 			if(soluong > 0 && soluong <= 50){
 				var num = soluong;
@@ -398,7 +398,7 @@
 						//$(".count").html(data);
 						toastr.success('Cập nhật thành công');
 						setTimeout(function(){ 	location.reload(); }, 2000);
-					
+
 						//aletify.success(data);
                     }
                 });
@@ -411,11 +411,11 @@
 			} else if(soluong==0){
             toastr.warning('Số lượng không được nhỏ hơn 0');
            }
-                
+
 		}
 		function DeleteCart(id){
-			
-			
+
+
                 $.ajax({
                     url: "{{ route('account.cartdelete') }}",
                     type:'DELETE',
@@ -425,8 +425,8 @@
 						//$(".count").html(data);
 						toastr.success('Xoá sản phẩm thành công');
 						setTimeout(function(){ 	location.reload(); }, 2000);
-					
-					
+
+
 						//aletify.success(data);
                     }
                 });
@@ -469,15 +469,15 @@
                     data: {code: code, priceOriginal: priceOriginal, _token: '{{ csrf_token() }}' },
                     success: function(data) {
 						if(data == false){//mã code sai
-						
+
 							$('#coupon-error').attr('hidden', false); //hiện thẻ thông báo mã code sai
 						}else{//mã code đúng
 							$('#div_num_discount').attr('hidden', false); //hiện thẻ số tiền giảm
 							$('#num_discount').html(formatVND(data));//hiện thẻ số tiền giảm
-							$('#total-money').html(formatVND(calculateMoney(data))); //tính toán lại tổng tiền (calculateMoney), fomart tiền (formatVND) 
+							$('#total-money').html(formatVND(calculateMoney(data))); //tính toán lại tổng tiền (calculateMoney), fomart tiền (formatVND)
 							disableCheckCoupon(); //không cho nhập tiếp. hiện nút hủy
 						}
-						
+
 						//$('#num_discount').value = data;
                     }
                 });
@@ -516,5 +516,5 @@
 		}
 
 		</script>
-		
-		
+
+

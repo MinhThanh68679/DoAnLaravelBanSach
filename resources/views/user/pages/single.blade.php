@@ -139,7 +139,7 @@
 											
 										</div>
 										<br>
-							
+										<input type="hidden" name="MuaNgay" value="true"/>
 										<div class="occasion-cart" style="display: inline-flex; padding-top:15px">
 											<div class="googles single-item singlepage">
 												<button type="submit" class="link-product-add-cart">

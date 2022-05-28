@@ -242,7 +242,7 @@
 																	<a href="{{route('user.single',$books->id)}}">{{$books['TenSach']}}</a>
 																</h4>
 																<div class="grid-price mt-2">
-																	<span class="money ">{{number_format($books['GiaTien'],0,",",".")}} VNĐ</span>
+																	<span class="money ">{{number_format($books['GiaTien'],0,",",".")}} ₫</span>
 																</div>
 															</div>
 															<ul class="stars">

@@ -63,8 +63,8 @@
 								</td>
 								<td class="invert">{{$cart->Sach->TenSach}} </td>
 
-								<td class="invert">{{number_format($cart->Sach->GiaTien,0,",",".")}} VNĐ</td>
-								<td class="invert">{{ number_format($cart->Sach->GiaTien * $cart->So_Luong,0,",",".") }} VNĐ</td>
+								<td class="invert">{{number_format($cart->Sach->GiaTien,0,",",".")}} ₫</td>
+								<td class="invert">{{ number_format($cart->Sach->GiaTien * $cart->So_Luong,0,",",".") }} ₫</td>
 								<td class="invert">
 								<button class="cart-hover" type="submit"  onclick="UpdateCart({{$cart->id}}, {{$cart->SLMax}})" style="background:white; border:none; cursor:pointer"><i class="fas fa-sync-alt" style="font-size:15px"></i></button> &nbsp;
 

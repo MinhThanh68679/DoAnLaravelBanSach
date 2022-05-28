@@ -30,6 +30,9 @@
 				<div class="foot-lnk">
 					<a href="#forgot">Quên mật khẩu?</a>
 				</div>
+				<div class="foot-lnk" style="margin-top:25px">
+					<a href="/" style="color:white;"><i class="fas fa-home"></i> Trang chủ</a>
+				</div>
 		</form>
 			</div>
 		<form class="sign-up-htm" action="{{ route('getregister') }}" method="post">

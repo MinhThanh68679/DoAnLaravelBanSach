@@ -10,6 +10,7 @@ use App\Models\Sach;
 use App\Models\TheLoai;
 use App\Models\MaGiamGia;
 use App\Models\TheLoaiCha;
+use App\Models\Kho;
 use Carbon\Carbon;
 use session;
 use App\Models\HoaDonBan;
@@ -29,7 +30,7 @@ class CartController extends Controller
             $soluong = $request['So_Luong'];
         }
 
-        $check = Cart::where([ ['Id_Sach', '=', $sach], ['Id_TK', '=', $IdTK] ])->first();
+        $check = Cart::where([ ['Id_Sach', '=', $sach], ['Id_TK', '=', $IdTK] ])->where('TrangThai',1)->first();
 
         if($check == null){
             $gio_hang = Cart::create([
@@ -51,7 +52,17 @@ class CartController extends Controller
         if ($g_hang != null){
             foreach ($g_hang as $cart)
             {
+              
                 $s_luong = $s_luong + $cart->So_Luong;
+            //     if($cart->TrangThai==0){
+            //         $cart->TrangThai=1;
+            //         $cart->So_luong=$soluong;
+            //         $cart->save();
+            //     }
+            //    else{
+            //     $cart->So_luong=$s_luong;
+            //     $cart->save();
+              // }
             }
         }
         return response()->json($s_luong);
@@ -112,6 +123,10 @@ class CartController extends Controller
     }
     public function payment(Request $request)
     {
+        $MuaNgay='false';
+        if($request->MuaNgay=='true'){
+        $MuaNgay='true';
+        }
         $listcha=TheLoaiCha::where('Xoa',0)->get();
         foreach($listcha as $cha){
             $cha->listcon=TheLoai::where('Xoa',0)->where('TenTLCha',$cha->id)->get();
@@ -125,18 +140,18 @@ class CartController extends Controller
         $tai_khoan = $request->session()->get('infoUser')['id'];
         if($idsach != null && $soluong != null)
         {
-            $sach = Sach::where('id', $idsach)->get();
-            foreach($sach as $book)
+            $cart = Sach::where('id', $idsach)->get();
+            foreach($cart as $book)
             $book->So_Luong = $soluong;
         }
-
-        return View('user.pages.payment',compact('sach','listcha','tai_khoan'));
+    
+        return View('user.pages.payment',compact('cart','MuaNgay','listcha','tai_khoan'));
     }
 
     public function checkout(Request $request){
         // dd('abc');
         $hoadonban=new HoaDonBan();
-
+    
         $sach = Cart::where('Id_TK', $request->session()->get('infoUser')['id'])->get();
         $mytime = Carbon::now();
         // echo $mytime->toDateString();
@@ -147,20 +162,68 @@ class CartController extends Controller
         $hoadonban->TrangThai=1;
         // dd($sach);
         $hoadonban->save();
-        foreach($sach as $item){
-            $chitiethoadonban=new ChiTietHoaDonBan();
-            $sachInfo=Sach::find($item->Id_Sach);
-            $chitiethoadonban->IdSach=$item->Id_Sach;
-            $chitiethoadonban->IdHoaDB=$hoadonban->id;
-            $chitiethoadonban->SoLuong=$item->So_Luong;
-            $chitiethoadonban->GiaBan=$sachInfo->GiaTien;
-            $item->TrangThai=1;
-            $item->save();
-            $chitiethoadonban->save();
-        }
+        if($request->menthodPay==1){
+            if($request->MuaNgay=='true'){
+               
+                $chitiethoadonban=new ChiTietHoaDonBan();
+                $sachInfo=Sach::find($request->idsach);
+                $chitiethoadonban->IdSach=$request->idsach;
+                $chitiethoadonban->IdHoaDB=$hoadonban->id;
+                $chitiethoadonban->SoLuong=$request->soluong;
+                $chitiethoadonban->GiaBan=$sachInfo->GiaTien;
+                $kho=Kho::where('IdSach',$request->idsach)->get();
+               foreach($kho as $sanpham){
+                   $sanpham->SoLuongTon=$sanpham->SoLuongTon-$request->soluong;
+                   $sanpham->save();
+               }
+    
+                $chitiethoadonban->save();
+                
+            }
+            else{
+                foreach($sach as $item){
+                    $chitiethoadonban=new ChiTietHoaDonBan();
+                    $sachInfo=Sach::find($item->Id_Sach);
+                    $chitiethoadonban->IdSach=$item->Id_Sach;
+                    $chitiethoadonban->IdHoaDB=$hoadonban->id;
+                    $chitiethoadonban->SoLuong=$item->So_Luong;
+                    $chitiethoadonban->GiaBan=$sachInfo->GiaTien;
+                    $item->TrangThai=0;
+                    $kho=Kho::where('IdSach',$item->Id_Sach)->get();
+                   foreach($kho as $sanpham){
+                       $sanpham->SoLuongTon=$sanpham->SoLuongTon-$item->So_Luong;
+                       $sanpham->save();
+                   }
+        
+                    $item->save();
+                    $chitiethoadonban->save();
+                    
+                }
+            }
+        
+        return redirect("/");
+    }
+    else{
         // dd($count);
 
+        if($request->MuaNgay=='true'){
+               
+            $chitiethoadonban=new ChiTietHoaDonBan();
+            $sachInfo=Sach::find($request->idsach);
+            $chitiethoadonban->IdSach=$request->idsach;
+            $chitiethoadonban->IdHoaDB=$hoadonban->id;
+            $chitiethoadonban->SoLuong=$request->soluong;
+            $chitiethoadonban->GiaBan=$sachInfo->GiaTien;
+            $kho=Kho::where('IdSach',$request->idsach)->get();
+           foreach($kho as $sanpham){
+               $sanpham->SoLuongTon=$sanpham->SoLuongTon-$request->soluong;
+               $sanpham->save();
+           }
 
+            $chitiethoadonban->save();
+            
+        }
+        else{
             foreach($sach as $item){
                 $chitiethoadonban=new ChiTietHoaDonBan();
                 $sachInfo=Sach::find($item->Id_Sach);
@@ -169,24 +232,32 @@ class CartController extends Controller
                 $chitiethoadonban->SoLuong=$item->So_Luong;
                 $chitiethoadonban->GiaBan=$sachInfo->GiaTien;
                 $item->TrangThai=0;
+                $kho=Kho::where('IdSach',$item->Id_Sach)->get();
+               foreach($kho as $sanpham){
+                   $sanpham->SoLuongTon=$sanpham->SoLuongTon-$item->So_Luong;
+                   $sanpham->save();
+               }
+    
                 $item->save();
                 $chitiethoadonban->save();
+                
             }
+        }
 
             $total = $hoadonban->TongTien; // chuyen sang tien vn
             return redirect("vnpay?total=$total");
-        
-        foreach($sach as $item){
-            $chitiethoadonban=new ChiTietHoaDonBan();
-            $sachInfo=Sach::find($item->Id_Sach);
-            $chitiethoadonban->IdSach=$item->Id_Sach;
-            $chitiethoadonban->IdHoaDB=$hoadonban->id;
-            $chitiethoadonban->SoLuong=$item->So_Luong;
-            $chitiethoadonban->GiaBan=$sachInfo->GiaTien;
-            $item->TrangThai=0;
-            $item->save();
-            $chitiethoadonban->save();
-        }
+    }
+        // foreach($sach as $item){
+        //     $chitiethoadonban=new ChiTietHoaDonBan();
+        //     $sachInfo=Sach::find($item->Id_Sach);
+        //     $chitiethoadonban->IdSach=$item->Id_Sach;
+        //     $chitiethoadonban->IdHoaDB=$hoadonban->id;
+        //     $chitiethoadonban->SoLuong=$item->So_Luong;
+        //     $chitiethoadonban->GiaBan=$sachInfo->GiaTien;
+        //     $item->TrangThai=0;
+        //     $item->save();
+        //     $chitiethoadonban->save();
+        // }
         // dd($count);
     }
 

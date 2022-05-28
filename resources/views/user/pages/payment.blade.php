@@ -111,17 +111,18 @@ td, th {
                                                 <div class="quantity-select">
 
                                                     <div class="entry value">
-                                                        <span>{{$book->So_Luong}}</span>
+                                                        <span >{{$book->So_Luong}}</span>
                                                     </div>
 
                                                 </div>
                                             </div>
                                         </td>
                                         <td class="invert">{{$book->TenSach}} </td>
-
-                                        <td class="invert">{{number_format($book->GiaTien,0,",",".")}} VNĐ</td>
+                                        <input type="text" hidden value="{{$book->id}}" name="idsach"/>
+                                        <input type="text" hidden value="{{$book->So_Luong}}" name="soluong"/>
+                                        <td class="invert">{{number_format($book->GiaTien,0,",",".")}} ₫</td>
                                         <td class="invert">
-                                            {{ number_format($book->GiaTien * $book->So_Luong,0,",",".") }} VNĐ
+                                            {{ number_format($book->GiaTien * $book->So_Luong,0,",",".") }} ₫
                                         </td>
 
                                     </tr>
@@ -130,13 +131,14 @@ td, th {
 
                                 </tbody>
                             </table>
+                            <input type="text" hidden value="{{$MuaNgay}}" name="MuaNgay"/>
                     </div>
                     <div class="all-total">
-                        <div class="all-order">Tổng đơn hàng: <p>{{ number_format($tong_tien,0,",",".") }} VNĐ</p>
+                        <div class="all-order">Tổng đơn hàng: <p>{{ number_format($tong_tien,0,",",".") }} ₫</p>
                         </div>
-                        <div class="price-discount" id="div_num_discount" hidden>Khuyến mãi: <p style="color:red" id="num_discount">15,000 VNĐ</p>
+                        <div class="price-discount" id="div_num_discount" hidden>Khuyến mãi: <p style="color:red" id="num_discount">15,000 ₫</p>
                         </div>
-                        <div class="price-delivery">Phí giao hàng: <p>15,000 VNĐ</p>
+                        <div class="price-delivery">Phí giao hàng: <p>15,000 ₫</p>
                         <input id="fee_ship" hidden value="15000">
                         </div>
                         <div class="discout-payment">
@@ -154,14 +156,14 @@ td, th {
                         <p id="coupon-error" hidden style="color:red" >Mã khuyến mãi không hợp lệ</p>
                     </div>
                     <hr style="margin-top:15px; margin-bottom:10px" />
-                    <div class="all-total-price">Tổng cộng: <p id="total-money">{{ number_format($tong_tien + 15000,0,",",".") }} VNĐ</p>
+                    <div class="all-total-price">Tổng cộng: <p id="total-money">{{ number_format($tong_tien + 15000,0,",",".") }} ₫</p>
                         <input hidden id="priceOriginal" value="{{$tong_tien}}"/>
-                        <input type="text" value="{{ $tong_tien }}" hidden name="tongTien">
+                        <input type="text" value="{{ $tong_tien +15000 }}" hidden name="tongTien">
                     </div>
                     <div class="form-check">
                         <input class="form-check-input" type="radio" value="1" id="flexCheckDefault" name="menthodPay" checked>
                         <label class="form-check-label" for="flexCheckDefault">
-                          COD
+                          Thanh Toán Khi Nhận Hàng
                         </label>
                       </div>
                       <div class="form-check">

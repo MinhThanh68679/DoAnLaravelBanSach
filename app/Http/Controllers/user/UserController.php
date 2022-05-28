@@ -191,6 +191,7 @@ class UserController extends Controller
         return view($this->user."cart",compact('listcha'));
     }
     public function Payment(Request $request){
+        $MuaNgay='false';
         $listcha=TheLoaiCha::where('Xoa',0)->get();
         foreach($listcha as $cha){
             $cha->listcon=TheLoai::where('Xoa',0)->where('TenTLCha',$cha->id)->get();
@@ -205,7 +206,7 @@ class UserController extends Controller
             $book->TenSach = $sach->TenSach;
         }
         $tai_khoan = User::find($request->session()->get('infoUser')['id']);
-        return view($this->user."payment",compact('listcha','tai_khoan','cart'));
+        return view($this->user."payment",compact('listcha','MuaNgay','tai_khoan','cart'));
         }
       else
                 {

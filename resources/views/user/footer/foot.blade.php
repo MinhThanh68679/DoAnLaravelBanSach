@@ -114,12 +114,12 @@
 					max: max_range,
 					values: [min, max],
 					slide: function (event, ui) {
-						$("#amount").val( ui.values[0] +"đ" + " - " + ui.values[1]+ "đ");
+						$("#amount").val( ui.values[0] +" ₫" + " - " + ui.values[1]+ " ₫");
 						$("#start_price").val(ui.values[0]);
 						$("#end_price").val(ui.values[1]);
 					}
 				});
-				$("#amount").val( $("#slider-range").slider("values", 0)+"đ" + " - " + $("#slider-range").slider("values", 1)+"đ" );
+				$("#amount").val( $("#slider-range").slider("values", 0)+" ₫" + " - " + $("#slider-range").slider("values", 1)+" ₫" );
 
 			}); //]]>
 		</script>

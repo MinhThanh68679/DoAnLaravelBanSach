@@ -155,13 +155,13 @@ class CartController extends Controller
         // dd('abc');
         $hoadonban=new HoaDonBan();
     
-        $sach = Cart::where('Id_TK', $request->session()->get('infoUser')['id'])->get();
+        $sach = Cart::where('Id_TK', $request->session()->get('infoUser')['id'])->where('TrangThai', 1)->get();
         $mytime = Carbon::now();
         // echo $mytime->toDateString();
         $hoadonban->idKH=Auth::user()->id;
         $hoadonban->NgayLap=$mytime->toDateString();
-        $hoadonban->DiaChiGH=Auth::user()->DiaChi;
-        $hoadonban->SDT=Auth::user()->SDT;
+        $hoadonban->DiaChiGH=$request->address_checkout;
+        $hoadonban->SDT=$request->phone_checkout;
         $hoadonban->PhuongTTT=$request->menthodPay;
         $hoadonban->TongTien=$request->tongTien;
         $hoadonban->TrangThai=1;

@@ -31,6 +31,8 @@ td, th {
 <section class="banner-bottom-wthreelayouts py-lg-5 py-3">
     <div class="container">
         <div class="inner-sec-shop px-lg-4 px-3">
+        <form action="{{ route('user.checkout') }}" method="post">
+                            @csrf
             <h3>THANH TOÁN</h3>
             <div class="checkout-left row">
                 <div class="col-md-5 address_form">
@@ -51,7 +53,7 @@ td, th {
                                         <div class="controls">
                                             <label class="control-label">Số điện thoại:</label>
                                             <input class="form-control" type="text" value="{{ Auth::user()->SDT }}"
-                                                placeholder="Số điện thoại" name="phone_checkout"  />
+                                                placeholder="Số điện thoại" name="phone_checkout" required />
                                         </div>
                                         <div class="controls">
                                             <label class="control-label">Email: </label>
@@ -62,7 +64,7 @@ td, th {
                                         <div class="controls">
                                             <label class="control-label">Địa chỉ: </label>
                                             <input class="form-control" type="text" value="{{ Auth::user()->DiaChi }}"
-                                                id="Dia_Chi" name="address_checkout" placeholder="Địa chỉ" />
+                                                id="Dia_Chi" name="address_checkout" placeholder="Địa chỉ" required/>
                                             <button type="button" class="btn btn-primary" style="margin-top:-25px"><i
                                                     class="fas fa-sync-alt"></i></button>
                                         </div>
@@ -74,8 +76,7 @@ td, th {
                 </div>
                 <div class="col-md-7 address_form">
                     <div class="container-fluid" style="border:1px solid; padding-bottom: 20px;">
-                        <form action="{{ route('user.checkout') }}" method="post">
-                            @csrf
+                       
                             <h4>Đơn hàng</h4>
                             <table class="timetable_sub">
                                 <thead>

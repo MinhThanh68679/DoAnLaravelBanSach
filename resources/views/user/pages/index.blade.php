@@ -145,14 +145,15 @@
 					<h3 class="tittle-w3layouts my-lg-4 my-4">Sách Bán Chạy Nhất </h3>
 					<div class="row">
 						<!-- Sách bán chạy -->
+						@foreach($result as $bestSellers1)
 						<div class="col-md-3">
 							<div class="product-googles-info googles">
 								<div class="men-pro-item">
 									<div class="men-thumb-item">
-										<img src="{!! asset('user/images/Book/SACH_KINH_TE/SuMenhKhoiNghiep/HinhDD.png')!!}" class="img-fluid" alt="">
+										<img src="{!! asset('image/'.$bestSellers1->AnhSach)!!}" class="img-fluid" alt="">
 										<div class="men-cart-pro">
 											<div class="inner-men-cart-pro">
-												<a href="{{ route('user.single')}}" class="link-product-add-cart">Xem Chi Tiết</a>
+												<a href="{{route('user.single',$bestSellers1->id)}}" class="link-product-add-cart">Xem Chi Tiết</a>
 											</div>
 										</div>
 										<span class="product-new-top">Hot</span>
@@ -162,10 +163,10 @@
 											<div class="grid_meta">
 												<div class="product_price">
 													<h4 style="padding-top:20px">
-														<a href="{{ route('user.single')}}">Sứ Mệnh Khởi Nghiệp</a>
+														<a href="{{route('user.single',$bestSellers1->id)}}">{{$bestSellers1->TenSach}}</a>
 													</h4>
 													<div class="grid-price mt-2">
-														<span class="money ">89.000 VNĐ</span>
+														<span class="money ">{{number_format($bestSellers1->GiaTien,0,",",".")}} ₫</span>
 													</div>
 												</div>
 											</div>
@@ -186,130 +187,9 @@
 								</div>
 							</div>
 						</div>
-						<div class="col-md-3">
-							<div class="product-googles-info googles">
-								<div class="men-pro-item">
-									<div class="men-thumb-item">
-										<img src="{!! asset('user/images/Book/SACH_KINH_TE/Siêu Cò – How To Be A Power Connector/DD.png')!!}" class="img-fluid" alt="">
-										<div class="men-cart-pro">
-											<div class="inner-men-cart-pro">
-												<a href="{{ route('user.single')}}" class="link-product-add-cart">Xem Chi Tiết</a>
+						@endforeach
+						
 											</div>
-										</div>
-										<span class="product-new-top">Hot</span>
-									</div>
-									<div class="item-info-product">
-										<div class="info-product-price">
-											<div class="grid_meta">
-												<div class="product_price">
-													<h4 style="padding-top:20px">
-														<a href="{{ route('user.single')}}">Siêu Cò</a>
-													</h4>
-													<div class="grid-price mt-2">
-														<span class="money ">119.000 VNĐ</span>
-													</div>
-												</div>
-											</div>
-											<div class="googles single-item hvr-outline-out">
-												<form action="#" method="post">
-													<input type="hidden" name="cmd" value="">
-													<input type="hidden" name="add" value="">
-													<input type="hidden" name="googles_item" value="">
-													<input type="hidden" name="amount" value="">
-													<button type="submit" class="googles-cart pgoogles-cart">
-														<i class="fas fa-cart-plus" style="padding-top:15px"></i>
-													</button>	
-												</form>
-											</div>
-										</div>
-										<div class="clearfix"></div>
-									</div>
-								</div>
-							</div>
-						</div>
-						<div class="col-md-3">
-							<div class="product-googles-info googles">
-								<div class="men-pro-item">
-									<div class="men-thumb-item">
-										<img src="{!! asset('user\images\Book\SACH_KY_NANG_SONG\Tư Duy Sâu\DD.png')!!}" class="img-fluid" alt="">
-										<div class="men-cart-pro">
-											<div class="inner-men-cart-pro">
-												<a href="{{ route('user.single')}}" class="link-product-add-cart">Xem Chi Tiết</a>
-											</div>
-										</div>
-										<span class="product-new-top">Hot</span>
-									</div>
-									<div class="item-info-product">
-										<div class="info-product-price">
-											<div class="grid_meta">
-												<div class="product_price">
-													<h4 style="padding-top:20px">
-														<a href="{{ route('user.single')}}">Tư Duy Sâu</a>
-													</h4>
-													<div class="grid-price mt-2">
-														<span class="money ">152.000 VNĐ</span>
-													</div>
-												</div>
-											</div>
-											<div class="googles single-item hvr-outline-out">
-												<form action="#" method="post">
-													<input type="hidden" name="cmd" value="">
-													<input type="hidden" name="add" value="">
-													<input type="hidden" name="googles_item" value="">
-													<input type="hidden" name="amount" value="">
-													<button type="submit" class="googles-cart pgoogles-cart">
-														<i class="fas fa-cart-plus" style="padding-top:15px"></i>
-													</button>	
-												</form>
-											</div>
-										</div>
-										<div class="clearfix"></div>
-									</div>
-								</div>
-							</div>
-						</div>
-						<div class="col-md-3">
-							<div class="product-googles-info googles">
-								<div class="men-pro-item">
-									<div class="men-thumb-item">
-										<img src="{!! asset('user/images/Book/SACH_KINH_TE/Nhà Đầu Tư Thông Minh (Tái Bản 2020)/HDD.png')!!}" class="img-fluid" alt="">
-										<div class="men-cart-pro">
-											<div class="inner-men-cart-pro">
-												<a href="{{ route('user.single')}}" class="link-product-add-cart">Xem Chi Tiết</a>
-											</div>
-										</div>
-										<span class="product-new-top">Hot</span>
-									</div>
-									<div class="item-info-product">
-										<div class="info-product-price">
-											<div class="grid_meta">
-												<div class="product_price">
-													<h4 style="padding-top:20px">
-														<a href="{{ route('user.single')}}">Nhà Đầu Tư Thông...</a>
-													</h4>
-													<div class="grid-price mt-2">
-														<span class="money ">105.000 VNĐ</span>
-													</div>
-												</div>
-											</div>
-											<div class="googles single-item hvr-outline-out">
-												<form action="#" method="post">
-													<input type="hidden" name="cmd" value="">
-													<input type="hidden" name="add" value="">
-													<input type="hidden" name="googles_item" value="">
-													<input type="hidden" name="amount" value="">
-													<button type="submit" class="googles-cart pgoogles-cart">
-														<i class="fas fa-cart-plus" style="padding-top:15px"></i>
-													</button>	
-												</form>
-											</div>
-										</div>
-										<div class="clearfix"></div>
-									</div>
-								</div>
-							</div>
-						</div>
-					</div>
 				</div>
 			</div>
 		</div>

@@ -13,6 +13,8 @@ use App\Models\TheLoaiCha;
 use App\Models\SanPhamYeuThich;
 use App\Models\Cart;
 use App\Models\Kho;
+use App\Models\HoaDonBan;
+use App\Models\ChiTietHoaDonBan;
 use App\Models\User;
 use App\Models\TheLoaiSach;
 use DB;
@@ -22,7 +24,6 @@ use App\Mail\MailResponse;
 use Illuminate\Support\MessageBag;
 use Illuminate\Support\Facades\Auth;
 
-use App\Models\ChiTietHoaDonBan;
 class UserController extends Controller
 {
     //
@@ -44,8 +45,37 @@ class UserController extends Controller
            $cha->listcon=TheLoai::where('Xoa',0)->where('TenTLCha',$cha->id)->get();
 
        }
-
-            return view($this->user."index",compact('slideshow','sach_moi_nhat','listcha','cha','slideshow2','slideshow3','slideshow4','slideshow5'));
+       $hoaDonBanThanhCong = HoaDonBan::where('TrangThai', 2)->get();
+       
+       $listIDHoadon = array();
+       $listTop4IDs = array();
+       foreach($hoaDonBanThanhCong as $hoaDon){
+        array_push($listIDHoadon, $hoaDon->id);
+       }
+       $listIDs = ChiTietHoaDonBan::select('IdSach')
+                        ->groupBy('IdSach')
+                        ->orderByRaw('COUNT(SoLuong) DESC')
+                        ->whereIn('IdHoaDB', $listIDHoadon)
+                        ->take(4)
+                        ->get();
+        $detailBill = ChiTietHoaDonBan::whereIn('IdHoaDB', $listIDHoadon)->get();
+        foreach($listIDs as $id){
+            array_push($listTop4IDs, $id->IdSach);
+        }
+        $bestSellers = SACH::whereIn('id', $listTop4IDs)->get();
+        foreach($bestSellers as $product){
+            $product->SoLuong = 0;
+            foreach($detailBill as $detail){
+                if($product->id == $detail->IdSach){
+                    $product->SoLuong += $detail->SoLuong;
+                }  
+            }
+        }
+        $result = $bestSellers->sortByDesc(function($pro) {
+            return $pro->SoLuong;
+        });
+         
+        return view($this->user."index",compact('slideshow','sach_moi_nhat','listcha','cha','slideshow2','slideshow3','slideshow4','slideshow5', 'result'));
 
 
     }

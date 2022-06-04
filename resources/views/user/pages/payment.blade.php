@@ -51,7 +51,7 @@ td, th {
                                         <div class="controls">
                                             <label class="control-label">Số điện thoại:</label>
                                             <input class="form-control" type="text" value="{{ Auth::user()->SDT }}"
-                                                placeholder="Số điện thoại" name="phone_checkout" readonly />
+                                                placeholder="Số điện thoại" name="phone_checkout"  />
                                         </div>
                                         <div class="controls">
                                             <label class="control-label">Email: </label>
@@ -62,7 +62,7 @@ td, th {
                                         <div class="controls">
                                             <label class="control-label">Địa chỉ: </label>
                                             <input class="form-control" type="text" value="{{ Auth::user()->DiaChi }}"
-                                                id="Dia_Chi" name="address_checkout" placeholder="Địa chỉ" readonly />
+                                                id="Dia_Chi" name="address_checkout" placeholder="Địa chỉ" />
                                             <button type="button" class="btn btn-primary" style="margin-top:-25px"><i
                                                     class="fas fa-sync-alt"></i></button>
                                         </div>

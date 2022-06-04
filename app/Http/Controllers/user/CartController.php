@@ -13,6 +13,9 @@ use App\Models\TheLoaiCha;
 use App\Models\Kho;
 use Carbon\Carbon;
 use session;
+use Mail;
+use App\Mail\Mailxacnhan;
+use App\Mail\Mailxacnhan1;
 use App\Models\HoaDonBan;
 use Illuminate\Support\Facades\Auth;
 use App\Models\ChiTietHoaDonBan;
@@ -158,6 +161,8 @@ class CartController extends Controller
         $hoadonban->idKH=Auth::user()->id;
         $hoadonban->NgayLap=$mytime->toDateString();
         $hoadonban->DiaChiGH=Auth::user()->DiaChi;
+        $hoadonban->SDT=Auth::user()->SDT;
+        $hoadonban->PhuongTTT=$request->menthodPay;
         $hoadonban->TongTien=$request->tongTien;
         $hoadonban->TrangThai=1;
         // dd($sach);
@@ -243,7 +248,7 @@ class CartController extends Controller
                 
             }
         }
-
+        
             $total = $hoadonban->TongTien; // chuyen sang tien vn
             return redirect("vnpay?total=$total");
     }
@@ -261,7 +266,7 @@ class CartController extends Controller
         // dd($count);
     }
 
-    public function vnpay()
+    public function vnpay(Request $request)
     {
         // $vnp_TmnCode = "XMKT96TQ"; //Host
         $vnp_TmnCode = "RZUIZ6V8"; //Mã website tại VNPAY
@@ -314,6 +319,14 @@ class CartController extends Controller
             $vnpSecureHash = hash('sha256', $vnp_HashSecret . $hashdata);
             $vnp_Url .= 'vnp_SecureHashType=SHA256&vnp_SecureHash=' . $vnpSecureHash;
         }
+        $data = [
+            'name' => 'abc',
+            'Email'=>$request->session()->get('infoUser')['Email'],
+        ];
+        Mail::to($request->session()->get('infoUser')['Email'])->send(new Mailxacnhan($data));
+        //password tài khoản: a@123456
+        // Mail::to($request->session()->get('infoUser')['Email'])->send(new Mailxacnhan1());
+        
         return redirect($vnp_Url);
     }
 }

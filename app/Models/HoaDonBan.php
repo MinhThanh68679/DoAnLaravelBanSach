@@ -14,7 +14,9 @@ class HoaDonBan extends Model
         'IdKH',
         'NgayLap',
         'DiaChiGH',
+        'SDT',
         'TongTien',
+        'PhuongTTT',
         'TrangThai',
 
     ];

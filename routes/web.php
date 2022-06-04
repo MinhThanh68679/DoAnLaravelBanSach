@@ -77,7 +77,7 @@ Route::group(['prefix' => '', 'namespace' => 'user'], function() {
     Route::post('/discount',"CartController@CheckDiscount")->name("user.check-discount");
 
     Route::post('/thanh-toan',"CartController@payment")->name("user.thanhtoan");
-
+    Route::post('gui-xac-nhan',"CartController@checkout")->name("user.mailxacnhan");
 
 });
 

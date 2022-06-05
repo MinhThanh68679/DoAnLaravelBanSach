@@ -19,7 +19,7 @@ body a {
     -moz-transition: 0.5s all;
     -o-transition: 0.5s all;
     -ms-transition: 0.5s all;
-    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
+    font-family: 'Roboto', sans-serif;
 }
 table {
     border-collapse: collapse;
@@ -48,10 +48,11 @@ a:hover {
 }
 .hover-nut {
     font-size: 1rem;
-    letter-spacing: 3px;
+    letter-spacing: 1px;
     color: #9c9b9b;
     font-weight:500;
-    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
+    font-family: 'Roboto', sans-serif;
+    
 }
 .hover-nut:hover{
     text-decoration: none;
@@ -144,7 +145,7 @@ h1.logo-w3layouts a.navbar-brand {
     color: #454546;
     margin: 0;
     font-weight: 700;
-    font-family: 'Poppins', sans-serif;
+    font-family: 'Roboto', sans-serif;
     text-transform: uppercase;
 }
 
@@ -165,7 +166,7 @@ h1.logo-w3layouts a.navbar-brand {
     border-radius: 0.25rem;
     overflow: visible;
     margin: 0;
-    font-family: inherit;
+    font-family: 'Roboto', sans-serif;
 }
 .navbar-light .navbar-nav .nav-link,
 .dropdown-item {
@@ -311,19 +312,19 @@ ul.cart-inner-info{
 ul.cart-inner-info li {
     display: inline-block;
     list-style: none;
-    margin-left: 1em;
+    margin-left: 0.5em;
 }
 
 .top-info ul li {
     list-style: none;
     display: inline-block;
     color: #999;
-    letter-spacing: 2px;
+    letter-spacing: 1px;
 }
 
 .top-info h6 {
     color: #9c9b9b;
-    letter-spacing: 3px;
+    letter-spacing: 1px;
 }
 .top-info i {
     color: #ff4e00;
@@ -399,7 +400,7 @@ ul.cart-inner-info li {
     line-height: 1.4em;
     text-shadow: 0 1px 2px rgba(0, 0, 0, 0.37);
     font-size: 4.3em;
-    letter-spacing: 6px;
+    letter-spacing: 3px;
 }
 
 .carousel-caption h5 {
@@ -2453,13 +2454,13 @@ div#search_ajax {
     display: none;
 } */
 .all-total p, .all-total-price p{
-    font-family: serif;
+    font-family: 'Roboto', sans-serif;
     font-size: 22px;
     font-weight: 700;
     color: #28a745;
 }
 .all-total ,.all-total-price{
-    font-family: serif;
+    font-family: 'Roboto', sans-serif;
     font-size: 25px;
     font-weight: 800;
     color: #888;
@@ -2489,4 +2490,8 @@ button.googles-heart {
 }
 .carousel-caption{
     display: none;
+}
+
+section.banner-bottom-wthreelayouts > .container {
+    max-width: 1500px;
 }

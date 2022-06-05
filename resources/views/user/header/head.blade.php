@@ -28,10 +28,9 @@
 	<link href="{!! asset('user/css/easy-responsive-tabs.css')!!}" rel='stylesheet' type='text/css' />
 	<link rel="stylesheet" href="{!! asset('user/css/flexslider.css')!!}" type="text/css" media="screen" />
 	<link href="{!! asset('user/css/fontawesome-all.css') !!}" rel='stylesheet' type='text/css' />
-	<link href="https://fonts.googleapis.com/css?family=Inconsolata:400,700" rel="stylesheet">
-	<link href="https://fonts.googleapis.com/css?family=Poppins:100,100i,200,200i,300,300i,400,400i,500,500i,600,600i,700,700i,800"
-	    rel="stylesheet">
-	<link href="https://cdn.jsdelivr.net/npm/summernote@0.8.18/dist/summernote-lite.min.css" rel="stylesheet">
+	<link rel="preconnect" href="https://fonts.googleapis.com">
+	<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+	<link href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap" rel="stylesheet">
 </head>
 <?PHP
 header('Access-Control-Allow-Origin: *');

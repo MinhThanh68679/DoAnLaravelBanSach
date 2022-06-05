@@ -192,7 +192,7 @@
 						@if (session()->has('infoUser') == null)
 							<span class="fa fa-user" aria-hidden="true" style="color: rgb(35, 175, 156);"></span><a href="{{route('getLogin')}}" class="hover-nut"> Đăng Nhập </a>
 						@else
-						<span class="fa fa-user" aria-hidden="true" style="color: rgb(35, 175, 156);"><a id="a" class="hover-nut dropdown-toggle" href="#" data-toggle="dropdown" id="profileDropdown"><?php $infoUser =session()->get('infoUser') ?>Hi!&nbsp{{$infoUser['HoTen']}} </a>
+						<span class="fa fa-user" aria-hidden="true" style="color: rgb(35, 175, 156);"><a id="a" class="hover-nut dropdown-toggle" href="#" data-toggle="dropdown" style="margin-left: 5px;" id="profileDropdown"><?php $infoUser =session()->get('infoUser') ?>Hi!&nbsp{{$infoUser['HoTen']}} </a>
 						<div class="dropdown-menu dropdown-menu-right navbar-dropdown" aria-labelledby="profileDropdown" style="margin-top:-2px; margin-left: -20px;">
 							<a class="dropdown-item hover-nut" href="{{ route('user.account') }}" style="text-transform:none;font-size: 1rem;letter-spacing: 3px;color: #9c9b9b;cursor: pointer">
 								<i class="fas fa-address-card" style="color: rgb(35, 175, 156);"></i>
@@ -212,7 +212,7 @@
 
 						<!-- Giỏ hàng -->
             <li>
-								<span class="fas fa-cart-plus" aria-hidden="true" style="color: rgb(35, 175, 156)"></span><a href="{{route('user.cart')}}" class="hover-nut"> Giỏ hàng </a>
+								<span class="fas fa-cart-plus" aria-hidden="true" style="color: rgb(35, 175, 156); margin-right: 15px;"></span><a href="{{route('user.cart')}}" class="hover-nut">Giỏ hàng</a>
 								@if (session()->has('infoUser') != null)	<span class="count"></span>@endif
 								
 							<!-- <form action="#" method="post" class="last">

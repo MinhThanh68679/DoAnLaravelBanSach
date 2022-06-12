@@ -90,6 +90,7 @@ class LoginController extends Controller
         $request->session()->forget('infoUser');
         return view('Login.Login');
     }
+    
    
     public function updateAccount(Request $request, $id)
     {

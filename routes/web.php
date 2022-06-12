@@ -19,15 +19,16 @@ use Illuminate\Support\Facades\Route;
 Route::get('/VeChungToi', function () {
     return view('FrontEnd/about');
 }); */
-Route::get('/DangNhap', function () {
-    return view('Login/Login');
-});
+
 Route::get('/NguoiDung', function () {
     return view('user/pages/usermanagement');
 });
-Route::get('logout','user/LoginController@getLogout')->name('getLogout');
+Route::get('login','user\LoginController@getLogin')->name('getLogin');
+Route::post('login','user\LoginController@postLogin')->name('postLogin');
+//Đăng Xuất
+Route::get('logout','user\LoginController@getLogout')->name('getLogout');
 
-Route::group(['prefix' => '', 'namespace' => 'user'], function() {
+Route::group(['middleware' => 'CheckLogin', 'prefix' => '', 'namespace' => 'user'], function() {
     Route::get("/","UserController@Index")->name("user.index");
     Route::get("shop","UserController@Shop")->name("user.shop");
     Route::get("contact","UserController@Contact")->name("user.contact");
@@ -41,10 +42,7 @@ Route::group(['prefix' => '', 'namespace' => 'user'], function() {
 
     Route::get("promotion","UserController@Promotion")->name("user.promotion");
     //Đăng Nhập
-    Route::get('login','LoginController@getLogin')->name('getLogin');
-    Route::post('login','LoginController@postLogin')->name('postLogin');
-    //Đăng Xuất
-    Route::get('logout','LoginController@getLogout')->name('getLogout');
+  
     //Tìm Kiếm Sách
     Route::get('search','UserController@Search')->name('Search');
     Route::post('autocomplete_ajax',"UserController@autocomplete_ajax")->name("user.autocomplete_ajax");
@@ -80,8 +78,7 @@ Route::group(['prefix' => '', 'namespace' => 'user'], function() {
     Route::post('gui-xac-nhan',"CartController@checkout")->name("user.mailxacnhan");
 
 });
-
-Route::group(["prefix" => "admin", "namespace" => "admin"], function() {
+Route::group(['middleware' => 'CheckAdminLogin', "prefix" => "admin", "namespace" => "admin"], function() {
     Route::get("/index", "DashboardController@index")->name("admin.dashboard");
     Route::resource('dashboard',DashboardController::class);
     //Đường dẫn đến trang sách
@@ -121,4 +118,9 @@ Route::group(["prefix" => "admin", "namespace" => "admin"], function() {
     //
     Route::resource('khuyenmai',KhuyenMaiController::class);
     Route::get('khuyenmai/{id}/delete','KhuyenMaiController@delete')->name('khuyenmai.delete');
+    //
+    Route::resource('hoadon',HoaDonController::class);
+
+    Route::post('hoadon/{id}/chitiethoadon','HoaDonController@getDetail')->name('hoadon.getdetail');
+    Route::post('hoadon/update-trang-thai', 'HoaDonController@changeStatusOrder')->name('hoadon.changeStatus');
 });

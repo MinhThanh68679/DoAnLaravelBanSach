@@ -43,7 +43,7 @@
             </a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" data-toggle="collapse" href="#charts" aria-expanded="false" aria-controls="charts">
+          <a class="nav-link" href="/admin/hoadon">
               <i class="icon-paper menu-icon"></i>
               <span class="menu-title">Quản lý đơn hàng</span>
             </a>

@@ -17,4 +17,10 @@ class ChiTietHoaDonBan extends Model
         'GiaBan',
 
     ];
+    public function Sach(){
+        return $this->belongsTo('App\Models\Sach', 'IdSach', 'id');
+    }
+    public function HoaDon(){
+        return $this->belongsTo('App\Models\HoaDonBan', 'IdHoaDB', 'id');
+    }
 }

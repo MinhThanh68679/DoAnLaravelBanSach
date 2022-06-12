@@ -18,6 +18,9 @@
   <!-- Custom js for this page-->
   <script src="{!! asset('admin/js/dashboard.js ')!!}"></script>
   <script src="{!! asset('admin/js/Chart.roundedBarCharts.js ')!!}"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/js/toastr.min.js" type="text/javascript" charset="utf-8" async defer></script>
+
+	
   <!-- End custom js for this page-->
   <script type="text/javascript">
     $('.comment_duyet_btn').click(function(){
@@ -50,4 +53,63 @@
 
     });
    
+</script>
+<script>
+ 
+ $(document).ready(function(){
+    $('body').on('change','#trangthaidonhang',function(){
+    var selectVal = $("#trangthaidonhang option:selected").val();
+    var id = $(this).data('id');
+    $.ajax({
+    headers:{
+                    'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+                },
+                
+                url: "{{route('hoadon.changeStatus')}}",
+                method: 'POST',
+                data:{
+                    id: id,
+                    TrangThai: selectVal,
+                },
+                success:function(data){
+                    if(data){
+                    
+                        $('#trangthai'+id).html(data);
+                        if(data=="Đơn hàng đã hủy"){
+                            toastr.error('Đơn hàng đã hủy');
+                        }else
+                        toastr.success('Cập nhật thành công');
+                       
+                        $('#exampleModalLong').modal('hide');
+                    
+                    }
+                  
+                }
+            });
+});
+    });
+
+$('.chitiet').off('click').click(function(){
+var id = $(this).data('id');
+var url = "{{route('hoadon.getdetail',":id")}}";
+url = url.replace(':id', id);
+$.ajax({
+    headers:{
+                    'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+                },
+                
+                url: url,
+                method: 'POST',
+                success:function(data){
+                    // thiết lập quyền
+                    
+                    $('.modal-body[id="order-modal"]').empty();
+                    
+                    $('.modal-body[id="order-modal"]').prepend(data);
+
+                    // hiển thị modal
+                    $('#modal').modal('exampleModalLong');
+                }
+            });
+});
 </script>

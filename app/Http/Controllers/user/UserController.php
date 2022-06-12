@@ -115,8 +115,17 @@ class UserController extends Controller
 
         }
     }
+    $min_price = Sach::min('GiaTien');
+    $max_price = Sach::max('GiaTien');
+    $min_price_range = Sach::min('GiaTien');
+    $max_price_range = Sach::max('GiaTien');
+    if(isset($_GET['start_price']) && $_GET['end_price']){
+        $min_price=$request->start_price;
+        $max_price=$request->end_price;
+        $sach=Sach::whereBetween('GiaTien',[$min_price,$max_price])->where('TrangThai',2)->orderBy('GiaTien',"ASC")->paginate(12);
 
-        return view($this->user."promotion",compact('listcha','sach'));
+    }else $min_price = 0;
+        return view($this->user."promotion",compact('listcha','sach','min_price','max_price', 'min_price_range', 'max_price_range'));
     }
     public function TheLoai(){
 

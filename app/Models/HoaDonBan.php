@@ -16,8 +16,15 @@ class HoaDonBan extends Model
         'DiaChiGH',
         'SDT',
         'TongTien',
+        'id_makm',
         'PhuongTTT',
         'TrangThai',
 
     ];
+    public function TaiKhoan(){
+        return $this->belongsTo('App\Models\User', 'IdKH', 'id');
+    }
+    public function MaGiamGia(){
+        return $this->belongsTo('App\Models\MaGiamGia', 'id_makm', 'id');
+    }
 }

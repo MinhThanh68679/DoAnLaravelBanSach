@@ -4,7 +4,11 @@ namespace App\Http\Controllers\admin;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
-
+use Carbon\Carbon;
+use DB;
+use App\Models\HoaDonBan;
+use App\Models\User;
+use App\Models\Sach;
 class DashboardController extends Controller
 {
     /**
@@ -14,8 +18,29 @@ class DashboardController extends Controller
      */
     public function index()
     {
-       
-        return view('admin.pages.dashboard');
+        $currentMonth =  Carbon::now('Asia/Ho_Chi_Minh')->format('m/Y');
+        $currentDate =  Carbon::now('Asia/Ho_Chi_Minh')->format('Y-m-d');
+        $dateFirstOfMonth = Carbon::now()->year;
+        $dateFirstOfYear = Carbon::now()->year."-01-01";
+        if(Carbon::now()->month<10){
+            $dateFirstOfMonth .="-0".Carbon::now()->month.'-01';
+        }else $dateFirstOfMonth .="-".Carbon::now()->month.'-01';
+
+        //thong ke don hang va doanh thu
+        $bills= HoaDonBan::where("NgayLap",">=", $dateFirstOfMonth)->where("NgayLap","<=", $currentDate)->get();
+        $totalBillInMonth = count($bills);
+        $totalMoneyInMonth = 0;
+        foreach($bills as $bill){
+            if($bill->TrangThai == 2){
+                $totalMoneyInMonth += $bill->TongTien;
+            }
+        }
+        $sach=Sach::orderby('id','desc')->where('TrangThai',1)->where('Xoa',0)->get();
+        $app_product = Sach::all()->count();
+        //thong ke thanh vien
+        $accounts= User::where("created_at",">=", $dateFirstOfMonth)->where("created_at","<=", $currentDate)->get();
+        $totalAccountInMonth = count($accounts);
+        return view('admin.pages.dashboard',compact('totalMoneyInMonth','totalAccountInMonth','totalBillInMonth','app_product'));
     }
 
     /**

@@ -123,4 +123,6 @@ Route::group(['middleware' => 'CheckAdminLogin', "prefix" => "admin", "namespace
 
     Route::post('hoadon/{id}/chitiethoadon','HoaDonController@getDetail')->name('hoadon.getdetail');
     Route::post('hoadon/update-trang-thai', 'HoaDonController@changeStatusOrder')->name('hoadon.changeStatus');
+    
+   
 });

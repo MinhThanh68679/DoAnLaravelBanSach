@@ -9,6 +9,18 @@
                 <div class="col-12 col-xl-8 mb-4 mb-xl-0">
                   <h3 class="font-weight-bold">QUẢN LÝ SÁCH</h3>
                 </div>
+                <div class="sorting">
+							<select id="sort"  class="frm-field required sect">
+								<option value="null">Sắp xếp </option>
+								<!-- <option value="null">Bán chạy nhất</option>  -->
+								<option value="{{Request::url()}}?sort_by=all">Tất cả đơn hàng</option> 
+								<option value="{{Request::url()}}?sort_by=new">Đơn hàng mới</option>					
+								<option value="{{Request::url()}}?sort_by=done">Đơn hàng đã xử lý</option>
+								<option value="{{Request::url()}}?sort_by=cancel">Đơn hàng đã hủy</option>
+								<option value="{{Request::url()}}?sort_by=move">Đơn hàng đang được vận chuyển</option>	
+                <option value="{{Request::url()}}?sort_by=complete">Đơn hàng giao thành công</option>								
+							</select>
+						</div>
                 @if(Session::has('message'))
                 <div class="alert alert-success alert-dismissible fade show notify" role="alert">
                       <strong>Thông báo! </strong>{{Session::get('message')}}.
@@ -58,7 +70,11 @@
                     @endif
                     </td>
                   
-                    <td>{{$hoadons->PhuongTTT}}</td>
+                    <td>
+                    @if($hoadons->PhuongTTT == 1) {{"Ví VNPAY"}}
+                    @elseif (($hoadons->PhuongTTT == 2)) {{"Thanh Toán Nhận Hàng"}}
+                    @endif
+                    </td>
                     <td id="trangthai{{$hoadons->id}}">@if($hoadons->TrangThai == 1) {{"Đơn Mới"}}
                     @elseif (($hoadons->TrangThai == 3)) {{"Đã Duyệt"}}
                     @elseif (($hoadons->TrangThai == 4)) {{"Đang Giao Hàng"}}
@@ -135,3 +151,4 @@ border-collapse: collapse; }
     
     
       </style>
+     

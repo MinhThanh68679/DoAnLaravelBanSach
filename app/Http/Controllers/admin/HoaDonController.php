@@ -28,7 +28,36 @@ class HoaDonController extends Controller
       
         $hoadon = HoaDonBan::orderBy('created_at', 'desc')->get();
         $chitiethoadonban=ChiTietHoaDonBan::all();
-        
+        if(isset($_GET['sort_by'])){
+          $sort_by=$_GET['sort_by'];
+          
+          if($sort_by=='all'){
+            $hoadon=HoaDonBan::orderby('created_at','DESC')->get();
+          
+          }
+          elseif($sort_by=='cancel'){
+            $hoadon=HoaDonBan::where('TrangThai',0)->orderby('created_at','DESC')->get();
+             
+          }
+          elseif($sort_by=='new'){
+            $hoadon=HoaDonBan::where('TrangThai',1)->orderby('created_at','DESC')->get();
+             
+          }
+          elseif($sort_by=='done'){
+            $hoadon=HoaDonBan::where('TrangThai',3)->orderby('created_at','DESC')->get();
+             
+          }
+          elseif($sort_by=='move'){
+            
+              $hoadon=HoaDonBan::where('TrangThai',4)->orderby('created_at','DESC')->get();
+          }
+          elseif($sort_by=='complete'){
+            
+            $hoadon=HoaDonBan::where('TrangThai',2)->orderby('created_at','DESC')->get();
+        }
+         
+      }
+  
         return View('admin.pages.HoaDon.index', compact('hoadon','chitiethoadonban'));
     }
     public function getDetail($id){
@@ -235,6 +264,8 @@ class HoaDonController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
+    //Lọc
+   
     public function create()
     {
         //

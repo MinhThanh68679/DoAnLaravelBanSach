@@ -113,3 +113,14 @@ $.ajax({
             });
 });
 </script>
+<script type="text/javascript">
+$(document).ready(function(){
+	$('#sort').on('change',function(){
+		var url=$(this).val();
+		if(url){
+			window.location=url;
+		}
+		return false;
+	});
+});
+</script>

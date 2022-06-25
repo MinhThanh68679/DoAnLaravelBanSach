@@ -19,7 +19,7 @@
 		
 	</div>
 		<!--//banner -->
-    <div class="container">
+     <div class="container">
         <div class="row">
         <!--/tabs-->			
         @if (session()->has('infoUser') != null)
@@ -54,23 +54,110 @@
 										<td>{{$user['DiaChi']}}</td>
 									</tr>
                   <tr>
-                                        <td><button class="btn btn-success" style="font-size:90%" data-toggle="modal" data-target="#exampleEditModalCenter">CẬP NHẬT</button><td>
-                                    </tr>
+                    <td><button class="btn btn-success" style="font-size:90%" data-toggle="modal" data-target="#exampleEditModalCenter">CẬP NHẬT</button><td>
+                  </tr>
 								</tbody>
 								</table>
 								<br>
-									
-					<div class="single_page">
-									
+                <div id="horizontalTab">
+										<ul class="resp-tabs-list">
+											
+											<li>SÁCH YÊU THÍCH</li>
+											<li>DANH SÁCH ĐƠN HÀNG</li>
+										</ul>
+			<div class="resp-tabs-container">
+											<!--/tab_one-->
+				<!-- <div class="tab1">
+          <div class="single_page">
+            <table class="table table-bordered" id="favorite-book" style="width:1100px">
+                    <thead>
+                    <tr style="text-align:center">
+                        <th>Tên sách</th>
+                        <th>Ảnh bìa</th>
+                        <th>Tác giả</th>
+                        <th>Phiên bản</th>
+                        <th>Giá tiền</th>
+                        <th>Trạng thái</th>
+                        <th></th>
+                        <th></th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    @foreach($sach_yeu_thich as $favoritebook)
+                    <tr>
+                        <td>{{$favoritebook->Sach->Ten_Sach}}</td>
+                        <td><img src="{{$favoritebook->Sach->Anh_Bia}}" style="width:80px; height:80px; border-radius:0%"></td>
+                        <td>{{$favoritebook->Sach->Tac_Gia}}</td>
+                        <td>
+                        @if($favoritebook->Sach->Phien_Ban == 0) {{"Bản thường"}}
+                        @else {{"Bản đặc biệt"}}
+                        @endif
+                        </td>
+                        <td>
+                            @if($favoritebook->Sach->Gia_Khuyen_Mai == 0) {{number_format($favoritebook->Sach->Gia_Tien)}} VNĐ
+                            @else {{number_format($favoritebook->Sach->Gia_Khuyen_Mai)}} VNĐ
+                            @endif
+                        </td>
+                        <td>
+                        @if($favoritebook->Sach->Trang_Thai == 0) {{"Ngừng bán"}}
+                        @elseif (($favoritebook->Sach->Trang_Thai == 1)) {{"Tạm hết hàng"}}
+                        @else {{"Còn hàng"}}
+                        @endif
+                        </td>
+                        <td>
+                            <button class="btn btn-danger" onclick="DeleteFavorite({{$favoritebook->Id}})">Xóa</button>
+                        </td>
+                        <td>
+                            <a class="btn btn-primary" href="{{ route('user.single', $favoritebook->Id_Sach)}}">Xem chi tiết</a>
+                        </td>
+                    </tr>
+                    @endforeach
+                    </tbody>
+            </table>						
 					</div>
-				</div>
+				</div> -->
                 <!--//tab_one-->
                 
-    
+        <!-- <div class="tab2">
+          <div class="single_page">
+                    <table class="table table-bordered" style="width:1100px; text-align:center">
+                    <thead>
+                    <tr style="text-align:center">
+                        <th>Tên người nhận</th>
+                        <th>Địa chỉ</th>
+                        <th>Ngày lập</th>
+                        <th>Tổng tiền</th>
+                        <th>Trạng thái</th>
+                        <th></th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    @foreach ($don_hang as $order)
+                    <tr>
+                        <td>{{ $order->Account->Ho_Ten }}</td>
+                        <td>{{ $order->Dia_Chi_Giao_Hang }}</td>
+                        <td>{{date("d-m-Y H:i:s", strtotime($order->Ngay_Lap))}}</td>
+                        <td>{{ number_format($order->Tong_Tien) }} VNĐ</td>
+                        <td>
+                            @if($order->Trang_Thai == 0) {{"Chờ nhận đơn"}}
+                            @elseif (($order->Trang_Thai == 1)) {{"Đã nhận đơn"}}
+                            @elseif (($order->Trang_Thai == 2)) {{"Đang giao"}}
+                            @elseif (($order->Trang_Thai == 3)) {{"Đã nhận hàng"}}
+                            @else {{"Đã hủy"}}
+                            @endif
+                        </td>
+                        @if ($order->Trang_Thai == 0 || $order->Trang_Thai == 1 || $order->Trang_Thai == 2)
+                        <td><a href="{{ route('account.cancelorder', $order->Id)}}" class="btn btn-danger">Hủy đơn</a></td>
+                        @endif
+                        <td><a href="{{ route('account.orderdetail', $order->Id)}}" class="btn btn-primary">Xem chi tiết</a></td>
+                    </tr>
+                    @endforeach
+                    </tbody>
+                  </table>			
             </div>
-        </div>
+        </div>-->
         @endif
-    </div>
+    </div> 
     <div class="modal fade" id="exampleEditModalCenter" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
   <div class="modal-dialog modal-dialog-centered" role="document">
     <div class="modal-content">

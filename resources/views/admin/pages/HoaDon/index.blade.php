@@ -15,7 +15,7 @@
 								<!-- <option value="null">Bán chạy nhất</option>  -->
 								<option value="{{Request::url()}}?sort_by=all">Tất cả đơn hàng</option> 
 								<option value="{{Request::url()}}?sort_by=new">Đơn hàng mới</option>					
-								<option value="{{Request::url()}}?sort_by=done">Đơn hàng đã xử lý</option>
+								<option value="{{Request::url()}}?sort_by=done">Đơn hàng đã duyệt</option>
 								<option value="{{Request::url()}}?sort_by=cancel">Đơn hàng đã hủy</option>
 								<option value="{{Request::url()}}?sort_by=move">Đơn hàng đang được vận chuyển</option>	
                 <option value="{{Request::url()}}?sort_by=complete">Đơn hàng giao thành công</option>								

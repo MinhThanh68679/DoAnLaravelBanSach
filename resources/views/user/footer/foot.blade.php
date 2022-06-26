@@ -114,12 +114,12 @@
 					max: max_range,
 					values: [min, max],
 					slide: function (event, ui) {
-						$("#amount").val( ui.values[0] +" ₫" + " - " + ui.values[1]+ " ₫");
+						$("#amount").val( ui.values[0] +" VND" + " - " + ui.values[1]+ " VND");
 						$("#start_price").val(ui.values[0]);
 						$("#end_price").val(ui.values[1]);
 					}
 				});
-				$("#amount").val( $("#slider-range").slider("values", 0)+" ₫" + " - " + $("#slider-range").slider("values", 1)+" ₫" );
+				$("#amount").val( $("#slider-range").slider("values", 0)+" VND" + " - " + $("#slider-range").slider("values", 1)+ " VND" );
 
 			}); //]]>
 		</script>
@@ -517,4 +517,16 @@
 
 		</script>
 
+<script>
+	function InvalidMsg(textbox) {
+    if (textbox.value === '') {
+        textbox.setCustomValidity('Vui Lòng Nhập Địa Chỉ');
+    } else if (textbox.validity.typeMismatch){
+        textbox.setCustomValidity('please enter a valid email address');
+    } else {
+       textbox.setCustomValidity('');
+    }
 
+    return true;
+}
+</script>

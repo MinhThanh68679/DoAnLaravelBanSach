@@ -250,7 +250,8 @@ class CartController extends Controller
         }
         
             $total = $hoadonban->TongTien; // chuyen sang tien vn
-            return redirect("vnpay?total=$total");
+            $soluong=count($sach);
+            return redirect("vnpay?total=$total&madh=$hoadonban->id&soluong=$soluong" );
     }
         // foreach($sach as $item){
         //     $chitiethoadonban=new ChiTietHoaDonBan();
@@ -322,6 +323,11 @@ class CartController extends Controller
         $data = [
             'name' => 'abc',
             'Email'=>$request->session()->get('infoUser')['Email'],
+            'URL'=>$vnp_Url,
+            'vnp_TmnCode'=>$vnp_TmnCode,
+            'vnp_Amount'=>number_format(request('total', 10000),0,",",","),
+            'madh'=>request('madh'),
+            'soluong'=>request('soluong'),
         ];
         Mail::to($request->session()->get('infoUser')['Email'])->send(new Mailxacnhan($data));
         //password tài khoản: a@123456

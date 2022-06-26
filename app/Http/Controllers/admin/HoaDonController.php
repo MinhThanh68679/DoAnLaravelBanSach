@@ -146,9 +146,9 @@ class HoaDonController extends Controller
                         <td style="max-width: 180px; text-overflow: ellipsis; overflow: hidden">'.$chitiet->Sach->TenSach.'</td>
                         <td><img src="../image/'.$chitiet->Sach->AnhSach.'" style="width:50px; height:50px; border-radius:0%"></td>
                         <td>'.$chitiet->SoLuong.'</td>
-                        <td>'.number_format(15000 ,0,",",".").' đ</td>
-                        <td>'.number_format($chitiet->GiaBan ,0,",",".").' đ</td>
-                        <td>'.number_format($chitiet->HoaDon->TongTien ,0,",",".").' đ</td>
+                        <td>'.number_format(15000 ,0,",",",").' VND</td>
+                        <td>'.number_format($chitiet->GiaBan ,0,",",",").' VND</td>
+                        <td>'.number_format($chitiet->HoaDon->TongTien ,0,",",",").' VND</td>
                         
                         
                         </tr>';

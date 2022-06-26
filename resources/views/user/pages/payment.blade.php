@@ -63,10 +63,10 @@ td, th {
                                         </div>
                                         <div class="controls">
                                             <label class="control-label">Địa chỉ: </label>
-                                            <input class="form-control" type="text" value="{{ Auth::user()->DiaChi }}"
+                                            <input class="form-control" type="text"  oninvalid="InvalidMsg(this);" 
+                                                  oninput="InvalidMsg(this);" value="{{ Auth::user()->DiaChi }}"
                                                 id="Dia_Chi" name="address_checkout" placeholder="Địa chỉ" required/>
-                                            <button type="button" class="btn btn-primary" style="margin-top:-25px"><i
-                                                    class="fas fa-sync-alt"></i></button>
+                                            
                                         </div>
                                     </div>
                                 </div>
@@ -121,9 +121,9 @@ td, th {
                                         <td class="invert">{{$book->TenSach}} </td>
                                         <input type="text" hidden value="{{$book->id}}" name="idsach"/>
                                         <input type="text" hidden value="{{$book->So_Luong}}" name="soluong"/>
-                                        <td class="invert">{{number_format($book->GiaTien,0,",",".")}} ₫</td>
+                                        <td class="invert">{{number_format($book->GiaTien,0,",",",")}} VND</td>
                                         <td class="invert">
-                                            {{ number_format($book->GiaTien * $book->So_Luong,0,",",".") }} ₫
+                                            {{ number_format($book->GiaTien * $book->So_Luong,0,",",",") }} VND
                                         </td>
 
                                     </tr>
@@ -135,11 +135,11 @@ td, th {
                             <input type="text" hidden value="{{$MuaNgay}}" name="MuaNgay"/>
                     </div>
                     <div class="all-total">
-                        <div class="all-order">Tổng đơn hàng: <p>{{ number_format($tong_tien,0,",",".") }} ₫</p>
+                        <div class="all-order">Tổng đơn hàng: <p>{{ number_format($tong_tien,0,",",",") }} VND</p>
                         </div>
-                        <div class="price-discount" id="div_num_discount" hidden>Khuyến mãi: <p style="color:red" id="num_discount">15,000 ₫</p>
+                        <div class="price-discount" id="div_num_discount" hidden>Khuyến mãi: <p style="color:red" id="num_discount">15,000 VND</p>
                         </div>
-                        <div class="price-delivery">Phí giao hàng: <p>15,000 ₫</p>
+                        <div class="price-delivery">Phí giao hàng: <p>15,000 VND</p>
                         <input id="fee_ship" hidden value="15000">
                         </div>
                         <div class="discout-payment">
@@ -157,7 +157,7 @@ td, th {
                         <p id="coupon-error" hidden style="color:red" >Mã khuyến mãi không hợp lệ</p>
                     </div>
                     <hr style="margin-top:15px; margin-bottom:10px" />
-                    <div class="all-total-price">Tổng cộng: <p id="total-money">{{ number_format($tong_tien + 15000,0,",",".") }} ₫</p>
+                    <div class="all-total-price">Tổng cộng: <p id="total-money">{{ number_format($tong_tien + 15000,0,",",",") }} VND</p>
                         <input hidden id="priceOriginal" value="{{$tong_tien}}"/>
                         <input type="text" value="{{ $tong_tien +15000 }}" hidden name="tongTien">
                     </div>

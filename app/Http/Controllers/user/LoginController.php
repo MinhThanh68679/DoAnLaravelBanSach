@@ -23,7 +23,23 @@ class LoginController extends Controller
         }
     }
     public function postLogin(Request $request)
-    {   $login = [
+    {   
+        $this->validate($request,
+        [
+            
+         
+            'txtEmail'=>'required|email',
+            'txtMatKhau'=>'required|min:6|max:20',
+        ],
+        [
+            
+           
+            'txtEmail.required'=>'Vui lòng nhập email',
+            'txtEmail.Email'=>'Không đúng định dạng email',
+            'txtMatKhau.required'=>'Vui lòng nhập mật khẩu',
+            'txtMatKhau.min'=>'Mật khẩu ít nhất 6 kí tự'
+        ]);
+        $login = [
         'Email' => $request->txtEmail,
         'password' => $request->txtMatKhau,
         'TrangThai'    =>"1",

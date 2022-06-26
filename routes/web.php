@@ -28,7 +28,7 @@ Route::post('login','user\LoginController@postLogin')->name('postLogin');
 //Đăng Xuất
 Route::get('logout','user\LoginController@getLogout')->name('getLogout');
 
-Route::group(['middleware' => 'CheckLogin', 'prefix' => '', 'namespace' => 'user'], function() {
+Route::group([ 'prefix' => '', 'namespace' => 'user'], function() {
     Route::get("/","UserController@Index")->name("user.index");
     Route::get("shop","UserController@Shop")->name("user.shop");
     Route::get("contact","UserController@Contact")->name("user.contact");
@@ -42,7 +42,7 @@ Route::group(['middleware' => 'CheckLogin', 'prefix' => '', 'namespace' => 'user
 
     Route::get("promotion","UserController@Promotion")->name("user.promotion");
     //Đăng Nhập
-  
+
     //Tìm Kiếm Sách
     Route::get('search','UserController@Search')->name('Search');
     Route::post('autocomplete_ajax',"UserController@autocomplete_ajax")->name("user.autocomplete_ajax");
@@ -123,6 +123,6 @@ Route::group(['middleware' => 'CheckAdminLogin', "prefix" => "admin", "namespace
 
     Route::post('hoadon/{id}/chitiethoadon','HoaDonController@getDetail')->name('hoadon.getdetail');
     Route::post('hoadon/update-trang-thai', 'HoaDonController@changeStatusOrder')->name('hoadon.changeStatus');
-    
-   
+
+
 });

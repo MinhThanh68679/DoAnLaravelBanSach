@@ -5,10 +5,12 @@ namespace App\Http\Controllers\admin;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use Carbon\Carbon;
-use DB;
+// use DB;
 use App\Models\HoaDonBan;
 use App\Models\User;
 use App\Models\Sach;
+use Illuminate\Support\Facades\DB;
+
 class DashboardController extends Controller
 {
     /**
@@ -40,7 +42,21 @@ class DashboardController extends Controller
         //thong ke thanh vien
         $accounts= User::where("created_at",">=", $dateFirstOfMonth)->where("created_at","<=", $currentDate)->get();
         $totalAccountInMonth = count($accounts);
-        return view('admin.pages.dashboard',compact('totalMoneyInMonth','totalAccountInMonth','totalBillInMonth','app_product'));
+        $months=HoaDonBan::select(DB::raw("Month(created_at) as month"))->whereYear('created_at',date('Y'))->groupBy(DB::raw("Month(created_at)"))->pluck('month');
+        $incomes=HoaDonBan::select(DB::raw("SUM(TongTien) as sum"))->whereYear('created_at',date('Y'))->where('TrangThai','=',0)->groupBy(DB::raw("Month(created_at)"))->pluck('sum');
+
+        $datas=array(0,0,0,0,0,0,0,0,0,0,0,0,0);
+        foreach($months as $index =>$month)
+        {
+            $datas[$month]=$incomes[$index];
+        }
+        $ttHuy=HoaDonBan::where('TrangThai',0)->count();
+        $ttDonmoi=HoaDonBan::where('TrangThai',1)->count();
+        $ttDuyetdon=HoaDonBan::where('TrangThai',3)->count();
+        $ttGiaoThanhcong=HoaDonBan::where('TrangThai',2)->count();
+        $ttVanchuyen=HoaDonBan::where('TrangThai',4)->count();
+        // dd($ttVanchuyen);
+        return view('admin.pages.dashboard',compact('ttDonmoi','ttDuyetdon','ttGiaoThanhcong','ttVanchuyen','ttHuy','totalMoneyInMonth','totalAccountInMonth','totalBillInMonth','app_product','datas'));
     }
 
     /**
@@ -109,6 +125,6 @@ class DashboardController extends Controller
         //
     }
     public function logout(){
-        
+
     }
 }

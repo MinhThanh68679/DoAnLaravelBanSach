@@ -40,6 +40,7 @@
 							</tr>
 						</thead>
 						<tbody>
+						<?php $stt = 1;?>
 							<?php
 							$tongall = 0;?>
 						@foreach($gio_hang as $cart)
@@ -51,7 +52,7 @@
 							?>
 							
 							<tr class="rem1">
-								<td class="invert ">1</td>
+								<td class="invert ">{{$stt}}</td>
 								<td class="invert-image">
 									<a href="{{route('user.single',$cart->Sach->id)}}">
 										<img src="{!! asset('image/'.$cart->Sach->AnhSach)!!}" alt=" " class="img-responsive">
@@ -74,7 +75,7 @@
 
 								</td>
 							</tr>
-							
+							<?php $stt++; ?>
 @endforeach
 						</tbody>>
 					</table>

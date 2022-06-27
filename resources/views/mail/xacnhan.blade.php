@@ -3,6 +3,7 @@
 
     <p>N&T Store xin chân thành cảm ơn anh/chị đã đặt hàng.<br/> 
     <p>Link Thanh Toán: {{ $data['URL'] }}</p>
+    <p>Tên Khách Hàng: {{ $data['tenkh'] }}</p>
     <p>Mã Đơn Hàng: {{ $data['madh'] }}</p>
     <p>Số Lượng Sản Phẩm: {{ $data['soluong'] }} Cuốn</p>
     <p>Tổng Tiền: {{ $data['vnp_Amount'] }} VND</p>

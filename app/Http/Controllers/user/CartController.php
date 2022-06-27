@@ -251,7 +251,8 @@ class CartController extends Controller
         
             $total = $hoadonban->TongTien; // chuyen sang tien vn
             $soluong=count($sach);
-            return redirect("vnpay?total=$total&madh=$hoadonban->id&soluong=$soluong" );
+            $tenkh = Auth::user()->HoTen;
+            return redirect("vnpay?total=$total&madh=$hoadonban->id&soluong=$soluong&tenkh=$tenkh" );
     }
         // foreach($sach as $item){
         //     $chitiethoadonban=new ChiTietHoaDonBan();
@@ -326,6 +327,7 @@ class CartController extends Controller
             'URL'=>$vnp_Url,
             'vnp_TmnCode'=>$vnp_TmnCode,
             'vnp_Amount'=>number_format(request('total', 10000),0,",",","),
+            'tenkh'=>request('tenkh'),
             'madh'=>request('madh'),
             'soluong'=>request('soluong'),
         ];

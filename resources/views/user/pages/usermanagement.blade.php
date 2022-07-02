@@ -118,7 +118,7 @@
 				</div> -->
                 <!--//tab_one-->
                 
-        <!-- <div class="tab2">
+       <div class="tab2">
           <div class="single_page">
                     <table class="table table-bordered" style="width:1100px; text-align:center">
                     <thead>
@@ -155,7 +155,7 @@
                     </tbody>
                   </table>			
             </div>
-        </div>-->
+        </div>
         @endif
     </div> 
     <div class="modal fade" id="exampleEditModalCenter" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">

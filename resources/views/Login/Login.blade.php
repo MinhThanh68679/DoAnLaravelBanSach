@@ -18,6 +18,15 @@
 				<div class="group">
 					<label for="pass" class="label">Mật khẩu</label>
 					<input id="pass" type="password" class="input" data-type="password" name="txtMatKhau">
+					@if ($errors->any())
+    <div class="alert alert-danger">
+        <ul>
+            @foreach ($errors->all() as $error)
+                <li>{{ $error }}</li>
+            @endforeach
+        </ul>
+    </div>
+@endif
 				</div>
 				<div class="group">
 					<input id="check" type="checkbox" class="check" checked>

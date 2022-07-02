@@ -93,7 +93,7 @@
 													<a href="{{route('user.single',$books->id)}}">{{$books->TenSach}}</a>
 												</h4>
 												<div class="grid-price mt-2">
-													<span class="money ">{{number_format($books->GiaTien,0,",",".")}} ₫</span>
+													<span class="money ">{{number_format($books->GiaTien,0,",",",")}} VND</span>
 												</div>
 											</div>
 										</div>
@@ -166,7 +166,7 @@
 														<a href="{{route('user.single',$bestSellers1->id)}}">{{$bestSellers1->TenSach}}</a>
 													</h4>
 													<div class="grid-price mt-2">
-														<span class="money ">{{number_format($bestSellers1->GiaTien,0,",",".")}} ₫</span>
+														<span class="money ">{{number_format($bestSellers1->GiaTien,0,",",",")}} VND</span>
 													</div>
 												</div>
 											</div>

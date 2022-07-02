@@ -7,7 +7,7 @@
             <div class="col-md-12 grid-margin">
               <div class="row">
                 <div class="col-12 col-xl-8 mb-4 mb-xl-0">
-                  <h3 class="font-weight-bold">QUẢN LÝ SÁCH</h3>
+                  <h3 class="font-weight-bold">QUẢN LÝ ĐƠN HÀNG</h3>
                 </div>
                 <div class="sorting">
 							<select id="sort"  class="frm-field required sect">
@@ -50,7 +50,7 @@
                     <th>Khuyến Mãi</th>
                     <th>Phương Thức Thanh Toán</th>
                     <th>Trạng Thái</th>
-                    <th>Tùy Chỉnh</th>
+                    <th>Xem Chi Tiết Đơn Hàng</th>
                   </tr>
                   </thead>
                   <tbody>
@@ -110,7 +110,7 @@
   <div class="modal-dialog" role="document">
     <div class="modal-content" style="width:850px;hight:80px" >
       <div class="modal-header">
-        <h5 class="modal-title" id="exampleModalLongTitle">Chi tiết đơn hàng</h5>
+        <h5 class="modal-title" id="exampleModalLongTitle">CHI TIẾT ĐƠN HÀNG</h5>
         <button type="button" class="close" data-dismiss="modal" aria-label="Close">
           <span aria-hidden="true">&times;</span>
         </button>

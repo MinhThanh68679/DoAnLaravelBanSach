@@ -46,7 +46,7 @@ class UserController extends Controller
 
        }
        $hoaDonBanThanhCong = HoaDonBan::where('TrangThai', 2)->get();
-       
+
        $listIDHoadon = array();
        $listTop4IDs = array();
        foreach($hoaDonBanThanhCong as $hoaDon){
@@ -68,13 +68,13 @@ class UserController extends Controller
             foreach($detailBill as $detail){
                 if($product->id == $detail->IdSach){
                     $product->SoLuong += $detail->SoLuong;
-                }  
+                }
             }
         }
         $result = $bestSellers->sortByDesc(function($pro) {
             return $pro->SoLuong;
         });
-         
+
         return view($this->user."index",compact('slideshow','sach_moi_nhat','listcha','cha','slideshow2','slideshow3','slideshow4','slideshow5', 'result'));
 
 

@@ -2,7 +2,8 @@
 <script src="{!! asset('admin/vendors/js/vendor.bundle.base.js ')!!}"></script>
   <!-- endinject -->
   <!-- Plugin js for this page -->
-  <script src="{!! asset('admin/vendors/chart.js ')!!}/Chart.min.js ')!!}"></script>
+  {{-- <script src="{!! asset('admin/vendors/chart.js ')!!}/Chart.min.js ')!!}"></script> --}}
+  <script src="{{ asset('admin/js/chart.js') }}"></script>
   <script src="{!! asset('admin/vendors/datatables.net/jquery.dataTables.js ')!!}"></script>
   <script src="{!! asset('admin/vendors/datatables.net-bs4/dataTables.bootstrap4.js ')!!}"></script>
   <script src="{!! asset('admin/js/dataTables.select.min.js ')!!}"></script>
@@ -16,21 +17,21 @@
   <script src="{!! asset('admin/js/todolist.js ')!!}"></script>
   <!-- endinject -->
   <!-- Custom js for this page-->
-  <script src="{!! asset('admin/js/dashboard.js ')!!}"></script>
+  
   <script src="{!! asset('admin/js/Chart.roundedBarCharts.js ')!!}"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/js/toastr.min.js" type="text/javascript" charset="utf-8" async defer></script>
 
-	
+
   <!-- End custom js for this page-->
   <script type="text/javascript">
     $('.comment_duyet_btn').click(function(){
-      
+
         var comment_status = $(this).data('comment_status');
 
         var comment_id = $(this).data('comment_id');
         var comment_product_id = $(this).attr('id');
         if(comment_status==1){
-         
+
             var alert = 'Thay đổi thành duyệt thành công';
         }else{
             var alert = 'Thay đổi thành không duyệt thành công';
@@ -52,10 +53,10 @@
 
 
     });
-   
+
 </script>
 <script>
- 
+
  $(document).ready(function(){
     $('body').on('change','#trangthaidonhang',function(){
     var selectVal = $("#trangthaidonhang option:selected").val();
@@ -64,7 +65,7 @@
     headers:{
                     'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
                 },
-                
+
                 url: "{{route('hoadon.changeStatus')}}",
                 method: 'POST',
                 data:{
@@ -73,17 +74,17 @@
                 },
                 success:function(data){
                     if(data){
-                    
+
                         $('#trangthai'+id).html(data);
                         if(data=="Đơn hàng đã hủy"){
                             toastr.error('Đơn hàng đã hủy');
                         }else
                         toastr.success('Cập nhật thành công');
-                       
+
                         $('#exampleModalLong').modal('hide');
-                    
+
                     }
-                  
+
                 }
             });
 });
@@ -97,14 +98,14 @@ $.ajax({
     headers:{
                     'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
                 },
-                
+
                 url: url,
                 method: 'POST',
                 success:function(data){
                     // thiết lập quyền
-                    
+
                     $('.modal-body[id="order-modal"]').empty();
-                    
+
                     $('.modal-body[id="order-modal"]').prepend(data);
 
                     // hiển thị modal
